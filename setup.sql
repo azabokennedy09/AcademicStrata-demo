@@ -33,7 +33,7 @@ create policy "admin updates profiles" on public.profiles for update using (publ
 
 drop policy if exists "read content" on public.docs;
 create policy "read content" on public.docs for select using (
-  collection in ('resources','posts') or public.is_admin() or (collection = 'submissions' and uid = auth.uid()));
+  collection in ('resources','posts','pagetext') or public.is_admin() or (collection = 'submissions' and uid = auth.uid()));
 drop policy if exists "admin manages docs" on public.docs;
 create policy "admin manages docs" on public.docs for all using (public.is_admin()) with check (public.is_admin());
 drop policy if exists "members submit files" on public.docs;

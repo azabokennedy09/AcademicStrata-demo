@@ -7,7 +7,7 @@
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="icon" href="favicon.ico" sizes="48x48">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js"></script>
 <script src="config.js"></script>
 <script src="backend.js"></script>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap">
@@ -263,10 +263,10 @@ footer{background:var(--accent);color:color-mix(in srgb,var(--onaccent) 82%,tran
 
 <section id="about" data-page hidden>
 <h1>About Academicstrata</h1>
-<p>Academicstrata began with a simple idea: students learn better when their notes are clear, original and easy to find. We write study guides, summaries and practice questions for high school students, and we share many of them for free so no learner is left behind.</p>
+<p data-k="about_story" data-l="About page: our story">Academicstrata began with a simple idea: students learn better when their notes are clear, original and easy to find. We write study guides, summaries and practice questions for high school students, and we share many of them for free so no learner is left behind.</p>
 <div class="grid">
-<div class="card"><h3>Our mission</h3><p>To help every student understand their subjects and approach exams with confidence.</p></div>
-<div class="card"><h3>Who writes the guides</h3><p>Our guides are written by educators and subject specialists who know the syllabus and how students really study.</p></div>
+<div class="card"><h3>Our mission</h3><p data-k="about_mission" data-l="About page: our mission">To help every student understand their subjects and approach exams with confidence.</p></div>
+<div class="card"><h3>Who writes the guides</h3><p data-k="about_writers" data-l="About page: who writes the guides">Our guides are written by educators and subject specialists who know the syllabus and how students really study.</p></div>
 </div>
 <div class="split"><svg class="ill" viewBox="0 0 400 300" role="img" aria-label="Illustration of a graduation cap"><circle cx="200" cy="150" r="130" fill="var(--line)"/><path d="M120 160v50q80 40 160 0v-50l-80 36z" fill="var(--gold)"/><path d="M200 70 330 125 200 180 70 125z" fill="var(--accent)"/><path d="M310 135v70" stroke="var(--gold)" stroke-width="6"/><circle cx="310" cy="212" r="10" fill="var(--gold)"/></svg><div><h2>What we believe</h2><ul class="checks"><li>Clear explanations beat long notes.</li><li>Every guide is original and written for students.</li><li>Good revision material should be easy to find.</li></ul><a class="btn" href="#team">Meet the team</a></div></div>
 <div style="margin-top:56px"><h2>How we make our guides</h2><div class="grid"><div class="card"><h3>1. Write</h3><p>Guides are written with plain explanations and worked examples for each topic.</p></div><div class="card"><h3>2. Check</h3><p>Every file is reviewed by an admin before it appears on the site.</p></div><div class="card"><h3>3. Publish</h3><p>Free guides are open to everyone. Premium guides unlock by arrangement.</p></div><div class="card"><h3>4. Improve</h3><p>We update guides when students and teachers send us feedback.</p></div></div></div>
@@ -274,11 +274,11 @@ footer{background:var(--accent);color:color-mix(in srgb,var(--onaccent) 82%,tran
 </section>
 
 <section id="services" data-page hidden>
-<h1>Services</h1><p class="sub">Study support for high school students: free guides, premium guides and extra help.</p>
+<h1>Services</h1><p class="sub" data-k="services_intro" data-l="Services page: introduction">Study support for high school students: free guides, premium guides and extra help.</p>
 <div class="grid">
-<div class="card" id="guides"><h3>Study Guides</h3><p>Clear PDF notes for core subjects, free and premium.</p><a class="btn" style="align-self:flex-start" href="#resources">Browse resources</a></div>
-<div class="card" id="exam-prep"><h3>Exam Prep Packs</h3><p>Topic bundles for end-of-term and final exams. Prices on request.</p><a class="btn" style="align-self:flex-start" href="#premium">See premium guides</a></div>
-<div class="card" id="tutoring"><h3>Tutoring Support</h3><p>One-to-one or group help. Prices on request.</p><a class="btn" style="align-self:flex-start" href="#contact">Enquire</a></div>
+<div class="card" id="guides"><h3>Study Guides</h3><p data-k="svc_guides" data-l="Services: Study Guides">Clear PDF notes for core subjects, free and premium.</p><a class="btn" style="align-self:flex-start" href="#resources">Browse resources</a></div>
+<div class="card" id="exam-prep"><h3>Exam Prep Packs</h3><p data-k="svc_exam" data-l="Services: Exam Prep Packs">Topic bundles for end-of-term and final exams. Prices on request.</p><a class="btn" style="align-self:flex-start" href="#premium">See premium guides</a></div>
+<div class="card" id="tutoring"><h3>Tutoring Support</h3><p data-k="svc_tutor" data-l="Services: Tutoring Support">One-to-one or group help. Prices on request.</p><a class="btn" style="align-self:flex-start" href="#contact">Enquire</a></div>
 </div>
 <div style="margin-top:56px"><h2>Free and premium</h2><div class="grid">
 <div class="card"><div class="tag">Free</div><h3>Open to everyone</h3><ul class="checks cmp"><li>Summaries and notes for core topics</li><li>Download and print as PDF</li><li>No payment needed</li></ul></div>
@@ -293,14 +293,24 @@ footer{background:var(--accent);color:color-mix(in srgb,var(--onaccent) 82%,tran
 <section id="team" data-page hidden>
 <h1>Our Team</h1><p>The people behind the guides.</p>
 <div class="grid">
-<div class="card"><div class="ph">PHOTO</div><h3>[NAME]</h3><div class="tag">Founder and Lead Writer</div><p>Leads the vision of the library and makes sure every guide is clear, accurate and original.</p></div>
-<div class="card"><div class="ph">PHOTO</div><h3>[NAME]</h3><div class="tag">Mathematics Specialist</div><p>Turns tricky topics into step-by-step explanations with worked examples.</p></div>
-<div class="card"><div class="ph">PHOTO</div><h3>[NAME]</h3><div class="tag">Sciences Specialist</div><p>Writes Biology, Chemistry and Physics guides that connect ideas to real life.</p></div>
-<div class="card"><div class="ph">PHOTO</div><h3>[NAME]</h3><div class="tag">Languages and Humanities Specialist</div><p>Helps students write stronger essays and remember key facts in English, History and Geography.</p></div>
+<div class="card"><div class="ph">PHOTO</div><h3 data-k="team1_name" data-l="Team member 1: name">[NAME]</h3><div class="tag" data-k="team1_role" data-l="Team member 1: role">Founder and Lead Writer</div><p data-k="team1_bio" data-l="Team member 1: short bio">Leads the vision of the library and makes sure every guide is clear, accurate and original.</p></div>
+<div class="card"><div class="ph">PHOTO</div><h3 data-k="team2_name" data-l="Team member 2: name">[NAME]</h3><div class="tag" data-k="team2_role" data-l="Team member 2: role">Mathematics Specialist</div><p data-k="team2_bio" data-l="Team member 2: short bio">Turns tricky topics into step-by-step explanations with worked examples.</p></div>
+<div class="card"><div class="ph">PHOTO</div><h3 data-k="team3_name" data-l="Team member 3: name">[NAME]</h3><div class="tag" data-k="team3_role" data-l="Team member 3: role">Sciences Specialist</div><p data-k="team3_bio" data-l="Team member 3: short bio">Writes Biology, Chemistry and Physics guides that connect ideas to real life.</p></div>
+<div class="card"><div class="ph">PHOTO</div><h3 data-k="team4_name" data-l="Team member 4: name">[NAME]</h3><div class="tag" data-k="team4_role" data-l="Team member 4: role">Languages and Humanities Specialist</div><p data-k="team4_bio" data-l="Team member 4: short bio">Helps students write stronger essays and remember key facts in English, History and Geography.</p></div>
 </div>
 </section>
 
 <section id="dashboard" data-page hidden><h1>Admin</h1><div id="dashgate" class="msg">Admins only. Please sign in with an admin account.</div><div id="dashbody" hidden>
+<div class="admin"><h2 id="bh">Write a post</h2>
+<div class="row"><label>Title<input id="bt"></label><label>Category<select id="bc"><option>Study tips</option><option>Exams</option><option>Subjects</option><option>News</option></select></label></div>
+<label style="margin-top:12px">Summary (short description on cards)<input id="bs" maxlength="140"></label>
+<label style="margin-top:12px">Thumbnail image (optional)<input id="bi" type="file" accept="image/*"></label>
+<label style="margin-top:12px">Article<textarea id="bb" rows="12"></textarea></label>
+<p style="font-size:13px;margin:6px 0 0">Tips: start a line with ## for a heading, start lines with - for a list, and write [link text](#resources) for a link.</p>
+<div class="row" style="margin-top:12px"><button class="btn" id="bp">Publish post</button><button class="chip" id="bx" hidden>Cancel edit</button></div>
+<div id="bm" role="status" style="margin-top:10px;font-size:14px"></div></div>
+<div class="admin"><h2>Your posts</h2><div id="plist"></div></div>
+<div class="admin"><h2>Page text</h2><p style="font-size:14px">Edit the wording of the About, Services and Team pages. Leave a box unchanged to keep its current text.</p><div id="petext"></div><div class="row" style="margin-top:12px"><button class="btn" id="pesave">Save text</button></div><div id="pem" role="status" style="margin-top:10px;font-size:14px"></div></div>
 <div class="admin"><h2>Premium access</h2><div class="row"><label>Member email<input id="ge" type="email"></label><button class="btn" id="gy">Grant</button><button class="btn alt" id="gn">Revoke</button></div><div id="gm" role="status" style="margin-top:10px;font-size:14px;color:var(--muted)"></div></div>
 <div class="admin"><h2>Messages</h2><div id="msgs"></div></div>
 <div class="admin"><h2>Subscribers</h2><div id="subs"></div></div></div></section>
@@ -435,7 +445,7 @@ return c}
 function renderPosts(){var H=document.getElementById("homePosts"),B=document.getElementById("blogList");H.textContent="";B.textContent="";
 posts.slice(0,6).forEach(function(p){H.appendChild(pcard(p,false))});
 posts.forEach(function(p){B.appendChild(pcard(p,true))});
-document.getElementById("homePostsWrap").hidden=!posts.length;document.getElementById("blogEmpty").hidden=posts.length>0;if((location.hash||"").indexOf("#post-")===0)renderPost(location.hash.slice(6))}
+document.getElementById("homePostsWrap").hidden=!posts.length;document.getElementById("blogEmpty").hidden=posts.length>0;if((location.hash||"").indexOf("#post-")===0)renderPost(location.hash.slice(6));renderPlist()}
 function rich(P,txt){var re=/\[([^\]]+)\]\((#[a-z0-9_~.-]+)\)/g,last=0,m;while((m=re.exec(txt))){if(m.index>last)P.appendChild(document.createTextNode(txt.slice(last,m.index)));var a=el("a","",m[1]);a.href=m[2];a.style.textDecoration="underline";P.appendChild(a);last=re.lastIndex}if(last<txt.length)P.appendChild(document.createTextNode(txt.slice(last)))}
 function seo(p){document.title=p.title+" | Academicstrata";var md=document.querySelector('meta[name="description"]');if(!md){md=document.createElement("meta");md.name="description";document.head.appendChild(md)}md.content=p.summary||"";var ld=document.getElementById("ld");if(!ld){ld=document.createElement("script");ld.id="ld";ld.type="application/ld+json";document.head.appendChild(ld)}ld.textContent=JSON.stringify({"@context":"https://schema.org","@type":"Article",headline:p.title,description:p.summary,datePublished:new Date(p.createdAt||0).toISOString(),author:{"@type":"Organization",name:"Academicstrata"},publisher:{"@type":"Organization",name:"Academicstrata"}})}
 function renderPost(id){var V=document.getElementById("postView");V.textContent="";var p=null;(posts||[]).forEach(function(x){if(x.id===id)p=x});
@@ -450,12 +460,14 @@ filters();render();renderPosts();route();
 
 (async function(){
 try{
-var user=await claude.use("user");isEditor=!!(user&&user.canEdit());canPrem=!!(user&&user.premium());
-if(user&&user.isMember()){var si=document.getElementById("signin"),su=document.getElementById("signup");si.textContent="Sign Out";si.onclick=function(){SS.signOut()};su.hidden=true;if(isEditor){var ad=el("a","btn","Admin");ad.href="#dashboard";document.querySelector(".auth").insertBefore(ad,si)}}
+var user=await claude.use("user");isEditor=!!(user&&user.canEdit());
+if(isEditor){var g1=document.getElementById("dashgate");if(g1)g1.hidden=true;var g2=document.getElementById("dashbody");if(g2)g2.hidden=false;if(!document.querySelector('.auth a[href="#dashboard"]')){var ad2=el("a","btn","Admin");ad2.href="#dashboard";var au=document.querySelector(".auth");au.insertBefore(ad2,au.firstChild)}}canPrem=!!(user&&user.premium());
+if(user&&user.isMember()){var si=document.getElementById("signin"),su=document.getElementById("signup");si.textContent="Sign Out";si.onclick=function(){SS.signOut()};su.hidden=true;}
 if(isEditor){document.getElementById("dashgate").hidden=true;document.getElementById("dashbody").hidden=false;var gr=function(f){var e=document.getElementById("ge").value.trim(),g=document.getElementById("gm");SS.grant(e,f).then(function(n){g.textContent=n?(f?"Premium access granted.":"Premium access removed."):"No member found with that email. They must sign up first."}).catch(function(){g.textContent="Could not update. Try again."})};document.getElementById("gy").onclick=function(){gr(true)};document.getElementById("gn").onclick=function(){gr(false)}}
 db=await claude.use("db");assets=await claude.use("assets");
 if(db){db.collection("resources").onSnapshot(function(s){items=s.docs.map(function(d){var o=Object.assign({},d.data());o.id=d.id;return o});items.sort(function(a,b){return (b.createdAt||0)-(a.createdAt||0)});render()},function(){})}
 if(db){db.collection("posts").onSnapshot(function(s){posts=s.docs.map(function(d){var o=Object.assign({},d.data());o.id=d.id;return o});posts.sort(function(a,b){return (b.createdAt||0)-(a.createdAt||0)});renderPosts()},function(){})}
+if(db){db.collection("pagetext").onSnapshot(function(s){s.docs.forEach(function(d){var x=d.data(),n=document.querySelector('[data-k="'+x.key+'"]');if(n&&x.text)n.textContent=x.text});buildPE()},function(){buildPE()})}
 if(db&&assets){document.getElementById("locked").hidden=true;document.getElementById("admin").hidden=false;document.getElementById("uph").textContent=isEditor?"Upload a file (PDF or Word)":"Submit a file for review (PDF or Word)";if(!isEditor)document.getElementById("pw").hidden=true}
 if(isEditor&&db){document.getElementById("review").hidden=false;db.collection("submissions").onSnapshot(function(s){pend=s.docs.map(function(d){var o=Object.assign({},d.data());o.id=d.id;return o});renderPend()},function(){})}
 if(isEditor&&db){db.collection("messages").onSnapshot(function(sn){var M=document.getElementById("msgs");M.textContent="";if(!sn.docs.length)M.appendChild(el("p","","No messages yet."));sn.docs.forEach(function(d){var x=d.data(),c=el("div","card");c.style.marginTop="10px";c.appendChild(el("h3","",x.name+" · "+x.email));c.appendChild(el("p","",x.message));M.appendChild(c)})},function(){});db.collection("subscribers").onSnapshot(function(sn){var B=document.getElementById("subs");B.textContent="";if(!sn.docs.length)B.appendChild(el("p","","No subscribers yet."));sn.docs.forEach(function(d){B.appendChild(el("p","",d.data().email))})},function(){})}
@@ -494,6 +506,24 @@ cn.onclick=function(){render()};[t,s,pl,sv,cn,m].forEach(function(x){c.appendChi
 document.getElementById("hs").onsubmit=function(e){e.preventDefault();q=document.getElementById("hq").value.trim().toLowerCase();location.hash="resources";render()};
 document.getElementById("rq").oninput=function(){q=this.value.trim().toLowerCase();render()};
 function stat(){var f=0,p=0;items.forEach(function(r){if(r.premium)p++;else f++});document.getElementById("stats").textContent=items.length+" resources · "+f+" free · "+p+" premium";var rq=document.getElementById("rq");if(rq&&document.activeElement!==rq)rq.value=q||""}
+var editingId=null;
+function thumbData(file){return new Promise(function(res,rej){var fr=new FileReader();fr.onload=function(){var im=new Image();im.onload=function(){var w=Math.min(900,im.width),h=Math.round(im.height*w/im.width),c=document.createElement("canvas");c.width=w;c.height=h;c.getContext("2d").drawImage(im,0,0,w,h);res(c.toDataURL("image/jpeg",0.8))};im.onerror=rej;im.src=fr.result};fr.onerror=rej;fr.readAsDataURL(file)})}
+function resetPost(){editingId=null;["bt","bs","bb","bi"].forEach(function(i){document.getElementById(i).value=""});document.getElementById("bh").textContent="Write a post";document.getElementById("bp").textContent="Publish post";document.getElementById("bx").hidden=true}
+var bpb=document.getElementById("bp");if(bpb){bpb.onclick=async function(){var m=document.getElementById("bm"),t=document.getElementById("bt").value.trim(),b=document.getElementById("bb").value.trim(),f=document.getElementById("bi").files[0];
+if(!t||!b){m.textContent="Add a title and the article text.";return}
+var rec={title:t,category:document.getElementById("bc").value,summary:document.getElementById("bs").value.trim()||b.slice(0,120),body:b};
+try{if(f){if(!/^image\//.test(f.type)){m.textContent="The thumbnail must be an image.";return}rec.thumb=await thumbData(f)}
+if(editingId){await db.collection("posts").doc(editingId).update(rec);m.textContent="Saved."}else{rec.createdAt=Date.now();rec.thumb=rec.thumb||"";await db.collection("posts").add(rec);m.textContent="Published."}
+resetPost()}catch(e){m.textContent="Could not save. Try again."}};
+document.getElementById("bx").onclick=function(){resetPost();document.getElementById("bm").textContent=""}}
+function renderPlist(){var P=document.getElementById("plist");if(!P)return;P.textContent="";if(!posts.length)P.appendChild(el("p","","No posts yet."));
+posts.forEach(function(p){var row=el("div","card");row.style.marginTop="10px";row.appendChild(el("h3","",p.title));row.appendChild(el("p","",(p.category||"")+" \u00b7 "+new Date(p.createdAt||0).toLocaleDateString()));var b=el("div","row"),ed=el("button","chip","Edit"),dx=el("button","chip","Delete");
+ed.onclick=function(){editingId=p.id;document.getElementById("bt").value=p.title;document.getElementById("bc").value=p.category;document.getElementById("bs").value=p.summary||"";document.getElementById("bb").value=p.body||"";document.getElementById("bh").textContent="Edit post";document.getElementById("bp").textContent="Save changes";document.getElementById("bx").hidden=false;document.getElementById("bt").scrollIntoView()};
+dx.onclick=async function(){if(!dx.dataset.sure){dx.dataset.sure="1";dx.textContent="Click again to confirm";setTimeout(function(){dx.dataset.sure="";dx.textContent="Delete"},4000);return}try{await db.collection("posts").doc(p.id).delete();posts=posts.filter(function(x){return x.id!==p.id});renderPosts()}catch(e){dx.textContent="Could not delete"}};
+b.appendChild(ed);b.appendChild(dx);row.appendChild(b);P.appendChild(row)})}
+function buildPE(){var C=document.getElementById("petext");if(!C||C.dataset.built)return;C.dataset.built="1";
+document.querySelectorAll("[data-k]").forEach(function(n){var l=el("label","",n.getAttribute("data-l")||n.getAttribute("data-k"));l.style.marginTop="12px";var ta=document.createElement("textarea");ta.rows=3;ta.value=n.textContent.trim();ta.dataset.k=n.getAttribute("data-k");l.appendChild(ta);C.appendChild(l)})}
+var pesv=document.getElementById("pesave");if(pesv){pesv.onclick=async function(){var m=document.getElementById("pem");m.textContent="Saving\u2026";try{var tas=document.querySelectorAll("#petext textarea");for(var i=0;i<tas.length;i++){var k=tas[i].dataset.k,v=tas[i].value.trim(),n=document.querySelector('[data-k="'+k+'"]');if(v&&n&&n.textContent.trim()!==v){await db.collection("pagetext").doc("pt_"+k).set({key:k,text:v});n.textContent=v}}m.textContent="Saved."}catch(e){m.textContent="Could not save. Try again."}}}
 var q="";
 document.getElementById("sf").onsubmit=function(e){e.preventDefault();q=document.getElementById("sq").value.trim().toLowerCase();location.hash="resources";render()};
 var dlg=document.getElementById("dlg");
@@ -502,10 +532,7 @@ document.getElementById("signin").onclick=function(){openAuth("Sign In")};
 document.getElementById("signup").onclick=function(){openAuth("Sign Up")};
 document.getElementById("dx").onclick=function(){dlg.close()};
 document.getElementById("dgo").onclick=async function(){var m=document.getElementById("dm"),em=document.getElementById("de").value.trim(),pw=document.getElementById("dp").value,up=document.getElementById("dt").textContent==="Sign Up";if(!/^\S+@\S+\.\S+$/.test(em)||pw.length<8){m.textContent="Enter a valid email and a password of at least 8 characters.";return}m.textContent="Please wait…";try{var r=await (up?SS.signUp(em,pw):SS.signIn(em,pw));if(r&&r.confirm){m.textContent="Account created. Check your email to confirm it, then sign in."}else{location.reload()}}catch(e){m.textContent=e.message||"Something went wrong. Try again."}};
-var bpEl=document.getElementById("bp");if(bpEl)bpEl.onclick=async function(){var m=document.getElementById("bm"),t=document.getElementById("bt").value.trim(),b=document.getElementById("bb").value.trim();
-if(!t||!b){m.textContent="Add a title and the post text.";return}
-try{var th="",fi=document.getElementById("bi").files[0];if(fi&&assets){if(!/^image\/(png|jpe?g|webp|gif)$/.test(fi.type)){m.textContent="Thumbnail must be a PNG, JPG, WEBP or GIF image.";return}var ua=await assets.upload(fi);th=ua.url}
-await db.collection("posts").add({title:t,category:document.getElementById("bc").value,summary:document.getElementById("bs").value.trim()||b.slice(0,120),body:b,thumb:th,createdAt:Date.now()});m.textContent="Published.";["bt","bs","bb","bi"].forEach(function(i){document.getElementById(i).value=""})}catch(e){m.textContent="Publishing failed. Try again."}};
+
 document.getElementById("up").onclick=async function(){
 var m=document.getElementById("upmsg"),f=document.getElementById("f").files[0],t=document.getElementById("t").value.trim();
 if(!db||!assets){m.textContent="Please sign in to upload.";return}

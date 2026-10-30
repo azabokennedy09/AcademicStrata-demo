@@ -13,7 +13,7 @@ This folder is the complete website. It needs two free services: **Supabase** (a
 ## Step 1: Create the Supabase project (10 minutes)
 1. Go to supabase.com, create a free account and a **New project** (save the database password).
 2. Open **SQL Editor > New query**, paste the whole of `setup.sql` and press **Run**. It should say "Success".
-3. Open **Project Settings > API** and copy the **Project URL** and the **anon public** key.
+3. Open **Project Settings > API Keys**. Copy the **Project URL** and the **Publishable key** (it starts with `sb_publishable_`). If you only see a **Legacy API Keys** tab, copy the `anon` key from there instead. Never use the `secret` or `service_role` key.
 4. Open `config.js` in this folder and paste both values between the quotes.
 
 ## Step 2: Put the site online
@@ -47,3 +47,10 @@ In Supabase open **Authentication > URL Configuration**. Set **Site URL** to you
 
 ## Files
 index.html (the site), backend.js (connects to Supabase), config.js (your two keys), setup.sql (database), thumbs/ (blog pictures), logo/ (logo files).
+
+
+## Updating an existing setup
+If you already ran `setup.sql` before, also run `update-1.sql` once in the Supabase SQL Editor. It is needed for the new **Page text** editor on the Admin page.
+
+## New admin tools
+On the **Admin** page you can write, edit and delete blog posts (with a thumbnail picture), and edit the wording of the About, Services and Team pages.

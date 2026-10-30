@@ -46,6 +46,7 @@
           doc: function (id) {
             return {
               delete: async function () { var r = await sb.from("docs").delete().eq("id", id); if (r.error) throw r.error; },
+              set: async function (data) { var r = await sb.from("docs").upsert({ id: id, collection: c, data: data }); if (r.error) throw r.error; },
               update: async function (patch) {
                 var g = await sb.from("docs").select("data").eq("id", id).single(); if (g.error) throw g.error;
                 var u = await sb.from("docs").update({ data: Object.assign({}, g.data.data, patch) }).eq("id", id); if (u.error) throw u.error;
