@@ -3,7 +3,15 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Academicstrata</title>
+<title>Academicstrata | Study Guides for High School Students</title>
+<meta name="description" content="Original study guides, notes, past papers and practice questions for high school students. Free and premium downloads.">
+<meta name="theme-color" content="#0E6B5C">
+<meta name="color-scheme" content="light">
+<meta property="og:type" content="website"><meta property="og:site_name" content="Academicstrata">
+<meta property="og:title" content="Academicstrata | Study Guides for High School Students"><meta property="og:description" content="Original study guides, notes, past papers and practice questions for high school students. Free and premium downloads.">
+<meta name="twitter:card" content="summary">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<script type="application/ld+json" id="org">{"@context":"https://schema.org","@type":"Organization","name":"Academicstrata","description":"Original study guides, notes, past papers and practice questions for high school students. Free and premium downloads.","email":"azabokennedy09@gmail.com","telephone":"+256786535915","sameAs":["https://www.facebook.com/azabokennedy.1","https://www.tiktok.com/@ken02026","https://www.instagram.com/azabokennedy","https://www.youtube.com/@kenstrata"]}</script>
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="icon" href="favicon.ico" sizes="48x48">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -14,7 +22,6 @@
 <style>
 :root{--bg:#F4F1EA;--surface:#fff;--ink:#1B2A25;--muted:#5E6A64;--line:#DDD7C9;--accent:#0E6B5C;--onaccent:#fff;--gold:#2A1D00;--goldbg:#C98F1B;
 box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0E1A16;--surface:#16251F;--ink:#EDF3EF;--muted:#A3B3AB;--line:#2C3F37;--accent:#218071;--onaccent:#fff;--gold:#1D1400;--goldbg:#D9A02E}}
 :root[data-theme="dark"]{--bg:#0E1A16;--surface:#16251F;--ink:#EDF3EF;--muted:#A3B3AB;--line:#2C3F37;--accent:#218071;--onaccent:#fff;--gold:#1D1400;--goldbg:#D9A02E}
 html{scroll-padding-top:env(safe-area-inset-top,0px)}
 *{box-sizing:border-box}
@@ -197,10 +204,38 @@ main{padding:36px 5vw 64px}
 @media (max-width:980px){.topbar,.mainbar .auth{display:none}.mtog{margin-left:auto}.mauth{display:flex;flex-wrap:wrap;gap:8px;padding:12px 8px 6px}.mauth .btn{flex:1 1 120px;justify-content:center}}
 #sub input{background:#fff;color:#1B2A25;border:0;border-radius:8px;min-height:48px;padding:0 14px;width:100%}
 #sub input::placeholder{color:#6B746F}
-#sub .subbtn{width:100%;min-height:50px;border-radius:999px;background:var(--goldbg);color:var(--gold);font-weight:700;justify-content:center;font-size:16px}
+#sub .subbtn{width:100%;min-height:50px;border-radius:999px;background:#2563EB;color:#fff;font-weight:700;justify-content:center;font-size:16px}#sub .subbtn:hover{background:#1D4FD8}
+.skip{position:absolute;left:-9999px;top:8px;z-index:100;background:var(--accent);color:var(--onaccent);padding:10px 16px;border-radius:8px;font-weight:600}.skip:focus{left:8px}
+.subjects,.pair,.vals{margin-top:56px}.subjects h2,.vals h2{margin-bottom:8px}
+.sl{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));column-gap:56px}
+.sl a{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:16px 0;border-bottom:1px solid var(--line)}
+.sl h3{margin:0;font-size:19px}.sl p{margin:2px 0 0;font-size:15px}
+.sl a::after{content:"\2192";color:var(--accent);font-weight:700;transition:transform .2s ease}
+.sl a:hover::after,.sl a:focus-visible::after{transform:translateX(4px)}.sl a:hover h3{color:var(--accent)}
+.pair{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:40px}
+.pair>div{border-top:3px solid var(--accent);padding-top:18px}.pair h3{font-size:26px;line-height:1.2;margin:8px 0 10px}.pair p{margin:0}
+.vl{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:32px;margin-top:16px}
+.vl>div{border-top:1px solid var(--line);padding-top:16px}.vl h3{margin:0 0 6px;font-size:19px}.vl p{margin:0}
+.sl a{gap:16px}.sl a>div{flex:1}.si{flex:0 0 30px;display:flex;color:var(--accent)}.si svg{width:30px;height:30px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.apart{margin-top:56px}.aprule{width:64px;border-top:3px solid var(--accent);margin-bottom:18px}.apart h2{margin-bottom:28px}
+.ap>div{display:grid;grid-template-columns:minmax(120px,1fr) 3fr;gap:24px;padding:26px 0;border-top:1px solid var(--line)}.ap>div:last-child{border-bottom:1px solid var(--line)}
+.ap .tag{padding-top:6px}.ap h3{font-size:26px;line-height:1.2;margin:0 0 10px}.ap p{margin:0}
+.avs{display:grid;gap:20px}.avs h4{margin:0 0 4px;font-family:Georgia,"Times New Roman",serif;font-size:19px;font-weight:700}
+@media (max-width:640px){.ap>div{grid-template-columns:1fr;gap:10px}}
+.ap>div{grid-template-columns:minmax(120px,1fr) 3fr 160px;align-items:center}.ap .tag{align-self:start}.ap .ai{width:150px;max-width:150px;height:auto;justify-self:end}
+@media (max-width:640px){.ap>div{grid-template-columns:1fr;gap:10px}.ap .ai{max-width:110px;justify-self:start}}
+.ap>div{grid-template-columns:minmax(120px,1fr) 3fr;align-items:start}.ap .ai{width:110px;max-width:110px;height:auto;display:block;margin-top:14px;justify-self:auto}
+@media (max-width:640px){.ap .ai{max-width:90px}}
+.band .bi{flex:0 0 120px;width:120px;max-width:120px;height:auto}.band .bt{flex:1 1 280px}
+.band .ill *{stroke:var(--onaccent)!important}.band .ill circle:first-child{stroke:color-mix(in srgb,var(--onaccent) 60%,transparent)!important}
+.faqall{background:none;border:0;border-radius:0;padding:0;margin:0}
+.faqall>summary{display:flex;justify-content:space-between;align-items:center;gap:16px;list-style:none;padding:12px 0;border-bottom:1px solid var(--line)}.faqall>summary::-webkit-details-marker{display:none}.faqall>summary h2{margin:0}
+.faqall>summary::after{content:"";flex:0 0 10px;width:10px;height:10px;border-right:2px solid var(--ink);border-bottom:2px solid var(--ink);transform:rotate(45deg);margin-right:6px;transition:transform .2s ease}.faqall[open]>summary::after{transform:rotate(-135deg)}
+:root{color-scheme:light}
 </style>
 </head>
 <body>
+<a class="skip" href="#main" onclick="event.preventDefault();var m=document.getElementById('main');m.setAttribute('tabindex','-1');m.focus()">Skip to main content</a>
 <header>
 <div class="topbar">
 <div class="tb-l">
@@ -209,10 +244,10 @@ main{padding:36px 5vw 64px}
 </div>
 <form class="search" id="sf" role="search"><label for="sq" style="position:absolute;left:-9999px">Search resources</label><input id="sq" type="search" placeholder="Search resources…"><button type="submit" aria-label="Search"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></button></form>
 <div class="social">
-<a href="https://www.facebook.com" target="_blank" rel="noopener" aria-label="Facebook"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
-<a href="https://www.tiktok.com" target="_blank" rel="noopener" aria-label="TikTok"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 12a4 4 0 1 0 4 4V3a5 5 0 0 0 5 5"/></svg></a>
-<a href="https://www.instagram.com" target="_blank" rel="noopener" aria-label="Instagram"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><path d="M17.5 6.5h.01"/></svg></a>
-<a href="https://www.youtube.com" target="_blank" rel="noopener" aria-label="YouTube"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/><path d="m9.75 15.02 5.75-3.27-5.75-3.27z"/></svg></a>
+<a href="https://www.facebook.com/azabokennedy.1" target="_blank" rel="noopener" aria-label="Facebook"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+<a href="https://www.tiktok.com/@ken02026" target="_blank" rel="noopener" aria-label="TikTok"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 12a4 4 0 1 0 4 4V3a5 5 0 0 0 5 5"/></svg></a>
+<a href="https://www.instagram.com/azabokennedy" target="_blank" rel="noopener" aria-label="Instagram"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><path d="M17.5 6.5h.01"/></svg></a>
+<a href="https://www.youtube.com/@kenstrata" target="_blank" rel="noopener" aria-label="YouTube"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/><path d="m9.75 15.02 5.75-3.27-5.75-3.27z"/></svg></a>
 </div>
 </div>
 <div class="mainbar">
@@ -227,53 +262,54 @@ main{padding:36px 5vw 64px}
 <button class="mtog" id="mt" aria-label="Open menu" aria-expanded="false"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
 </div>
 </header>
-<main>
+<main id="main">
 <section id="home" data-page>
-<div class="split hero"><div><div class="tag" style="margin-bottom:14px;font-size:14px;color:var(--ink)">Learn clearly. Revise confidently.</div><h1>Study guides made for high school students.</h1>
-<p>Clear notes, summaries and practice questions. Start with the free library, then go deeper with premium guides.</p>
-<a class="btn" href="#resources">Browse resources</a> <a class="btn alt" href="#about">About us</a>
+<div class="split hero"><div><div class="tag" style="margin-bottom:14px;font-size:14px;color:var(--ink)">Revise confidently.</div><h1>Get study guides made for you</h1>
+<p>Get notes, seminar papers, past exam papers and premium guides to perform well in examinations.</p>
+<a class="btn" href="#resources">Search resources</a> <a class="btn alt" href="#about">About us</a>
 <form id="hs" class="hsearch" role="search"><label for="hq" style="position:absolute;left:-9999px">Search resources</label><input id="hq" type="search" placeholder="Search guides, e.g. Chemistry"><button class="btn" type="submit">Search</button></form>
-<ul class="trust"><li>Free and premium guides</li><li>Original content</li><li>Made for high school</li></ul></div>
+<ul class="trust"><li>Get Free and premium guides</li><li>Original content</li><li>Made for high school students</li></ul></div>
 <svg class="ill" viewBox="0 0 400 320" role="img" aria-label="Illustration of stacked study books with a pencil and a lightbulb"><circle cx="200" cy="170" r="140" fill="var(--line)"/><rect x="90" y="230" width="220" height="34" rx="6" fill="var(--accent)"/><rect x="110" y="196" width="190" height="34" rx="6" fill="var(--gold)"/><rect x="100" y="162" width="200" height="34" rx="6" fill="var(--surface)" stroke="var(--accent)" stroke-width="4"/><path d="M120 247h150" stroke="var(--onaccent)" stroke-width="5" stroke-linecap="round"/><path d="M135 213h120" stroke="var(--goldbg)" stroke-width="5" stroke-linecap="round"/><path d="M125 179h140" stroke="var(--accent)" stroke-width="5" stroke-linecap="round"/><circle cx="200" cy="96" r="34" fill="var(--goldbg)" stroke="var(--gold)" stroke-width="4"/><rect x="186" y="130" width="28" height="14" rx="3" fill="var(--gold)"/><path d="M200 40v-14M158 56l-10-10M242 56l10-10" stroke="var(--gold)" stroke-width="5" stroke-linecap="round"/><g transform="rotate(30 335 210)"><rect x="323" y="150" width="24" height="110" rx="3" fill="var(--gold)"/><path d="M323 260h24l-12 26z" fill="var(--accent)"/></g></svg></div>
-<div class="grid">
-<h2 style="grid-column:1/-1;margin:8px 0 0">Browse by subject</h2>
-<a class="card cat tile" data-c="Mathematics" href="#resources"><span class="ico">M</span><div><h3>Mathematics</h3><p>Algebra, geometry and more</p></div></a>
-<a class="card cat tile" data-c="Biology" href="#resources"><span class="ico">B</span><div><h3>Biology</h3><p>Cells, plants and the body</p></div></a>
-<a class="card cat tile" data-c="Chemistry" href="#resources"><span class="ico">C</span><div><h3>Chemistry</h3><p>Atoms, reactions and organic</p></div></a>
-<a class="card cat tile" data-c="Physics" href="#resources"><span class="ico">P</span><div><h3>Physics</h3><p>Forces, energy and waves</p></div></a>
-<a class="card cat tile" data-c="English" href="#resources"><span class="ico">E</span><div><h3>English</h3><p>Writing, grammar and literature</p></div></a>
-<a class="card cat tile" data-c="History" href="#resources"><span class="ico">H</span><div><h3>History</h3><p>People, events and sources</p></div></a>
-<a class="card cat tile" data-c="Geography" href="#resources"><span class="ico">G</span><div><h3>Geography</h3><p>Maps, climate and landforms</p></div></a>
-</div>
-<div style="margin-top:56px"><div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(280px,1fr))">
-<div class="card"><div class="tag">Our vision</div><h3 style="font-size:24px">Every student, well prepared.</h3><p>A future where every high school student has clear, dependable study material within reach, wherever they learn.</p></div>
-<div class="card"><div class="tag">Our motto</div><h3 style="font-size:24px">“Learn clearly. Revise confidently.”</h3><p>Everything we publish is built to make studying simpler and results stronger.</p></div>
-</div>
-<h2 style="margin-top:40px">Our values</h2>
-<div class="grid">
-<div class="card"><h3>Clarity</h3><p>We explain ideas in plain language students can follow.</p></div>
-<div class="card"><h3>Originality</h3><p>Every guide is written by us, never copied.</p></div>
-<div class="card"><h3>Access</h3><p>Free guides for everyone, premium depth for those who want more.</p></div>
-</div></div>
+<section class="subjects" aria-labelledby="subj-h"><h2 id="subj-h">Browse by subject</h2>
+<div class="sl">
+<a class="cat" data-c="Mathematics" href="#resources"><span class="si" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M8 6h8M8 10h.01M12 10h.01M16 10h.01M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h4"/></svg></span><div><h3>Mathematics</h3><p>Number, algebra, geometry and statistics, with worked examples and practice questions to build speed and accuracy.</p></div></a>
+<a class="cat" data-c="History" href="#resources"><span class="si" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 21h18M5 21V10M9 21V10M15 21V10M19 21V10M3 10l9-6 9 6"/></svg></span><div><h3>History and Political Education</h3><p>Uganda, Africa and the world: key events, important people, how governments work and the duties of a good citizen.</p></div></a>
+<a class="cat" data-c="Geography" href="#resources"><span class="si" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"/></svg></span><div><h3>Geography</h3><p>Physical and human geography, from maps, weather and landforms to population, farming and industry.</p></div></a>
+<a class="cat" data-c="Physics" href="#resources"><span class="si" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="1.5"/><ellipse cx="12" cy="12" rx="10" ry="4"/><ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(60 12 12)"/><ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(120 12 12)"/></svg></span><div><h3>Physics</h3><p>Forces, energy, electricity, light and waves explained step by step. General Science is available for learners with special needs.</p></div></a>
+<a class="cat" data-c="Chemistry" href="#resources"><span class="si" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 2h6M10 2v6L4.5 19a2 2 0 0 0 1.8 3h11.4a2 2 0 0 0 1.8-3L14 8V2M7.5 15h9"/></svg></span><div><h3>Chemistry</h3><p>Atoms, the periodic table, reactions, acids and bases and organic chemistry, with help on calculations and practicals.</p></div></a>
+<a class="cat" data-c="Biology" href="#resources"><span class="si" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.5 19 2c1 2 2 4.2 2 8 0 5.5-4.8 10-10 10z"/><path d="M2 21c0-3 1.9-5.5 6-7"/></svg></span><div><h3>Biology</h3><p>Cells, plants, animals, the human body, health and the environment, explained in plain language.</p></div></a>
+<a class="cat" data-c="Entrepreneurship" href="#resources"><span class="si" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 8-8M15 7h6v6"/></svg></span><div><h3>Entrepreneurship Education</h3><p>Finding business ideas, planning, marketing, record keeping and starting a small enterprise.</p></div></a>
+<a class="cat" data-c="Kiswahili" href="#resources"><span class="si" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H8l-5 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M8 9h8M8 13h5"/></svg></span><div><h3>Kiswahili</h3><p>Grammar, comprehension, composition and literature, to help learners speak and write Kiswahili with confidence.</p></div></a>
+<a class="cat" data-c="Lugbara" href="#resources"><span class="si" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m5 8 6 6M4 14l6-6 2-3M2 5h12M7 2h1M22 22l-5-10-5 10M14 18h6"/></svg></span><div><h3>Lugbara Ti</h3><p>Reading, writing, grammar and speaking in the Lugbara language, along with its culture and oral traditions.</p></div></a>
+<a class="cat" data-c="English" href="#resources"><span class="si" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 19L10 4l7 15M5.8 13h8.4M3 22h18"/></svg></span><div><h3>English Language</h3><p>Grammar, vocabulary, comprehension, composition and oral skills for clear speaking and writing.</p></div></a>
+<a class="cat" data-c="Physical Education" href="#resources"><span class="si" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6.5 6.5v11M17.5 6.5v11M3 9v6M21 9v6M6.5 12h11"/></svg></span><div><h3>Physical Education</h3><p>Fitness, sports skills, rules, health and safety, covering both theory and practical work.</p></div></a>
+<a class="cat" data-c="Religious Education" href="#resources"><span class="si" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M2 4h6a4 4 0 0 1 4 4v13a3 3 0 0 0-3-3H2zM22 4h-6a4 4 0 0 0-4 4v13a3 3 0 0 1 3-3h7z"/></svg></span><div><h3>Religious Education</h3><p>Teachings, values and moral life in Christian Religious Education (CRE) and Islamic Religious Education (IRE).</p></div></a>
+</div></section>
+<section class="apart" aria-labelledby="ap-h"><div class="aprule" aria-hidden="true"></div><h2 id="ap-h">What sets us apart</h2>
+<div class="ap">
+<div><div class="lab"><div class="tag">Our vision</div><svg class="ill ai" viewBox="0 0 160 120" role="img" aria-label="Illustration of an eye looking ahead"><circle cx="80" cy="60" r="52"/><path d="M30 60q50-40 100 0q-50 40-100 0z"/><circle cx="80" cy="60" r="14"/><circle cx="80" cy="60" r="4"/><path d="M80 14v-8M44 24l-5-6M116 24l5-6"/></svg></div><div><h3>Every student, well prepared.</h3><p>A future where every high school student has clear, dependable study material within reach, wherever they learn.</p></div></div>
+<div><div class="lab"><div class="tag">Our motto</div><svg class="ill ai" viewBox="0 0 160 120" role="img" aria-label="Illustration of an open book with a sparkle"><circle cx="80" cy="60" r="52"/><path d="M80 42v52M80 42q-18-10-42-6v52q24-4 42 6M80 42q18-10 42-6v52q-24-4-42 6"/><path d="M124 22v12M118 28h12"/></svg></div><div><h3>“Learn clearly. Revise confidently.”</h3><p>Everything we publish is built to make studying simpler and results stronger.</p></div></div>
+<div><div class="lab"><div class="tag">Our values</div><svg class="ill ai" viewBox="0 0 160 120" role="img" aria-label="Illustration of a gem"><circle cx="80" cy="60" r="52"/><path d="M52 44h56l16 18-44 40L36 62z"/><path d="M36 62h88M64 44l16 18 16-18M80 62v40"/></svg></div><div><h3>Clarity, Originality, Access.</h3><p>Clear explanations, original guides and free access for every learner.</p></div></div>
+</div></section>
 <div style="margin-top:56px"><h2>How it works</h2><div class="grid"><div class="card"><div class="num">1</div><h3>Pick your subject</h3><p>Browse by subject or search for a topic.</p></div><div class="card"><div class="num">2</div><h3>Download the guide</h3><p>Free PDFs are open to everyone. Premium guides go deeper.</p></div><div class="card"><div class="num">3</div><h3>Practise and revise</h3><p>Use worked examples and practice questions to test yourself.</p></div></div></div>
-<div class="band"><h2>Ready to study smarter?</h2><a class="btn" href="#resources">Start with free guides</a></div>
+<div class="band"><svg class="ill bi" viewBox="0 0 160 120" role="img" aria-label="Illustration of a teacher's board with a speech bubble"><circle cx="80" cy="60" r="52"/><rect x="38" y="34" width="76" height="48" rx="4"/><path d="M50 50h40M50 62h26M34 88h84M56 82l-8 22M96 82l8 22"/><path d="M104 14h30a6 6 0 0 1 6 6v16a6 6 0 0 1-6 6h-14l-8 8v-8h-8a6 6 0 0 1-6-6V20a6 6 0 0 1 6-6z"/><path d="M112 24h20M112 32h12"/></svg><div class="bt"><h2>Ready to study smarter?</h2><p style="color:inherit;margin:8px 0 0">Want premium lesson notes, papers or extra lessons (coaching)? Contact the admin on the Contact page.</p></div><a class="btn" href="#contact">Contact Us</a></div>
 <div id="homePostsWrap" hidden style="margin-top:56px"><div class="row" style="justify-content:space-between;align-items:baseline"><h2>Latest from the blog</h2><a href="#blog" style="font-weight:600">View all posts</a></div><div class="grid" id="homePosts"></div></div>
 <div id="homeResWrap" hidden style="margin-top:56px"><div class="row" style="justify-content:space-between;align-items:baseline"><h2>New resources</h2><a href="#resources" style="font-weight:600">View all resources</a></div><div class="grid" id="homeRes"></div></div>
 <div class="band"><div><h2>For teachers</h2><p style="color:inherit;margin:8px 0 0">Have notes, schemes of work or lesson plans to share? Get in touch and we will review them for publishing.</p></div><a class="btn" href="#contact">Share your notes</a></div>
-<div id="faq" style="margin-top:56px;max-width:820px"><h2>Frequently asked questions</h2>
+<div id="faq" style="margin-top:56px;max-width:820px"><details class="faqall"><summary><h2>Frequently asked questions</h2></summary>
 <details><summary>Are the study guides free?</summary><p>Many of them are. Free guides download straight from the <a href="#free" style="text-decoration:underline">Resources page</a>. Premium guides carry a gold badge.</p></details>
 <details><summary>What is inside a premium guide?</summary><p>Premium guides are original, in-depth material with plain-language summaries, step-by-step worked examples and practice questions with answers.</p></details>
 <details><summary>How do I get premium access?</summary><p>Get in touch through the <a href="#contact" style="text-decoration:underline">Contact page</a> or email azabokennedy09@gmail.com and we will explain how to unlock the guide you want.</p></details>
-<details><summary>Which subjects do you cover?</summary><p>Mathematics, Biology, Chemistry, Physics, English, History and Geography, with more added regularly. Check the Resources page for the latest uploads.</p></details>
+<details><summary>Which subjects do you cover?</summary><p>Mathematics, History and Political Education, Geography, Physics (or General Science), Chemistry, Biology, Entrepreneurship Education, Kiswahili, Lugbara Ti, English Language, Physical Education and Religious Education (CRE or IRE), with more added regularly. Check the Resources page for the latest uploads.</p></details>
 <details><summary>Can I download and print the guides?</summary><p>Yes. Every guide is a PDF, so you can save it to your phone or computer and print it for revision.</p></details>
 <details><summary>Who writes the guides?</summary><p>All content is original and written by our team. You can meet them on the <a href="#team" style="text-decoration:underline">Our Team page</a>.</p></details>
-<details><summary>How can I reach you?</summary><p>Call (+256) 786 535 915, email azabokennedy09@gmail.com or use the form on the Contact page.</p></details></div>
+<details><summary>How can I reach you?</summary><p>Call (+256) 786 535 915, email azabokennedy09@gmail.com or use the form on the Contact page.</p></details></details></div>
 </section>
 
 <section id="blog" data-page hidden>
 <h1>Blog</h1><p>Study tips, exam advice and news.</p>
 <div class="grid" id="blogList"></div>
-<p id="blogEmpty" hidden style="margin-top:24px">No posts yet. The owner can publish the first one here.</p>
+<p id="blogEmpty" hidden style="margin-top:24px">No posts yet. Please check back soon.</p>
 </section>
 
 <section id="resources" data-page hidden>
@@ -282,7 +318,7 @@ main{padding:36px 5vw 64px}
 <h2 id="uph">Upload a file</h2>
 <div class="row">
 <label>Title<input id="t" placeholder="e.g. Quadratic equations"></label>
-<label>Subject<select id="s"><option>Mathematics</option><option>Biology</option><option>Chemistry</option><option>Physics</option><option>English</option><option>History</option><option>Geography</option><option>Other</option></select></label>
+<label>Subject<select id="s"><option>Mathematics</option><option>History and Political Education</option><option>Geography</option><option>Physics</option><option>General Science</option><option>Chemistry</option><option>Biology</option><option>Entrepreneurship Education</option><option>Kiswahili</option><option>Lugbara Ti</option><option>English Language</option><option>Physical Education</option><option>Christian Religious Education (CRE)</option><option>Islamic Religious Education (IRE)</option><option>Other</option></select></label>
 <label>File (PDF or Word)<input id="f" type="file" accept=".pdf,.docx"></label>
 <label id="pw" style="flex-direction:row;align-items:center;gap:8px"><input id="p" type="checkbox" style="min-height:auto"> Premium</label>
 <button class="btn" id="up">Upload</button>
@@ -298,7 +334,7 @@ main{padding:36px 5vw 64px}
 <div class="row" style="justify-content:space-between;align-items:center;margin-bottom:12px"><div id="cnt" style="font-size:14px;color:var(--muted)" role="status"></div><label style="flex-direction:row;align-items:center;gap:8px">Sort<select id="srt"><option value="new">Newest first</option><option value="az">A to Z</option></select></label></div>
 <div id="msg"></div>
 <div class="grid" id="list"></div>
-<p id="empty" hidden style="margin-top:24px">No resources yet. The owner can upload PDFs here.</p>
+<p id="empty" hidden style="margin-top:24px">No resources yet. New guides are added regularly.</p>
 </section>
 
 <section id="about" data-page hidden>
@@ -423,31 +459,32 @@ main{padding:36px 5vw 64px}
 <div class="ft">
 <div><a href="#home" class="logo" aria-label="Academicstrata home" style="color:var(--onaccent);margin-bottom:16px"><svg width="38" height="38" viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="10" fill="var(--onaccent)"/><g transform="translate(20 20) scale(1.14) translate(-20.5 -21.6)"><path d="M7 31.4h26" stroke="var(--accent)" stroke-width="2.2" stroke-linecap="round"/><path d="M12 34.6h16" stroke="var(--accent)" stroke-width="1.6" stroke-linecap="round" opacity=".55"/><rect x="8" y="14.5" width="6.4" height="15.5" rx="1.2" fill="var(--accent)"/><rect x="15.9" y="9" width="6.4" height="21" rx="1.2" fill="var(--accent)"/><g transform="rotate(13 23.8 30)"><rect x="23.8" y="12.5" width="6.4" height="17.5" rx="1.2" fill="var(--accent)"/></g><path d="M8 18.2h6.4M8 26.2h6.4M15.9 13h6.4M15.9 26.2h6.4" stroke="var(--onaccent)" stroke-width="1.1"/><path d="M23.8 16.6h6.4M23.8 26.2h6.4" stroke="var(--onaccent)" stroke-width="1.1" transform="rotate(13 23.8 30)"/></g></svg><span>Academicstrata</span></a><p>Academicstrata publishes original study guides, summaries and practice questions for high school students. <a href="#about" style="text-decoration:underline">more →</a></p>
 <div class="soc" style="margin-top:20px">
-<a href="https://www.facebook.com" target="_blank" rel="noopener" aria-label="Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
-<a href="https://www.tiktok.com" target="_blank" rel="noopener" aria-label="TikTok"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 12a4 4 0 1 0 4 4V3a5 5 0 0 0 5 5"/></svg></a>
-<a href="https://www.instagram.com" target="_blank" rel="noopener" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><path d="M17.5 6.5h.01"/></svg></a>
-<a href="https://www.youtube.com" target="_blank" rel="noopener" aria-label="YouTube"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/><path d="m9.75 15.02 5.75-3.27-5.75-3.27z"/></svg></a>
+<a href="https://www.facebook.com/azabokennedy.1" target="_blank" rel="noopener" aria-label="Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+<a href="https://www.tiktok.com/@ken02026" target="_blank" rel="noopener" aria-label="TikTok"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 12a4 4 0 1 0 4 4V3a5 5 0 0 0 5 5"/></svg></a>
+<a href="https://www.instagram.com/azabokennedy" target="_blank" rel="noopener" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><path d="M17.5 6.5h.01"/></svg></a>
+<a href="https://www.youtube.com/@kenstrata" target="_blank" rel="noopener" aria-label="YouTube"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/><path d="m9.75 15.02 5.75-3.27-5.75-3.27z"/></svg></a>
 </div></div>
 <div><h4>Explore</h4><ul class="cats"><li><a href="#home">Home</a></li><li><a href="#about">About Us</a></li><li><a href="#team">Our Team</a></li><li><a href="#services">Services</a></li><li><a href="#resources">Resources</a></li><li><a href="#blog">Blog</a></li><li><a href="#contact">Contact</a></li></ul></div>
 <div><h4>Study support</h4><ul class="cats"><li><a href="#free">Free Guides</a></li><li><a href="#premium">Premium Guides</a></li><li><a href="#guides">Study Guides</a></li><li><a href="#exam-prep">Exam Prep Packs</a></li><li><a href="#tutoring">Tutoring Support</a></li><li><a href="#faq">FAQs</a></li></ul></div>
 <div><h4>Subscribe</h4><p>Get new study guides, exam tips and updates sent to you. No spam, and you can opt out any time.</p>
-<form id="sub" style="display:flex;flex-direction:column;gap:10px" novalidate><label for="sn" style="position:absolute;left:-9999px">Your name</label><input id="sn" placeholder="Your Name" autocomplete="name"><label for="se" style="position:absolute;left:-9999px">Your email</label><input id="se" type="email" placeholder="Your Email" autocomplete="email"><button class="btn subbtn" type="submit">Submit Now</button><div id="ss" role="status" style="font-size:13px"></div></form></div>
+<form id="sub" style="display:flex;flex-direction:column;gap:10px" novalidate><label for="sn" style="position:absolute;left:-9999px">Your name</label><input id="sn" placeholder="Your Name" autocomplete="name"><label for="se" style="position:absolute;left:-9999px">Your email</label><input id="se" type="email" placeholder="Your Email" autocomplete="email"><button class="btn subbtn" type="submit">Subscribe Now</button><div id="ss" role="status" style="font-size:13px"></div></form></div>
 </div>
 <div class="fb"><div><span>© 2026 Academicstrata.</span><span class="fl"><a href="#privacy">Privacy Policy</a><a href="#terms">Terms &amp; Conditions</a><a href="#cookies">Cookie Policy</a></span></div></div>
 </footer>
 <button id="totop" aria-label="Back to top"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m18 15-6-6-6 6"/></svg></button>
 <script>
 var map={home:"home",dashboard:"dashboard",faq:"home",privacy:"privacy",terms:"terms",cookies:"cookies",about:"about",team:"team",services:"services",guides:"services","exam-prep":"services",tutoring:"services",resources:"resources",free:"resources",premium:"resources",blog:"blog",contact:"contact"};
+var TT={home:"Academicstrata | Study Guides for High School Students",about:"About | Academicstrata",team:"Our Team | Academicstrata",services:"Services | Academicstrata",resources:"Resources | Academicstrata",blog:"Blog | Academicstrata",contact:"Contact | Academicstrata",privacy:"Privacy Policy | Academicstrata",terms:"Terms & Conditions | Academicstrata",cookies:"Cookie Policy | Academicstrata",dashboard:"Admin | Academicstrata"};
 function route(){var h=(location.hash||"#home").slice(1);var pg=map[h]||(h.indexOf("post-")===0?"post":"home");
 document.querySelectorAll("[data-page]").forEach(function(s){s.hidden=s.id!==pg});
-document.querySelectorAll("nav [data-p]").forEach(function(a){a.classList.toggle("on",a.dataset.p===(pg==="post"?"blog":pg))});
+document.querySelectorAll("nav [data-p]").forEach(function(a){var on=a.dataset.p===(pg==="post"?"blog":pg);a.classList.toggle("on",on);if(on&&a.tagName==="A")a.setAttribute("aria-current","page");else a.removeAttribute("aria-current")});
 document.querySelectorAll(".dd.open").forEach(function(d){d.classList.remove("open")});
-if(pg==="post")renderPost(h.slice(5));else document.title="Academicstrata";
+if(pg==="post")renderPost(h.slice(5));else document.title=TT[pg]||"Academicstrata";
 if(items&&(h==="free"||h==="premium"||h==="resources")){filter=h==="resources"?"all":h;filters();render()}
-var t=document.getElementById(h);if(t&&h!==pg&&t.closest("[data-page]")===document.getElementById(pg)){t.scrollIntoView()}else{scrollTo(0,0)}}
+if(h==="faq"){var fa=document.querySelector(".faqall");if(fa)fa.open=true}var t=document.getElementById(h);if(t&&h!==pg&&t.closest("[data-page]")===document.getElementById(pg)){t.scrollIntoView()}else{scrollTo(0,0)}}
 addEventListener("hashchange",route);route();
 
-var items=[],filter="all",subj="all",sortBy="new",pend=[],isEditor=false,canPrem=false,db=null,assets=null;
+var loaded=false,items=[],filter="all",subj="all",sortBy="new",pend=[],isEditor=false,canPrem=false,db=null,assets=null;
 function el(t,c,x){var e=document.createElement(t);if(c)e.className=c;if(x!=null)e.textContent=x;return e}
 function render(){
 renderHome();stat();var L=document.getElementById("list");L.textContent="";
@@ -455,7 +492,7 @@ var n=document.getElementById("qnote");n.hidden=!q;n.textContent="";if(q){n.appe
 var shown=items.filter(function(r){return (filter==="all"||(filter==="free"&&!r.premium)||(filter==="premium"&&r.premium))&&(subj==="all"||r.subject===subj)&&(!q||(r.title+" "+r.subject).toLowerCase().indexOf(q)>-1)});
 shown.sort(function(a,b){return sortBy==="az"?(a.title||"").localeCompare(b.title||""):(b.createdAt||0)-(a.createdAt||0)});
 document.getElementById("cnt").textContent=shown.length+" of "+items.length+" resources";filters();
-document.getElementById("empty").hidden=items.length>0;
+document.getElementById("empty").hidden=items.length>0||!loaded;
 shown.forEach(function(r){
 var c=el("div","card");c.appendChild(el("span",r.premium?"prem":"free",r.premium?"Premium":"Free"));
 c.appendChild(el("h3","",r.title));c.appendChild(el("p","",r.subject+" · "+((r.assetId||"").split(".").pop()||"file").toUpperCase()+(r.size?" · "+fsz(r.size):"")+(r.createdAt?" · "+new Date(r.createdAt).toLocaleDateString():"")+" · Verified"));
@@ -472,6 +509,7 @@ function chip(t,on,fn){var b=el("button","chip"+(on?" on":""),t);b.onclick=fn;F.
 chip("All subjects",subj==="all",function(){subj="all";render()});
 var seen={};items.forEach(function(r){if(r.subject&&!seen[r.subject]){seen[r.subject]=1;chip(r.subject,subj===r.subject,function(){subj=r.subject;render()})}})}
 var posts=[];
+setTimeout(function(){loaded=true;render();renderPosts()},4000);
 function thumb(p){if(p.thumb){var i=document.createElement("img");i.src=p.thumb;i.alt="";i.className="tn";i.loading="lazy";return i}
 var d=el("div","tn ph2");d.innerHTML='<svg viewBox="0 0 120 68" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M30 54h60"/><rect x="38" y="30" width="9" height="24" rx="1.5"/><rect x="50" y="22" width="9" height="32" rx="1.5"/><path d="M63 28l8-2.3 6.5 25.6-8 2.3z"/></svg>';return d}
 function pcard(p,full){var c=el("a","card");c.href="#post-"+p.id;
@@ -485,7 +523,7 @@ return c}
 function renderPosts(){var H=document.getElementById("homePosts"),B=document.getElementById("blogList");H.textContent="";B.textContent="";
 posts.slice(0,6).forEach(function(p){H.appendChild(pcard(p,false))});
 posts.forEach(function(p){B.appendChild(pcard(p,true))});
-document.getElementById("homePostsWrap").hidden=!posts.length;document.getElementById("blogEmpty").hidden=posts.length>0;if((location.hash||"").indexOf("#post-")===0)renderPost(location.hash.slice(6));renderPlist()}
+document.getElementById("homePostsWrap").hidden=!posts.length;document.getElementById("blogEmpty").hidden=posts.length>0||!loaded;if((location.hash||"").indexOf("#post-")===0)renderPost(location.hash.slice(6));renderPlist()}
 function rich(P,txt){var re=/\[([^\]]+)\]\((#[a-z0-9_~.-]+)\)/g,last=0,m;while((m=re.exec(txt))){if(m.index>last)P.appendChild(document.createTextNode(txt.slice(last,m.index)));var a=el("a","",m[1]);a.href=m[2];a.style.textDecoration="underline";P.appendChild(a);last=re.lastIndex}if(last<txt.length)P.appendChild(document.createTextNode(txt.slice(last)))}
 function seo(p){document.title=p.title+" | Academicstrata";var md=document.querySelector('meta[name="description"]');if(!md){md=document.createElement("meta");md.name="description";document.head.appendChild(md)}md.content=p.summary||"";var ld=document.getElementById("ld");if(!ld){ld=document.createElement("script");ld.id="ld";ld.type="application/ld+json";document.head.appendChild(ld)}ld.textContent=JSON.stringify({"@context":"https://schema.org","@type":"Article",headline:p.title,description:p.summary,datePublished:new Date(p.createdAt||0).toISOString(),author:{"@type":"Organization",name:"Academicstrata"},publisher:{"@type":"Organization",name:"Academicstrata"}})}
 function renderPost(id){var V=document.getElementById("postView");V.textContent="";var p=null;(posts||[]).forEach(function(x){if(x.id===id)p=x});
@@ -505,8 +543,8 @@ if(isEditor){var g1=document.getElementById("dashgate");if(g1)g1.hidden=true;var
 if(user&&user.isMember()){var si=document.getElementById("signin"),su=document.getElementById("signup");si.textContent="Sign Out";si.onclick=function(){SS.signOut()};su.hidden=true;}
 if(isEditor){document.getElementById("dashgate").hidden=true;document.getElementById("dashbody").hidden=false;var gr=function(f){var e=document.getElementById("ge").value.trim(),g=document.getElementById("gm");SS.grant(e,f).then(function(n){g.textContent=n?(f?"Premium access granted.":"Premium access removed."):"No member found with that email. They must sign up first."}).catch(function(){g.textContent="Could not update. Try again."})};document.getElementById("gy").onclick=function(){gr(true)};document.getElementById("gn").onclick=function(){gr(false)}}
 db=await claude.use("db");assets=await claude.use("assets");
-if(db){db.collection("resources").onSnapshot(function(s){items=s.docs.map(function(d){var o=Object.assign({},d.data());o.id=d.id;return o});items.sort(function(a,b){return (b.createdAt||0)-(a.createdAt||0)});render()},function(){})}
-if(db){db.collection("posts").onSnapshot(function(s){posts=s.docs.map(function(d){var o=Object.assign({},d.data());o.id=d.id;return o});posts.sort(function(a,b){return (b.createdAt||0)-(a.createdAt||0)});renderPosts()},function(){})}
+if(db){db.collection("resources").onSnapshot(function(s){loaded=true;items=s.docs.map(function(d){var o=Object.assign({},d.data());o.id=d.id;return o});items.sort(function(a,b){return (b.createdAt||0)-(a.createdAt||0)});render()},function(){})}
+if(db){db.collection("posts").onSnapshot(function(s){loaded=true;posts=s.docs.map(function(d){var o=Object.assign({},d.data());o.id=d.id;return o});posts.sort(function(a,b){return (b.createdAt||0)-(a.createdAt||0)});renderPosts()},function(){})}
 if(db){db.collection("pagetext").onSnapshot(function(s){s.docs.forEach(function(d){var x=d.data(),n=document.querySelector('[data-k="'+x.key+'"]');if(n&&x.text)n.textContent=x.text});buildPE()},function(){buildPE()})}
 if(db&&assets){document.getElementById("locked").hidden=true;document.getElementById("admin").hidden=false;document.getElementById("uph").textContent=isEditor?"Upload a file (PDF or Word)":"Submit a file for review (PDF or Word)";if(!isEditor)document.getElementById("pw").hidden=true}
 if(isEditor&&db){document.getElementById("review").hidden=false;db.collection("submissions").onSnapshot(function(s){pend=s.docs.map(function(d){var o=Object.assign({},d.data());o.id=d.id;return o});renderPend()},function(){})}
@@ -520,6 +558,7 @@ document.getElementById("cf").onsubmit=async function(e){e.preventDefault();var 
 if(!n||!t||!/^\S+@\S+\.\S+$/.test(m)){s.textContent="Please enter your name, a valid email and your message.";return}
 try{await db.collection("messages").add({name:n,email:m,message:t});s.textContent="Thank you. Your message was sent. We will reply soon.";["cn","ce","cm"].forEach(function(i){document.getElementById(i).value=""})}catch(err){s.textContent="Sorry, it did not send. Please email azabokennedy09@gmail.com."}};
 document.getElementById("totop").onclick=function(e){e.preventDefault();scrollTo({top:0,behavior:"smooth"})};
+document.getElementById("totop").hidden=true;addEventListener("scroll",function(){document.getElementById("totop").hidden=scrollY<400},{passive:true});
 (function(){var b=document.getElementById("ck"),k="ss_ck",seen=false;try{seen=localStorage.getItem(k)==="1"}catch(e){}
 if(!seen)b.hidden=false;
 document.getElementById("ckok").onclick=function(){b.hidden=true;try{localStorage.setItem(k,"1")}catch(e){}}})();
@@ -538,7 +577,7 @@ row.appendChild(ok);row.appendChild(no);c.appendChild(row);P.appendChild(c)})}
 document.getElementById("lsi").onclick=function(){openAuth("Sign In")};document.getElementById("lsu").onclick=function(){openAuth("Sign Up")};
 async function dl(r,open){var m=document.getElementById("msg");m.textContent="";try{var u=await SS.url(r.assetId,!open);var a=document.createElement("a");a.href=u;if(open)a.target="_blank";a.rel="noopener";document.body.appendChild(a);a.click();a.remove()}catch(e){m.appendChild(el("div","msg","Could not open the file. Please try again or contact us."))}}
 function fsz(n){return n<1048576?Math.max(1,Math.round(n/1024))+" KB":(n/1048576).toFixed(1)+" MB"}
-function editRes(r,c){c.textContent="";var t=document.createElement("input");t.value=r.title;t.setAttribute("aria-label","Title");var s=document.createElement("select");s.setAttribute("aria-label","Subject");["Mathematics","Biology","Chemistry","Physics","English","History","Geography","Other",r.subject].filter(function(v,i,a){return v&&a.indexOf(v)===i}).forEach(function(v){var o=document.createElement("option");o.textContent=v;if(v===r.subject)o.selected=true;s.appendChild(o)});
+function editRes(r,c){c.textContent="";var t=document.createElement("input");t.value=r.title;t.setAttribute("aria-label","Title");var s=document.createElement("select");s.setAttribute("aria-label","Subject");["Mathematics","History and Political Education","Geography","Physics","General Science","Chemistry","Biology","Entrepreneurship Education","Kiswahili","Lugbara Ti","English Language","Physical Education","Christian Religious Education (CRE)","Islamic Religious Education (IRE)","Other",r.subject].filter(function(v,i,a){return v&&a.indexOf(v)===i}).forEach(function(v){var o=document.createElement("option");o.textContent=v;if(v===r.subject)o.selected=true;s.appendChild(o)});
 var pl=el("label","","");pl.style.cssText="flex-direction:row;align-items:center;gap:8px";var cb=document.createElement("input");cb.type="checkbox";cb.checked=!!r.premium;cb.style.minHeight="auto";pl.appendChild(cb);pl.appendChild(document.createTextNode("Premium"));
 var m=el("div","","");m.style.fontSize="14px";var sv=el("button","btn","Save"),cn=el("button","chip","Cancel");
 sv.onclick=async function(){var nt=t.value.trim();if(!nt){m.textContent="Title cannot be empty.";return}try{await db.collection("resources").doc(r.id).update({title:nt,subject:s.value,premium:cb.checked});r.title=nt;r.subject=s.value;r.premium=cb.checked;render()}catch(e){m.textContent="Could not save. Try again."}};
@@ -572,10 +611,11 @@ addEventListener("hashchange",function(){nv.classList.remove("open");mtb.setAttr
 var q="";
 document.getElementById("sf").onsubmit=function(e){e.preventDefault();q=document.getElementById("sq").value.trim().toLowerCase();location.hash="resources";render()};
 var dlg=document.getElementById("dlg");
-function openAuth(n){document.getElementById("dt").textContent=n;document.getElementById("dm").textContent="";dlg.showModal()}
+function openAuth(n){document.getElementById("dt").textContent=n;document.getElementById("dp").autocomplete=n==="Sign Up"?"new-password":"current-password";document.getElementById("dm").textContent="";dlg.showModal()}
 document.getElementById("signin").onclick=function(){openAuth("Sign In")};
 document.getElementById("signup").onclick=function(){openAuth("Sign Up")};
 document.getElementById("dx").onclick=function(){dlg.close()};
+["de","dp"].forEach(function(i){document.getElementById(i).addEventListener("keydown",function(e){if(e.key==="Enter"){e.preventDefault();document.getElementById("dgo").click()}})});
 document.getElementById("dgo").onclick=async function(){var m=document.getElementById("dm"),em=document.getElementById("de").value.trim(),pw=document.getElementById("dp").value,up=document.getElementById("dt").textContent==="Sign Up";if(!/^\S+@\S+\.\S+$/.test(em)||pw.length<8){m.textContent="Enter a valid email and a password of at least 8 characters.";return}m.textContent="Please wait…";try{var r=await (up?SS.signUp(em,pw):SS.signIn(em,pw));if(r&&r.confirm){m.textContent="Account created. Check your email to confirm it, then sign in."}else{location.reload()}}catch(e){m.textContent=e.message||"Something went wrong. Try again."}};
 
 document.getElementById("up").onclick=async function(){
