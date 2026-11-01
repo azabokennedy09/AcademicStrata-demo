@@ -378,6 +378,22 @@ h2{font-size:24px}
 .hsr .more{margin-top:12px}
 .hsr .none{margin:8px 0 0;color:var(--muted)}
 .hsr .none a{text-decoration:underline}
+
+/* Blog: file upload, categories, imported articles */
+.upl{margin-top:16px;padding:14px;border:1px solid var(--line);border-radius:12px;background:var(--surface)}
+#bfn{margin-top:8px;font-size:14px}
+#bpv{margin:12px 0;max-height:260px;overflow:auto;padding:12px 14px;border:1px solid var(--line);border-radius:10px;background:var(--bg)}
+#bfc{margin-top:4px}
+.article{line-height:1.75;font-size:17px}
+.article h2{font-size:clamp(22px,3vw,28px);margin:32px 0 10px}.article h3{font-size:21px;margin:24px 0 8px}.article h4{font-size:18px;margin:20px 0 6px}
+.article p{margin:0 0 14px}.article ul,.article ol{margin:0 0 14px;padding-left:24px;display:grid;gap:6px}
+.article blockquote{margin:16px 0;padding:4px 16px;border-left:4px solid var(--accent);color:var(--muted)}
+.article table{display:block;max-width:100%;overflow-x:auto;border-collapse:collapse;margin:0 0 16px}
+.article th,.article td{border:1px solid var(--line);padding:8px 12px;text-align:left;vertical-align:top}
+.article th{background:var(--surface);font-weight:700}
+.article pre{overflow-x:auto;padding:12px;background:var(--surface);border-radius:8px}
+.article a{color:var(--accent);text-decoration:underline;text-underline-offset:3px}
+#blogcats{margin:8px 0 4px}
 </style>
 </head>
 <body>
@@ -456,16 +472,20 @@ h2{font-size:24px}
 <h1>Blog</h1><p>Study tips, exam advice and news.</p>
 <div id="blogadmin" hidden>
 <div class="admin"><h2 id="bh">Write a post</h2>
-<div class="row"><label>Title<input id="bt"></label><label>Category<select id="bc"><option>Study tips</option><option>Exams</option><option>Subjects</option><option>News</option></select></label></div>
+<div class="row"><label>Title<input id="bt"></label><label>Category<select id="bc"><option>Study tips</option><option>Exams</option><option>A Level</option><option>O Level</option><option>Subjects</option><option>Revision</option><option>News</option></select></label></div>
 <label style="margin-top:12px">Summary (short description on cards)<input id="bs" maxlength="140"></label>
 <label style="margin-top:12px">Thumbnail image (optional)<input id="bi" type="file" accept="image/*"></label>
-<label style="margin-top:12px">Article<textarea id="bb" rows="12"></textarea></label>
+<div class="upl"><label>Upload the article from your computer (optional): Word (.docx) or web page (.html)<input id="bf" type="file" accept=".docx,.html,.htm,application/vnd.openxmlformats-officedocument.wordprocessingml.document,text/html"></label>
+<div id="bfn" role="status" hidden></div><div id="bpv" class="article" hidden></div><button type="button" class="chip" id="bfc" hidden>Remove file and write instead</button></div>
+<label style="margin-top:12px">Or write the article here<textarea id="bb" rows="12"></textarea></label>
 <p style="font-size:13px;margin:6px 0 0">Tips: start a line with ## for a heading, start lines with - for a list, and write [link text](#resources) for a link.</p>
 <div class="row" style="margin-top:12px"><button class="btn" id="bp">Publish post</button><button class="chip" id="bx" hidden>Cancel edit</button></div>
 <div id="bm" role="status" style="margin-top:10px;font-size:14px"></div></div>
 <div class="admin"><h2>Your posts</h2><div id="plist"></div></div>
 </div>
+<div class="filters" id="blogcats" role="group" aria-label="Blog categories" hidden></div>
 <div class="grid" id="blogList"></div>
+<p id="blogNone" hidden style="margin-top:24px">No posts in this category yet.</p>
 <p id="blogEmpty" hidden style="margin-top:24px">No posts yet. Please check back soon.</p>
 </section>
 
@@ -681,6 +701,38 @@ function chip(t,on,fn){var b=el("button","chip"+(on?" on":""),t);b.onclick=fn;F.
 [["all","All"],["free","Free"],["premium","Premium"]].forEach(function(p){chip(p[1],filter===p[0],function(){filter=p[0];render()})});
 chip("All subjects",subj==="all",function(){subj="all";render()});
 var seen={};items.forEach(function(r){if(r.subject&&!seen[r.subject]){seen[r.subject]=1;chip(r.subject,subj===r.subject,function(){subj=r.subject;render()})}})}
+var CATS=["Study tips","Exams","A Level","O Level","Subjects","Revision","News"],catSel="all";
+function blogCats(){var F=document.getElementById("blogcats");if(!F)return;F.textContent="";var cnt={};posts.forEach(function(p){if(p.category)cnt[p.category]=(cnt[p.category]||0)+1});
+var names=CATS.filter(function(c){return cnt[c]});Object.keys(cnt).forEach(function(c){if(names.indexOf(c)<0)names.push(c)});F.hidden=!posts.length;
+function add(label,val,n){var b=el("button","chip"+(catSel===val?" on":""),label+" ("+n+")");b.type="button";b.setAttribute("aria-pressed",catSel===val?"true":"false");b.onclick=function(){catSel=val;renderPosts()};F.appendChild(b)}
+add("All","all",posts.length);names.forEach(function(c){add(c,c,cnt[c])})}
+var OKT={P:"p",H1:"h2",H2:"h2",H3:"h3",H4:"h4",H5:"h4",H6:"h4",UL:"ul",OL:"ol",LI:"li",STRONG:"strong",B:"strong",EM:"em",I:"em",U:"u",BR:"br",BLOCKQUOTE:"blockquote",TABLE:"table",THEAD:"thead",TBODY:"tbody",TR:"tr",TH:"th",TD:"td",HR:"hr",CODE:"code",PRE:"pre",SUP:"sup",SUB:"sub",A:"a"};
+var DROPT={SCRIPT:1,STYLE:1,IFRAME:1,OBJECT:1,EMBED:1,FORM:1,INPUT:1,BUTTON:1,SELECT:1,TEXTAREA:1,SVG:1,MATH:1,NOSCRIPT:1,TEMPLATE:1,HEAD:1,LINK:1,META:1,TITLE:1,IMG:1,VIDEO:1,AUDIO:1,CANVAS:1};
+function cleanInto(src,dst){src.childNodes.forEach(function(n){if(n.nodeType===3){dst.appendChild(document.createTextNode(n.nodeValue));return}if(n.nodeType!==1)return;
+var tag=String(n.tagName).toUpperCase();if(DROPT[tag])return;var t=OKT[tag];if(!t){cleanInto(n,dst);return}
+var e=document.createElement(t);
+if(t==="a"){var h=(n.getAttribute("href")||"").trim();if(/^(https?:|mailto:|#)/i.test(h)){e.setAttribute("href",h);if(/^https?:/i.test(h)){e.setAttribute("target","_blank");e.setAttribute("rel","noopener noreferrer")}}}
+if(t==="td"||t==="th"){["colspan","rowspan"].forEach(function(a){var v=n.getAttribute(a);if(/^\d{1,2}$/.test(v||""))e.setAttribute(a,v)})}
+cleanInto(n,e);dst.appendChild(e)})}
+function cleanHtml(str){var d=new DOMParser().parseFromString(String(str||""),"text/html"),box=document.createElement("div");cleanInto(d.body,box);
+box.querySelectorAll("p,li,h2,h3,h4,blockquote").forEach(function(x){if(!x.textContent.trim()&&!x.querySelector("br,table"))x.remove()});return box}
+var pendingHtml="",editBody="";
+function loadMammoth(){return new Promise(function(res,rej){if(window.mammoth)return res(window.mammoth);var sc=document.createElement("script");sc.src="https://cdn.jsdelivr.net/npm/mammoth@1.13.0/mammoth.browser.min.js";sc.integrity="sha384-8NWE3bZDrmRI4IePMoQaEoLhAQ1MmRMJkdNgnGiHRFanTqsFKr0TmK6aSZvFJ/PO";sc.crossOrigin="anonymous";sc.onload=function(){res(window.mammoth)};sc.onerror=function(){rej(new Error("lib"))};document.head.appendChild(sc)})}
+async function readArticle(f){var ext=(f.name.split(".").pop()||"").toLowerCase(),raw="",title="",desc="",imgs=0;
+if(f.size>8*1024*1024)throw new Error("size");
+if(ext==="docx"){var M=await loadMammoth();var r=await M.convertToHtml({arrayBuffer:await f.arrayBuffer()},{convertImage:M.images.imgElement(function(){imgs++;return Promise.resolve({src:""})})});raw=r.value}
+else if(ext==="html"||ext==="htm"){raw=await f.text()}else throw new Error("type");
+var dr=new DOMParser().parseFromString(raw,"text/html");var h1=dr.querySelector("h1"),tt=dr.querySelector("title"),md=dr.querySelector('meta[name="description"]');
+title=cl(h1&&h1.textContent)||cl(tt&&tt.textContent);desc=cl(md&&md.getAttribute("content"));if(ext!=="docx")imgs=dr.querySelectorAll("img").length;
+var box=cleanHtml(raw);
+if(title){var f2=box.querySelector("h2");if(f2&&cl(f2.textContent)===title)f2.remove()}
+if(!title)title=cl(f.name.replace(/\.[^.]+$/,"").replace(/[_-]+/g," "));
+if(!desc){var fp=box.querySelector("p");desc=fp?cl(fp.textContent):"";if(desc.length>140){desc=desc.slice(0,140);desc=desc.slice(0,desc.lastIndexOf(" ")>60?desc.lastIndexOf(" "):140).replace(/[,;:\s]+$/,"")+"…"}}
+var out=box.innerHTML;if(!cl(box.textContent))throw new Error("empty");if(out.length>200000)throw new Error("big");
+return{html:out,title:title,desc:desc,imgs:imgs,words:tx(box).split(" ").length}}
+function showImported(html,label){var pv=document.getElementById("bpv");pv.textContent="";var box=cleanHtml(html);while(box.firstChild)pv.appendChild(box.firstChild);pv.hidden=false;
+var n=document.getElementById("bfn");n.hidden=false;n.textContent=label;document.getElementById("bfc").hidden=false;var bb=document.getElementById("bb");bb.value="";bb.readOnly=true;bb.placeholder="The article will use the content from the file."}
+function clearFile(){pendingHtml="";var bf=document.getElementById("bf");if(bf)bf.value="";var pv=document.getElementById("bpv");if(!pv)return;pv.hidden=true;pv.textContent="";var bn0=document.getElementById("bfn");bn0.hidden=true;bn0.textContent="";document.getElementById("bfc").hidden=true;var bb=document.getElementById("bb");bb.readOnly=false;bb.placeholder=""}
 var posts=[];
 setTimeout(function(){loaded=true;render();renderPosts()},4000);
 function thumb(p){if(p.thumb){var i=document.createElement("img");i.src=p.thumb;i.alt="";i.className="tn";i.loading="lazy";return i}
@@ -695,14 +747,14 @@ var rm=el("span","","Read article →");rm.style.cssText="font-weight:600;margin
 return c}
 function renderPosts(){refreshSR();var H=document.getElementById("homePosts"),B=document.getElementById("blogList");H.textContent="";B.textContent="";
 posts.slice(0,6).forEach(function(p){H.appendChild(pcard(p,false))});
-posts.forEach(function(p){B.appendChild(pcard(p,true))});
+if(catSel!=="all"&&!posts.some(function(p){return p.category===catSel}))catSel="all";blogCats();var shownP=posts.filter(function(p){return catSel==="all"||p.category===catSel});shownP.forEach(function(p){B.appendChild(pcard(p,true))});var bnn=document.getElementById("blogNone");if(bnn)bnn.hidden=!(posts.length&&!shownP.length);
 document.getElementById("homePostsWrap").hidden=!posts.length;document.getElementById("blogEmpty").hidden=posts.length>0||!loaded;if((location.hash||"").indexOf("#post-")===0)renderPost(location.hash.slice(6));renderPlist()}
 function rich(P,txt){var re=/\[([^\]]+)\]\((#[a-z0-9_~.-]+)\)/g,last=0,m;while((m=re.exec(txt))){if(m.index>last)P.appendChild(document.createTextNode(txt.slice(last,m.index)));var a=el("a","",m[1]);a.href=m[2];a.style.textDecoration="underline";P.appendChild(a);last=re.lastIndex}if(last<txt.length)P.appendChild(document.createTextNode(txt.slice(last)))}
 function seo(p){document.title=p.title+" | Academicstrata";var md=document.querySelector('meta[name="description"]');if(!md){md=document.createElement("meta");md.name="description";document.head.appendChild(md)}md.content=p.summary||"";var ld=document.getElementById("ld");if(!ld){ld=document.createElement("script");ld.id="ld";ld.type="application/ld+json";document.head.appendChild(ld)}ld.textContent=JSON.stringify({"@context":"https://schema.org","@type":"Article",headline:p.title,description:p.summary,datePublished:new Date(p.createdAt||0).toISOString(),author:{"@type":"Organization",name:"Academicstrata"},publisher:{"@type":"Organization",name:"Academicstrata"}})}
 function renderPost(id){var V=document.getElementById("postView");V.textContent="";var p=null;(posts||[]).forEach(function(x){if(x.id===id)p=x});
 if(!p){V.appendChild(el("h1","",posts&&posts.length?"Post not found":"Loading…"));var b0=el("a","btn alt","Back to all posts");b0.href="#blog";V.appendChild(b0);return}
-seo(p);V.appendChild(el("div","tag",p.category+" · "+new Date(p.createdAt||0).toLocaleDateString()+" · "+Math.max(1,Math.round((p.body||"").split(/\s+/).length/200))+" min read"));var h=el("h1","",p.title);h.style.marginTop="8px";V.appendChild(h);var t=thumb(p);t.style.margin="16px 0 24px";V.appendChild(t);
-(p.body||"").split(/\n\n+/).forEach(function(b){if(b.indexOf("### ")===0){V.appendChild(el("h3","",b.slice(4)))}else if(b.indexOf("## ")===0){V.appendChild(el("h2","",b.slice(3)))}else if(b.indexOf("- ")===0){var u=el("ul","");b.split("\n").forEach(function(l){var li=el("li","");rich(li,l.replace(/^- /,""));u.appendChild(li)});V.appendChild(u)}else{var pp=el("p","");rich(pp,b);V.appendChild(pp)}});
+seo(p);var tg=el("div","tag");var ca=el("a","",p.category||"Post");ca.href="#blog";ca.style.cssText="text-decoration:underline;text-underline-offset:3px";ca.onclick=function(e){e.preventDefault();catSel=p.category||"all";location.hash="blog";renderPosts()};tg.appendChild(ca);tg.appendChild(document.createTextNode(" · "+new Date(p.createdAt||0).toLocaleDateString()+" · "+Math.max(1,Math.round((p.body||"").split(/\s+/).length/200))+" min read"));V.appendChild(tg);var h=el("h1","",p.title);h.style.marginTop="8px";V.appendChild(h);var t=thumb(p);t.style.margin="16px 0 24px";V.appendChild(t);
+if(p.html){var ab=el("div","article"),cb=cleanHtml(p.html);while(cb.firstChild)ab.appendChild(cb.firstChild);V.appendChild(ab)}else(p.body||"").split(/\n\n+/).forEach(function(b){if(b.indexOf("### ")===0){V.appendChild(el("h3","",b.slice(4)))}else if(b.indexOf("## ")===0){V.appendChild(el("h2","",b.slice(3)))}else if(b.indexOf("- ")===0){var u=el("ul","");b.split("\n").forEach(function(l){var li=el("li","");rich(li,l.replace(/^- /,""));u.appendChild(li)});V.appendChild(u)}else{var pp=el("p","");rich(pp,b);V.appendChild(pp)}});
 var bk=el("a","btn alt","Back to all posts");bk.href="#blog";bk.style.marginTop="24px";V.appendChild(bk)}
 function renderHome(){var H=document.getElementById("homeRes");H.textContent="";
 items.slice(0,12).forEach(function(r){var c=el("a","card");c.href="#resources";c.appendChild(el("span",r.premium?"prem":"free",r.premium?"Premium":"Free"));c.appendChild(el("h3","",r.title));c.appendChild(el("p","",r.subject));H.appendChild(c)});
@@ -819,17 +871,22 @@ document.getElementById("rq").oninput=function(){q=this.value.trim().toLowerCase
 function stat(){refreshSR();var f=0,p=0;items.forEach(function(r){if(r.premium)p++;else f++});document.getElementById("stats").textContent=items.length+" resources · "+f+" free · "+p+" premium";var rq=document.getElementById("rq");if(rq&&document.activeElement!==rq)rq.value=q||""}
 var editingId=null;
 function thumbData(file){return new Promise(function(res,rej){var fr=new FileReader();fr.onload=function(){var im=new Image();im.onload=function(){var w=Math.min(900,im.width),h=Math.round(im.height*w/im.width),c=document.createElement("canvas");c.width=w;c.height=h;c.getContext("2d").drawImage(im,0,0,w,h);res(c.toDataURL("image/jpeg",0.8))};im.onerror=rej;im.src=fr.result};fr.onerror=rej;fr.readAsDataURL(file)})}
-function resetPost(){editingId=null;["bt","bs","bb","bi"].forEach(function(i){document.getElementById(i).value=""});document.getElementById("bh").textContent="Write a post";document.getElementById("bp").textContent="Publish post";document.getElementById("bx").hidden=true}
+function resetPost(){editingId=null;editBody="";clearFile();["bt","bs","bb","bi"].forEach(function(i){document.getElementById(i).value=""});document.getElementById("bh").textContent="Write a post";document.getElementById("bp").textContent="Publish post";document.getElementById("bx").hidden=true}
 var bpb=document.getElementById("bp");if(bpb){bpb.onclick=async function(){var m=document.getElementById("bm"),t=document.getElementById("bt").value.trim(),b=document.getElementById("bb").value.trim(),f=document.getElementById("bi").files[0];
-if(!t||!b){m.textContent="Add a title and the article text.";return}
-var rec={title:t,category:document.getElementById("bc").value,summary:document.getElementById("bs").value.trim()||b.slice(0,120),body:b};
+if(!t||(!b&&!pendingHtml)){m.textContent="Add a title, then write the article or upload a file.";return}var bodyTxt=pendingHtml?tx(cleanHtml(pendingHtml)):b;
+var rec={title:t,category:document.getElementById("bc").value,summary:document.getElementById("bs").value.trim()||bodyTxt.slice(0,120),body:bodyTxt,html:pendingHtml||""};
 try{if(f){if(!/^image\//.test(f.type)){m.textContent="The thumbnail must be an image.";return}rec.thumb=await thumbData(f)}
 if(editingId){await db.collection("posts").doc(editingId).update(rec);m.textContent="Saved."}else{rec.createdAt=Date.now();rec.thumb=rec.thumb||"";await db.collection("posts").add(rec);m.textContent="Published."}
 resetPost()}catch(e){m.textContent="Could not save. Try again."}};
-document.getElementById("bx").onclick=function(){resetPost();document.getElementById("bm").textContent=""}}
+document.getElementById("bx").onclick=function(){resetPost();document.getElementById("bm").textContent=""};
+var bfe=document.getElementById("bf");if(bfe){bfe.onchange=async function(){var m=document.getElementById("bm"),f=this.files[0];if(!f)return;m.textContent="Reading the file…";
+try{var r=await readArticle(f);pendingHtml=r.html;var bt=document.getElementById("bt"),bs=document.getElementById("bs");if(!bt.value.trim())bt.value=r.title;if(!bs.value.trim())bs.value=r.desc;
+showImported(r.html,"Using the content of “"+f.name+"” (about "+r.words+" words). Check the preview, then press Publish."+(r.imgs?" Pictures inside the file are not imported, so add a thumbnail image above.":""));m.textContent=""}
+catch(e){var x=this;pendingHtml="";x.value="";m.textContent=e.message==="type"?"Please choose a .docx or .html file.":e.message==="size"?"That file is too large (limit 8 MB).":e.message==="big"?"That article is too long to store. Split it into two posts.":e.message==="empty"?"No text was found in that file.":e.message==="lib"?"Could not load the Word reader. Check your internet connection and try again.":"Could not read that file. Try saving it again as .docx or .html."}}}
+document.getElementById("bfc").onclick=function(){var keep=editBody;clearFile();if(editingId&&keep)document.getElementById("bb").value=keep}}
 function renderPlist(){var P=document.getElementById("plist");if(!P)return;P.textContent="";if(!posts.length)P.appendChild(el("p","","No posts yet."));
 posts.forEach(function(p){var row=el("div","card");row.style.marginTop="10px";row.appendChild(el("h3","",p.title));row.appendChild(el("p","",(p.category||"")+" \u00b7 "+new Date(p.createdAt||0).toLocaleDateString()));var b=el("div","row"),ed=el("button","chip","Edit"),dx=el("button","chip","Delete");
-ed.onclick=function(){editingId=p.id;document.getElementById("bt").value=p.title;document.getElementById("bc").value=p.category;document.getElementById("bs").value=p.summary||"";document.getElementById("bb").value=p.body||"";document.getElementById("bh").textContent="Edit post";document.getElementById("bp").textContent="Save changes";document.getElementById("bx").hidden=false;document.getElementById("bt").scrollIntoView()};
+ed.onclick=function(){editingId=p.id;document.getElementById("bt").value=p.title;document.getElementById("bc").value=p.category;document.getElementById("bs").value=p.summary||"";clearFile();editBody=p.body||"";var bcs=document.getElementById("bc");if(p.category&&![].some.call(bcs.options,function(o){return o.value===p.category})){var oo=document.createElement("option");oo.textContent=p.category;bcs.appendChild(oo);bcs.value=p.category}document.getElementById("bb").value=p.body||"";if(p.html){pendingHtml=p.html;showImported(p.html,"This post uses content imported from a file. Choose a new file to replace it, or remove it to write the article here.")}document.getElementById("bh").textContent="Edit post";document.getElementById("bp").textContent="Save changes";document.getElementById("bx").hidden=false;document.getElementById("bt").scrollIntoView()};
 dx.onclick=async function(){if(!dx.dataset.sure){dx.dataset.sure="1";dx.textContent="Click again to confirm";setTimeout(function(){dx.dataset.sure="";dx.textContent="Delete"},4000);return}try{await db.collection("posts").doc(p.id).delete();posts=posts.filter(function(x){return x.id!==p.id});renderPosts()}catch(e){dx.textContent="Could not delete"}};
 b.appendChild(ed);b.appendChild(dx);row.appendChild(b);P.appendChild(row)})}
 function buildPE(){var C=document.getElementById("petext");if(!C||C.dataset.built)return;C.dataset.built="1";
