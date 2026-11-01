@@ -249,7 +249,7 @@ main{padding:36px 5vw 64px}
 #about .steps{padding-top:12px}
 
 /* Landing page refresh */
-.lp{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:40px;align-items:center;padding:16px 0 8px}
+.lp{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:40px;align-items:center;padding:16px 0 8px}
 #home .lp h1{font-size:clamp(40px,7vw,72px);line-height:1.04;font-weight:400;margin:0 0 20px}
 .lp .lede{font-size:19px;color:var(--ink);max-width:420px;margin:0 0 28px}
 .btn.big{min-height:56px;padding:0 28px;border-radius:14px;gap:10px;font-size:17px}
@@ -258,7 +258,7 @@ main{padding:36px 5vw 64px}
 .lp-art{width:100%;height:auto;max-width:560px;justify-self:center;display:block}
 .feats{margin-top:72px}
 .feats h2{font-size:clamp(26px,3.4vw,34px);font-weight:400;margin:0 0 32px}
-.fgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:40px}
+.fgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(240px,100%),1fr));gap:40px}
 .feat svg{width:64px;height:64px;fill:none;stroke:var(--ink);stroke-width:1.2;stroke-linejoin:round}
 .feat h3{font-size:24px;font-weight:400;margin:24px 0 10px}
 .feat p{font-size:16px;margin:0 0 14px;color:var(--ink)}
@@ -270,7 +270,7 @@ main{padding:36px 5vw 64px}
 .pband h2{font-size:clamp(32px,4.4vw,52px);line-height:1.1;margin:0 0 18px}
 .pband p{font-size:19px;line-height:1.7;margin:0 0 28px;max-width:600px}
 .pfig{width:100%;max-width:280px;height:auto;justify-self:end;display:block}
-.faqsec{margin-top:72px;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:48px;align-items:center}
+.faqsec{margin-top:72px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:48px;align-items:center}
 .faqsec .faqtxt h1,.faqsec .faqtxt h2{font-family:'DM Sans',system-ui,sans-serif;font-weight:300;font-size:clamp(28px,3.6vw,40px);line-height:1.2;margin:0 0 20px}
 .faqtxt p{font-size:19px;line-height:1.7;margin:0 0 28px}
 .faqpanel{background:color-mix(in srgb,var(--accent) 10%,var(--surface));padding:28px;border-radius:6px}
@@ -307,13 +307,77 @@ footer{font-family:'DM Sans',system-ui,sans-serif}
 /* Contact layout: form left, details right */
 .cgrid{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:24px;align-items:start;margin-top:24px}
 .cside{display:grid;gap:16px}
-@media (max-width:860px){.cgrid{grid-template-columns:1fr}.cside{order:-1}}
 
 /* Header in uppercase (submenus unchanged) */
 nav>a,nav>.dd>a,.auth .btn,.mauth .btn{text-transform:uppercase;letter-spacing:.03em}
 @media (min-width:981px){.mainbar nav>a,.mainbar nav>.dd>a{font-size:13px;padding:10px 7px}.auth .btn{font-size:13px}}
 @media (min-width:981px) and (max-width:1180px){.mainbar nav>a,.mainbar nav>.dd>a{font-size:12px;padding:10px 5px;letter-spacing:.02em}.auth .btn{font-size:12px;padding:0 14px}}
 nav .menu a{text-transform:none;letter-spacing:normal}
+
+/* Mobile and tablet optimisation */
+.btn.big svg{fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;flex:0 0 18px}
+img,svg,video{max-width:100%}
+html{-webkit-text-size-adjust:100%}
+
+/* Tablet and up: no orphan cards */
+@media (min-width:700px){.fgrid{grid-template-columns:repeat(3,1fr);gap:32px}.hiw{grid-template-columns:repeat(3,1fr)}}
+@media (min-width:561px) and (max-width:900px){#about .offer .grid{grid-template-columns:repeat(2,1fr)}}
+@media (min-width:561px) and (max-width:899px){#services>.grid:first-of-type{grid-template-columns:repeat(2,1fr)}#services>.grid:first-of-type>.card:last-child:nth-child(odd){grid-column:1/-1}}
+@media (min-width:761px){.faqsec.long{grid-template-columns:minmax(0,1fr) minmax(0,1.5fr)}}
+@media (max-width:700px){.cgrid{grid-template-columns:1fr}.cside{order:-1}}
+@media (max-width:900px){.fb>div{flex-wrap:wrap}.fl{flex-wrap:wrap;white-space:normal}}
+
+/* Phones */
+@media (max-width:560px){
+main{padding:28px 5vw 48px}
+.feats{margin-top:40px}.feats h2{margin-bottom:20px}
+.fgrid{gap:22px}
+.feat{display:grid;grid-template-columns:48px 1fr;column-gap:16px;align-items:start}
+.feat>svg{width:48px;height:48px;grid-row:1/4}
+.feat h3{margin:0 0 4px;font-size:20px}.feat p{margin:0 0 2px}.feat a{min-height:40px}
+.lp{gap:28px}.lp .lede{margin-bottom:22px}
+.subjects,.pair,.vals{margin-top:40px}
+#about .offer{margin-top:40px}
+#about .offer .grid{grid-template-columns:repeat(2,1fr);gap:12px}
+#about .offer .card{padding:16px}#about .offer .card h3{font-size:16px}#about .offer .card p{font-size:14px}
+.pband{margin-top:40px}
+.pfig{max-width:200px}
+.faqsec{margin-top:40px;gap:28px}
+.faqpanel{padding:12px}
+.ft{grid-template-columns:1fr 1fr!important;gap:28px 16px;padding:36px 5vw 24px}
+.ft>div:first-child,.ft>div:last-child{grid-column:1/-1}
+.ft h4{font-size:20px}
+.ft .cats a{font-size:14px}
+#ck{left:10px;right:10px;width:auto;padding:12px 14px;gap:10px}#ck p{font-size:13px;flex:1 1 200px}#ck .btn{min-height:38px;padding:0 18px;font-size:14px}
+.band{padding:20px}
+h2{font-size:24px}
+}
+
+/* Hero buttons: natural size on phones and tablets */
+.lp .hsearch{flex-wrap:nowrap;max-width:460px}
+.lp .hsearch input{flex:1 1 0;min-width:0;width:100%}
+.lp .hsearch .btn{width:auto;flex:0 0 auto;justify-content:center}
+.lp .btn.big{width:auto;align-self:flex-start}
+@media (max-width:760px){
+.lp .btn.big{min-height:48px;padding:0 20px;font-size:15px;border-radius:12px;gap:8px}
+.lp .hsearch .btn{min-height:44px;padding:0 18px;font-size:15px}
+.lp .hsearch{max-width:none}
+}
+
+/* Site-wide search results on the home page */
+.hsr{margin-top:40px;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:20px;scroll-margin-top:90px}
+.hsr-h{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:8px}
+.hsr h2{font-size:clamp(22px,3vw,28px);margin:0}
+.sr{display:block;padding:14px 4px;border-top:1px solid var(--line);color:inherit;text-decoration:none}
+#hsr-l>.sr:first-child{border-top:0}
+.sr:hover .srn,.sr:focus-visible .srn{text-decoration:underline;text-underline-offset:4px}
+.srt{display:block;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);margin-bottom:2px}
+.srn{display:block;font:400 19px 'Newsreader',Georgia,serif}
+.srs{display:block;color:var(--muted);font-size:15px;margin-top:2px;line-height:1.5}
+.hsr mark{background:var(--goldbg);color:var(--gold);border-radius:3px;padding:0 2px}
+.hsr .more{margin-top:12px}
+.hsr .none{margin:8px 0 0;color:var(--muted)}
+.hsr .none a{text-decoration:underline}
 </style>
 </head>
 <body>
@@ -324,7 +388,7 @@ nav .menu a{text-transform:none;letter-spacing:normal}
 <a href="tel:+256786535915"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>(+256) 786 535 915</a>
 <a href="mailto:azabokennedy09@gmail.com"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>azabokennedy09@gmail.com</a>
 </div>
-<form class="search" id="sf" role="search"><label for="sq" style="position:absolute;left:-9999px">Search resources</label><input id="sq" type="search" placeholder="Search resources…"><button type="submit" aria-label="Search"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></button></form>
+<form class="search" id="sf" role="search"><label for="sq" style="position:absolute;left:-9999px">Search the site</label><input id="sq" type="search" placeholder="Search the site…"><button type="submit" aria-label="Search"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></button></form>
 <div class="social">
 <a href="https://www.facebook.com/azabokennedy.1" target="_blank" rel="noopener" aria-label="Facebook"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
 <a href="https://www.tiktok.com/@ken02026" target="_blank" rel="noopener" aria-label="TikTok"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 12a4 4 0 1 0 4 4V3a5 5 0 0 0 5 5"/></svg></a>
@@ -349,12 +413,13 @@ nav .menu a{text-transform:none;letter-spacing:normal}
 <div class="lp"><div><h1>Revise with confidence.</h1>
 <p class="lede">Free and premium study guides for high school students.</p>
 <a class="btn big" href="#resources">Browse resources <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-<form id="hs" class="hsearch" role="search"><label for="hq" style="position:absolute;left:-9999px">Search resources</label><input id="hq" type="search" placeholder="Search guides, e.g. Chemistry"><button class="btn" type="submit">Search</button></form></div>
+<form id="hs" class="hsearch" role="search"><label for="hq" style="position:absolute;left:-9999px">Search the whole site</label><input id="hq" type="search" placeholder="Search the whole site, e.g. Chemistry"><button class="btn" type="submit">Search</button></form></div>
 <svg class="lp-art" viewBox="0 0 540 390" role="img" aria-label="Collage of a graduation cap on an open book, a science flask, an atom and a bar chart"><defs><pattern id="lpg" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="var(--line)" stroke-width="1"/></pattern></defs><rect width="540" height="390" fill="var(--surface)" stroke="var(--line)"/><rect width="540" height="390" fill="url(#lpg)"/><path d="M0 330C120 300 200 200 330 150S470 40 540 30V390H0Z" fill="var(--accent)" opacity=".16"/><path d="M0 360C140 340 240 260 360 220S490 130 540 110V390H0Z" fill="var(--accent)" opacity=".16"/>
 <rect x="90" y="40" width="190" height="190" fill="var(--goldbg)" opacity=".4"/><path d="M175 70h20M175 70v45l-25 60a10 10 0 0 0 9 15h52a10 10 0 0 0 9-15l-25-60V70M156 160h58" fill="none" stroke="var(--ink)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M156 160H214L220 175a10 10 0 0 1-9 15H159a10 10 0 0 1-9-15Z" fill="var(--accent)" opacity=".75"/><circle cx="178" cy="172" r="4" fill="var(--onaccent)"/><circle cx="198" cy="166" r="3" fill="var(--onaccent)"/>
 <rect x="190" y="80" width="230" height="260" fill="var(--accent)"/><path d="M305 190Q270 175 235 185V265Q270 255 305 270ZM305 190Q340 175 375 185V265Q340 255 305 270Z" fill="var(--onaccent)"/><path d="M248 205Q270 200 292 207M248 222Q270 217 292 224M248 239Q270 234 292 241M318 207Q340 200 362 205M318 224Q340 217 362 222M318 241Q340 234 362 239" fill="none" stroke="var(--accent)" stroke-width="3" stroke-linecap="round"/><path d="M280 140v20q25 14 50 0v-20Z" fill="var(--gold)"/><path d="M305 108 358 132 305 156 252 132Z" fill="var(--goldbg)"/><path d="M350 136v24" stroke="var(--goldbg)" stroke-width="3" stroke-linecap="round"/><circle cx="350" cy="164" r="4" fill="var(--goldbg)"/>
 <rect x="400" y="130" width="110" height="80" fill="var(--surface)" stroke="var(--ink)" stroke-width="2"/><rect x="415" y="170" width="16" height="28" fill="var(--accent)"/><rect x="441" y="155" width="16" height="43" fill="var(--goldbg)"/><rect x="467" y="140" width="16" height="58" fill="var(--accent)"/><path d="M410 198H500" stroke="var(--ink)" stroke-width="2"/>
 <rect x="30" y="250" width="100" height="80" fill="var(--gold)"/><g fill="none" stroke="var(--goldbg)" stroke-width="2"><ellipse cx="80" cy="290" rx="34" ry="12"/><ellipse cx="80" cy="290" rx="34" ry="12" transform="rotate(60 80 290)"/><ellipse cx="80" cy="290" rx="34" ry="12" transform="rotate(120 80 290)"/></g><circle cx="80" cy="290" r="5" fill="var(--goldbg)"/></svg></div>
+<section id="hsr" class="hsr" aria-live="polite" hidden><div class="hsr-h"><h2 id="hsr-t">Search results</h2><button type="button" class="chip" id="hsr-x">Clear results</button></div><div id="hsr-l"></div></section>
 <section class="feats" aria-labelledby="feat-h"><h2 id="feat-h">Everything you need to revise</h2><div class="fgrid">
 <div class="feat"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M32 4 14 60M32 4l18 56M32 4v56M20 24h24M16 40h32M12 56h40"/><path d="M32 4 6 22M32 4l26 18" /></svg><h3>Find your guide</h3><p>Notes and past papers for every subject.</p><a href="#resources">Browse resources <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
 <div class="feat"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M6 6c20 0 40 18 52 52M6 18c14 0 28 12 36 40M6 30c8 0 16 8 20 28M6 42c4 0 6 6 8 16"/><circle cx="6" cy="6" r="3"/><circle cx="26" cy="22" r="3"/><circle cx="46" cy="40" r="3"/></svg><h3>Go deeper</h3><p>Premium guides with worked answers.</p><a href="#premium">See premium guides <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
@@ -381,7 +446,7 @@ nav .menu a{text-transform:none;letter-spacing:normal}
 <div><div class="lab"><div class="tag">Our motto</div><svg class="ill ai" viewBox="0 0 160 120" role="img" aria-label="Illustration of an open book with a sparkle"><circle cx="80" cy="60" r="52"/><path d="M80 42v52M80 42q-18-10-42-6v52q24-4 42 6M80 42q18-10 42-6v52q-24-4-42 6"/><path d="M124 22v12M118 28h12"/></svg></div><div><h3>“Learn clearly. Revise confidently.”</h3><p>Everything we publish is built to make studying simpler and results stronger.</p></div></div>
 <div><div class="lab"><div class="tag">Our values</div><svg class="ill ai" viewBox="0 0 160 120" role="img" aria-label="Illustration of a gem"><circle cx="80" cy="60" r="52"/><path d="M52 44h56l16 18-44 40L36 62z"/><path d="M36 62h88M64 44l16 18 16-18M80 62v40"/></svg></div><div><h3>Clarity, Originality, Access.</h3><p>Clear explanations, original guides and free access for every learner.</p></div></div>
 </div></section>
-<div style="margin-top:56px"><h2>How it works</h2><div class="grid"><div class="card"><div class="num">1</div><h3>Pick your subject</h3><p>Browse by subject or search for a topic.</p></div><div class="card"><div class="num">2</div><h3>Download the guide</h3><p>Free PDFs are open to everyone. Premium guides go deeper.</p></div><div class="card"><div class="num">3</div><h3>Practise and revise</h3><p>Use worked examples and practice questions to test yourself.</p></div></div></div>
+<div style="margin-top:56px"><h2>How it works</h2><div class="grid hiw"><div class="card"><div class="num">1</div><h3>Pick your subject</h3><p>Browse by subject or search for a topic.</p></div><div class="card"><div class="num">2</div><h3>Download the guide</h3><p>Free PDFs are open to everyone. Premium guides go deeper.</p></div><div class="card"><div class="num">3</div><h3>Practise and revise</h3><p>Use worked examples and practice questions to test yourself.</p></div></div></div>
 <div class="pband"><div class="pt"><h2>Ready to study smarter?</h2><p>Want premium lesson notes, papers or extra lessons (coaching)? Contact the admin on the Contact page.</p><a class="btn big" href="#contact">Contact us <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div><svg class="pfig" viewBox="0 0 300 380" role="img" aria-label="Illustration of a smiling student holding a folder"><rect width="300" height="380" fill="#EFE9DC"/><rect x="0" y="0" width="90" height="380" fill="#C9BFA9"/><path d="M40 380C40 300 90 270 150 270S260 300 260 380Z" fill="#C4673F"/><path d="M150 270l-26 40 26 30 26-30z" fill="#E8DCCB"/><path d="M124 310l26 30M176 310l-26 30" stroke="#1B1B1B" stroke-width="3" fill="none"/><rect x="136" y="236" width="28" height="42" rx="12" fill="#8A5636"/><ellipse cx="150" cy="190" rx="52" ry="62" fill="#9A6140"/><path d="M96 190C90 120 130 100 150 100S212 120 204 190C200 160 190 140 150 138S100 160 96 190Z" fill="#1B1B1B"/><path d="M98 180C92 230 96 270 108 300M202 180C208 230 204 270 192 300" stroke="#1B1B1B" stroke-width="14" stroke-linecap="round" fill="none"/><path d="M130 214q20 18 40 0" stroke="#fff" stroke-width="5" stroke-linecap="round" fill="none"/><circle cx="132" cy="186" r="4" fill="#1B1B1B"/><circle cx="168" cy="186" r="4" fill="#1B1B1B"/><rect x="180" y="300" width="84" height="64" rx="8" fill="#4A2E22" transform="rotate(-8 222 332)"/><path d="M190 316h60" stroke="#6B4636" stroke-width="3" transform="rotate(-8 222 332)"/></svg></div>
 <div id="homePostsWrap" hidden style="margin-top:56px"><div class="row" style="justify-content:space-between;align-items:baseline"><h2>Latest from the blog</h2><a href="#blog" style="font-weight:600">View all posts</a></div><div class="grid" id="homePosts"></div></div>
 <div id="homeResWrap" hidden style="margin-top:56px"><div class="row" style="justify-content:space-between;align-items:baseline"><h2>New resources</h2><a href="#resources" style="font-weight:600">View all resources</a></div><div class="grid" id="homeRes"></div></div>
@@ -389,6 +454,17 @@ nav .menu a{text-transform:none;letter-spacing:normal}
 
 <section id="blog" data-page hidden>
 <h1>Blog</h1><p>Study tips, exam advice and news.</p>
+<div id="blogadmin" hidden>
+<div class="admin"><h2 id="bh">Write a post</h2>
+<div class="row"><label>Title<input id="bt"></label><label>Category<select id="bc"><option>Study tips</option><option>Exams</option><option>Subjects</option><option>News</option></select></label></div>
+<label style="margin-top:12px">Summary (short description on cards)<input id="bs" maxlength="140"></label>
+<label style="margin-top:12px">Thumbnail image (optional)<input id="bi" type="file" accept="image/*"></label>
+<label style="margin-top:12px">Article<textarea id="bb" rows="12"></textarea></label>
+<p style="font-size:13px;margin:6px 0 0">Tips: start a line with ## for a heading, start lines with - for a list, and write [link text](#resources) for a link.</p>
+<div class="row" style="margin-top:12px"><button class="btn" id="bp">Publish post</button><button class="chip" id="bx" hidden>Cancel edit</button></div>
+<div id="bm" role="status" style="margin-top:10px;font-size:14px"></div></div>
+<div class="admin"><h2>Your posts</h2><div id="plist"></div></div>
+</div>
 <div class="grid" id="blogList"></div>
 <p id="blogEmpty" hidden style="margin-top:24px">No posts yet. Please check back soon.</p>
 </section>
@@ -481,15 +557,7 @@ nav .menu a{text-transform:none;letter-spacing:normal}
 </section>
 
 <section id="dashboard" data-page hidden><h1>Admin</h1><div id="dashgate" class="msg">Admins only. Please sign in with an admin account.</div><div id="dashbody" hidden>
-<div class="admin"><h2 id="bh">Write a post</h2>
-<div class="row"><label>Title<input id="bt"></label><label>Category<select id="bc"><option>Study tips</option><option>Exams</option><option>Subjects</option><option>News</option></select></label></div>
-<label style="margin-top:12px">Summary (short description on cards)<input id="bs" maxlength="140"></label>
-<label style="margin-top:12px">Thumbnail image (optional)<input id="bi" type="file" accept="image/*"></label>
-<label style="margin-top:12px">Article<textarea id="bb" rows="12"></textarea></label>
-<p style="font-size:13px;margin:6px 0 0">Tips: start a line with ## for a heading, start lines with - for a list, and write [link text](#resources) for a link.</p>
-<div class="row" style="margin-top:12px"><button class="btn" id="bp">Publish post</button><button class="chip" id="bx" hidden>Cancel edit</button></div>
-<div id="bm" role="status" style="margin-top:10px;font-size:14px"></div></div>
-<div class="admin"><h2>Your posts</h2><div id="plist"></div></div>
+<p style="font-size:14px;margin:0 0 12px">Blog posts are written and managed on the <a href="#blog" style="text-decoration:underline">Blog page</a>.</p>
 <div class="admin"><h2>Page text</h2><p style="font-size:14px">Edit the wording of the About, Services and Team pages. Leave a box unchanged to keep its current text.</p><div id="petext"></div><div class="row" style="margin-top:12px"><button class="btn" id="pesave">Save text</button></div><div id="pem" role="status" style="margin-top:10px;font-size:14px"></div></div>
 <div class="admin"><h2>Premium access</h2><div class="row"><label>Member email<input id="ge" type="email"></label><button class="btn" id="gy">Grant</button><button class="btn alt" id="gn">Revoke</button></div><div id="gm" role="status" style="margin-top:10px;font-size:14px;color:var(--muted)"></div></div>
 <div class="admin"><h2>Messages</h2><div id="msgs"></div></div>
@@ -625,7 +693,7 @@ c.appendChild(el("p","",p.summary||""));
 var rm=el("span","","Read article →");rm.style.cssText="font-weight:600;margin-top:4px";c.appendChild(rm)
 
 return c}
-function renderPosts(){var H=document.getElementById("homePosts"),B=document.getElementById("blogList");H.textContent="";B.textContent="";
+function renderPosts(){refreshSR();var H=document.getElementById("homePosts"),B=document.getElementById("blogList");H.textContent="";B.textContent="";
 posts.slice(0,6).forEach(function(p){H.appendChild(pcard(p,false))});
 posts.forEach(function(p){B.appendChild(pcard(p,true))});
 document.getElementById("homePostsWrap").hidden=!posts.length;document.getElementById("blogEmpty").hidden=posts.length>0||!loaded;if((location.hash||"").indexOf("#post-")===0)renderPost(location.hash.slice(6));renderPlist()}
@@ -644,7 +712,7 @@ filters();render();renderPosts();route();
 (async function(){
 try{
 var user=await claude.use("user");isEditor=!!(user&&user.canEdit());
-if(isEditor){var g1=document.getElementById("dashgate");if(g1)g1.hidden=true;var g2=document.getElementById("dashbody");if(g2)g2.hidden=false;if(!document.querySelector('.auth a[href="#dashboard"]')){var ad2=el("a","btn","Admin");ad2.href="#dashboard";var au=document.querySelector(".auth");au.insertBefore(ad2,au.firstChild)}}canPrem=!!(user&&user.premium());
+if(isEditor){var ba=document.getElementById("blogadmin");if(ba)ba.hidden=false;var g1=document.getElementById("dashgate");if(g1)g1.hidden=true;var g2=document.getElementById("dashbody");if(g2)g2.hidden=false;if(!document.querySelector('.auth a[href="#dashboard"]')){var ad2=el("a","btn","Admin");ad2.href="#dashboard";var au=document.querySelector(".auth");au.insertBefore(ad2,au.firstChild)}}canPrem=!!(user&&user.premium());
 if(user&&user.isMember()){var si=document.getElementById("signin"),su=document.getElementById("signup");si.textContent="Sign Out";si.onclick=function(){SS.signOut()};su.hidden=true;}
 if(isEditor){document.getElementById("dashgate").hidden=true;document.getElementById("dashbody").hidden=false;var gr=function(f){var e=document.getElementById("ge").value.trim(),g=document.getElementById("gm");SS.grant(e,f).then(function(n){g.textContent=n?(f?"Premium access granted.":"Premium access removed."):"No member found with that email. They must sign up first."}).catch(function(){g.textContent="Could not update. Try again."})};document.getElementById("gy").onclick=function(){gr(true)};document.getElementById("gn").onclick=function(){gr(false)}}
 db=await claude.use("db");assets=await claude.use("assets");
@@ -687,9 +755,68 @@ var pl=el("label","","");pl.style.cssText="flex-direction:row;align-items:center
 var m=el("div","","");m.style.fontSize="14px";var sv=el("button","btn","Save"),cn=el("button","chip","Cancel");
 sv.onclick=async function(){var nt=t.value.trim();if(!nt){m.textContent="Title cannot be empty.";return}try{await db.collection("resources").doc(r.id).update({title:nt,subject:s.value,premium:cb.checked});r.title=nt;r.subject=s.value;r.premium=cb.checked;render()}catch(e){m.textContent="Could not save. Try again."}};
 cn.onclick=function(){render()};[t,s,pl,sv,cn,m].forEach(function(x){c.appendChild(x)})}
-document.getElementById("hs").onsubmit=function(e){e.preventDefault();q=document.getElementById("hq").value.trim().toLowerCase();location.hash="resources";render()};
+
+var SR={q:"",sig:""};
+var PN={home:"Home",about:"About",services:"Services",faqpage:"FAQ",team:"Team",contact:"Contact",privacy:"Privacy Policy",terms:"Terms",cookies:"Cookie Policy"};
+var PK={home:"home study guides",about:"about us story mission",services:"services tutoring exam prep a level o level",faqpage:"faq faqs frequently asked questions help",team:"team our team people founder staff",contact:"contact us email phone whatsapp location message",privacy:"privacy policy data",terms:"terms and conditions rules",cookies:"cookies cookie policy settings"};
+function cl(t){return (t||"").replace(/\s+/g," ").trim()}
+function tx(n){var w=document.createTreeWalker(n,NodeFilter.SHOW_TEXT),a=[],x;while((x=w.nextNode())){if(x.parentNode.closest("script,style,svg"))continue;a.push(x.nodeValue)}return cl(a.join(" "))}
+function pageHash(id){for(var k in map){if(map[k]===id)return k}return"home"}
+function siteIndex(){
+var out=[],seen={};
+function add(o){var key=o.type+"|"+o.title;if(!o.title||seen[key])return;seen[key]=1;out.push(o)}
+document.querySelectorAll("section[data-page]").forEach(function(sec){
+var id=sec.id;if(!PN[id])return;var ph=pageHash(id),pn=PN[id];
+var h1=sec.querySelector("h1"),lead=sec.querySelector("p.lead,p.sub,.lede");
+add({type:pn,title:id==="home"?"Home":(cl(h1&&h1.textContent)||pn),text:cl((h1?h1.textContent:"")+" "+(lead?lead.textContent:"")+" "+pn+" "+(PK[id]||"")),href:"#"+ph});
+sec.querySelectorAll(".card,.cat,.feat,details").forEach(function(e){
+if(e.closest("#homeRes,#homePosts,#hsr"))return;
+var t=e.querySelector("summary,h3,h4");var title=cl(t&&t.textContent);if(!title)return;
+var full=tx(e);if(full.indexOf(title)===0)full=cl(full.slice(title.length));var o={type:pn,title:title,text:full,href:"#"+(e.id&&map[e.id]?e.id:ph)};
+if(e.tagName==="DETAILS"){o.type="FAQ";o.faq=e}else if(e.classList.contains("cat")){o.type="Subject";o.subject=e.dataset.c||title}
+add(o)});
+sec.querySelectorAll("h2").forEach(function(h){
+if(h.closest("#hsr"))return;
+var txt=[],skip=false,n=h.nextElementSibling;
+while(n&&n.tagName!=="H2"&&n.tagName!=="H1"){if(n.matches(".card,.cat,.feat,details,.grid,.fgrid")||n.querySelector(".card,.cat,.feat,details"))skip=true;txt.push(tx(n));n=n.nextElementSibling}
+if(skip||!txt.length)return;
+add({type:pn,title:cl(h.textContent),text:cl(txt.join(" ")),href:"#"+(h.id&&map[h.id]?h.id:ph)})})});
+(items||[]).forEach(function(r){add({type:r.premium?"Premium guide":"Free guide",title:r.title,text:cl((r.subject||"")+" study guide PDF"),href:"#resources",res:r})});
+(posts||[]).forEach(function(p){add({type:"Blog",title:p.title,text:cl((p.category||"")+" "+(p.summary||"")),href:"#post-"+p.id})});
+return out}
+function hl(P,text,re){if(!re){P.appendChild(document.createTextNode(text));return}text.split(re).forEach(function(part,i){if(i%2){var m=document.createElement("mark");m.textContent=part;P.appendChild(m)}else if(part)P.appendChild(document.createTextNode(part))})}
+function snip(text,toks){var low=text.toLowerCase(),at=-1;toks.forEach(function(w){var i=low.indexOf(w);if(i>-1&&(at<0||i<at))at=i});var st=Math.max(0,at-40);return(st>0?"…":"")+text.slice(st,st+160)+(text.length>st+160?"…":"")}
+function showSR(raw,scroll,all){
+var box=document.getElementById("hsr"),L=document.getElementById("hsr-l"),T=document.getElementById("hsr-t");
+raw=cl(raw);SR.q=raw;SR.sig=(items||[]).length+"|"+(posts||[]).length;
+if(raw.length<2){box.hidden=true;return}
+var toks=raw.toLowerCase().split(" ").filter(Boolean);
+var re=new RegExp("("+toks.map(function(w){return w.replace(/[.*+?^${}()|[\]\\]/g,"\\$&")}).join("|")+")","gi");
+var res=[];siteIndex().forEach(function(it){var ti=it.title.toLowerCase(),tx=it.text.toLowerCase(),sc=0,ok=true;
+toks.forEach(function(w){var x=0;if(ti.indexOf(w)>-1)x+=4;if(ti.split(/\W+/).some(function(a){return a.indexOf(w)===0}))x+=2;if(tx.indexOf(w)>-1)x+=1;if(!x)ok=false;sc+=x});
+if(ok)res.push({it:it,sc:sc})});
+res.sort(function(a,b){return b.sc-a.sc});
+L.textContent="";T.textContent=res.length?res.length+(res.length===1?" result for “":" results for “")+raw+"”":"No results for “"+raw+"”";
+if(!res.length){var p=el("p","none","Try a different word or a shorter search. You can also ");var a1=el("a","","browse all resources");a1.href="#resources";var a2=el("a","","contact us");a2.href="#contact";p.appendChild(a1);p.appendChild(document.createTextNode(" or "));p.appendChild(a2);p.appendChild(document.createTextNode("."));L.appendChild(p)}
+var lim=all?res.length:10;
+res.slice(0,lim).forEach(function(r){var it=r.it,a=el("a","sr");a.href=it.href;
+a.appendChild(el("span","srt",it.type));var tt=el("span","srn");hl(tt,it.title,re);a.appendChild(tt);
+var sn=el("span","srs");hl(sn,snip(it.text,toks),re);a.appendChild(sn);
+a.onclick=function(e){if(it.res){e.preventDefault();q=it.res.title.toLowerCase();location.hash="resources";render()}else if(it.subject){e.preventDefault();q=it.subject.toLowerCase();location.hash="resources";render()}else if(it.faq){e.preventDefault();location.hash="faq";setTimeout(function(){it.faq.open=true;it.faq.scrollIntoView({block:"center"})},90)}};
+L.appendChild(a)});
+if(res.length>lim){var mb=el("button","chip more","Show all "+res.length+" results");mb.type="button";mb.onclick=function(){showSR(SR.q,false,true)};L.appendChild(mb)}
+box.hidden=false;
+if(scroll)box.scrollIntoView({behavior:"smooth",block:"start"})}
+function refreshSR(){var box=document.getElementById("hsr");if(!box||box.hidden||!SR.q)return;var sig=(items||[]).length+"|"+(posts||[]).length;if(sig!==SR.sig)showSR(SR.q,false)}
+function siteSearch(raw){var v=cl(raw);document.getElementById("hq").value=v;document.getElementById("sq").value=v;
+if(document.getElementById("home").hidden){location.hash="home";setTimeout(function(){showSR(v,true)},90)}else showSR(v,true)}
+document.getElementById("hs").onsubmit=function(e){e.preventDefault();siteSearch(document.getElementById("hq").value);document.getElementById("hq").blur()};
+document.getElementById("sf").onsubmit=function(e){e.preventDefault();siteSearch(document.getElementById("sq").value)};
+var hqT;document.getElementById("hq").addEventListener("input",function(){var v=this.value;clearTimeout(hqT);hqT=setTimeout(function(){document.getElementById("sq").value=v;if(innerWidth<761)return;if(cl(v).length>=2)showSR(v,false);else if(!cl(v))document.getElementById("hsr").hidden=true},250)});
+document.getElementById("hsr-x").onclick=function(){document.getElementById("hsr").hidden=true;SR.q="";document.getElementById("hq").value="";document.getElementById("sq").value="";document.getElementById("hq").focus()};
+
 document.getElementById("rq").oninput=function(){q=this.value.trim().toLowerCase();render()};
-function stat(){var f=0,p=0;items.forEach(function(r){if(r.premium)p++;else f++});document.getElementById("stats").textContent=items.length+" resources · "+f+" free · "+p+" premium";var rq=document.getElementById("rq");if(rq&&document.activeElement!==rq)rq.value=q||""}
+function stat(){refreshSR();var f=0,p=0;items.forEach(function(r){if(r.premium)p++;else f++});document.getElementById("stats").textContent=items.length+" resources · "+f+" free · "+p+" premium";var rq=document.getElementById("rq");if(rq&&document.activeElement!==rq)rq.value=q||""}
 var editingId=null;
 function thumbData(file){return new Promise(function(res,rej){var fr=new FileReader();fr.onload=function(){var im=new Image();im.onload=function(){var w=Math.min(900,im.width),h=Math.round(im.height*w/im.width),c=document.createElement("canvas");c.width=w;c.height=h;c.getContext("2d").drawImage(im,0,0,w,h);res(c.toDataURL("image/jpeg",0.8))};im.onerror=rej;im.src=fr.result};fr.onerror=rej;fr.readAsDataURL(file)})}
 function resetPost(){editingId=null;["bt","bs","bb","bi"].forEach(function(i){document.getElementById(i).value=""});document.getElementById("bh").textContent="Write a post";document.getElementById("bp").textContent="Publish post";document.getElementById("bx").hidden=true}
@@ -714,7 +841,7 @@ document.getElementById("msi").onclick=function(){nv.classList.remove("open");do
 document.getElementById("msu").onclick=function(){nv.classList.remove("open");document.getElementById("signup").click()};mtb.onclick=function(){syncAuth();var o=nv.classList.toggle("open");mtb.setAttribute("aria-expanded",o?"true":"false");mtb.setAttribute("aria-label",o?"Close menu":"Open menu")};
 addEventListener("hashchange",function(){nv.classList.remove("open");mtb.setAttribute("aria-expanded","false")});
 var q="";
-document.getElementById("sf").onsubmit=function(e){e.preventDefault();q=document.getElementById("sq").value.trim().toLowerCase();location.hash="resources";render()};
+
 var dlg=document.getElementById("dlg");
 function openAuth(n){document.getElementById("dt").textContent=n;document.getElementById("dp").autocomplete=n==="Sign Up"?"new-password":"current-password";document.getElementById("dm").textContent="";dlg.showModal()}
 document.getElementById("signin").onclick=function(){openAuth("Sign In")};
