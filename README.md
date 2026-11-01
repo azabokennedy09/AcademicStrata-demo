@@ -24,10 +24,10 @@ This folder is the complete website. It needs two free services: **Supabase** (a
 In Supabase open **Authentication > URL Configuration**. Set **Site URL** to your website address (for example https://yourname.netlify.app).
 
 ## Step 4: Make yourself the admin
-1. Open your website and use **Sign Up** with info@kenstrata.com. Confirm the email if Supabase sends one.
+1. Open your website and use **Sign Up** with azabokennedy09@gmail.com. Confirm the email if Supabase sends one.
 2. In Supabase **SQL Editor** run:
 
-    update public.profiles set role = 'admin' where email = 'info@kenstrata.com';
+    update public.profiles set role = 'admin' where email = 'azabokennedy09@gmail.com';
 
 3. Sign in again. An **Admin** button now appears in the header.
 
@@ -38,7 +38,7 @@ In Supabase open **Authentication > URL Configuration**. Set **Site URL** to you
 - **Add another admin:** run the same SQL line with their email.
 
 ## Good to know
-- **Payments are manual.** The site does not charge money. You collect payment yourself, then press Grant. Automatic payments need a provider such as Flutterwave and extra work.
+- **Payments (PayPal, $1 per premium guide).** See the section below. You confirm each payment yourself in PayPal, then press Unlock.
 - **Spam.** Anyone can send a contact message. If spam appears, add a captcha (Supabase supports Cloudflare Turnstile).
 - **Free plan.** Supabase pauses inactive free projects after a week. Open the dashboard to wake it.
 - **Search engines.** Links like #blog and #post-... are page sections, which search engines handle poorly. For strong Google results you would later move to a framework with real page addresses.
@@ -54,3 +54,17 @@ If you already ran `setup.sql` before, also run `update-1.sql` once in the Supab
 
 ## New admin tools
 On the **Admin** page you can write, edit and delete blog posts (with a thumbnail picture), and edit the wording of the About, Services and Team pages.
+
+
+## Premium guides: $1 each with PayPal
+1. In Supabase SQL Editor run `update-2.sql` once (new installs already have it inside `setup.sql`).
+2. On the Resources page, tick **Premium** on each guide you want to sell.
+3. A signed-in member presses **Pay $1 with PayPal** on a premium guide. The site saves a pending order and opens your PayPal button in a new tab.
+4. When the payment shows in your PayPal account, open the **Admin** page, find the order under **Premium orders**, and press **Unlock**. The guide then shows a Download button for that member only.
+5. **Dismiss** removes an order that was never paid.
+
+Important about the PayPal button (hosted_button_id PKQP4Q6EZ8NDU):
+- The button image in your code says **Subscribe**. If it is a subscription button, buyers are charged again and again. For one-time $1 payments, create a **Buy Now** button in PayPal (Pay & Get Paid > Payment links and buttons), set the price to 1.00 USD, and replace `hosted_button_id` in `index.html` (search for PKQP4Q6EZ8NDU).
+- One button has one fixed price, so every premium guide costs $1.
+- The site cannot check PayPal itself. That is why you press Unlock. Automatic unlocking needs a PayPal webhook and a server function, which can be added later.
+- In PayPal you can set a **return URL** (your site address) so buyers come back to the site after paying.

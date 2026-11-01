@@ -65,6 +65,7 @@
         canEdit: function () { return !!profile && profile.role === "admin"; },
         isMember: function () { return !!session; },
         premium: function () { return !!profile && (profile.premium || profile.role === "admin"); },
+        id: function () { return session ? session.user.id : ""; },
         email: function () { return session ? session.user.email : ""; }
       };
       if (name === "db") return makeDb();

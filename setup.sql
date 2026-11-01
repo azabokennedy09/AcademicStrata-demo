@@ -33,11 +33,15 @@ create policy "admin updates profiles" on public.profiles for update using (publ
 
 drop policy if exists "read content" on public.docs;
 create policy "read content" on public.docs for select using (
-  collection in ('resources','posts','pagetext') or public.is_admin() or (collection = 'submissions' and uid = auth.uid()));
+  collection in ('resources','posts','pagetext') or public.is_admin()
+  or (collection in ('submissions','orders') and uid = auth.uid())
+  or (collection = 'entitlements' and data->>'userId' = auth.uid()::text));
 drop policy if exists "admin manages docs" on public.docs;
 create policy "admin manages docs" on public.docs for all using (public.is_admin()) with check (public.is_admin());
 drop policy if exists "members submit files" on public.docs;
 create policy "members submit files" on public.docs for insert with check (collection = 'submissions' and auth.uid() is not null and uid = auth.uid());
+drop policy if exists "members place orders" on public.docs;
+create policy "members place orders" on public.docs for insert with check (collection = 'orders' and auth.uid() is not null and uid = auth.uid());
 drop policy if exists "anyone sends messages" on public.docs;
 create policy "anyone sends messages" on public.docs for insert with check (collection in ('messages','subscribers'));
 
@@ -54,7 +58,10 @@ create policy "read allowed files" on storage.objects for select using (
     public.is_admin()
     or (storage.foldername(name))[1] = auth.uid()::text
     or exists (select 1 from public.docs d where d.collection = 'resources' and d.data->>'assetId' = name
-               and (coalesce((d.data->>'premium')::boolean, false) = false or public.has_premium()))));
+               and (coalesce((d.data->>'premium')::boolean, false) = false
+                    or public.has_premium()
+                    or exists (select 1 from public.docs e where e.collection = 'entitlements'
+                               and e.data->>'resourceId' = d.id and e.data->>'userId' = auth.uid()::text)))));
 drop policy if exists "delete own or admin files" on storage.objects;
 create policy "delete own or admin files" on storage.objects for delete using (
   bucket_id = 'files' and (public.is_admin() or (storage.foldername(name))[1] = auth.uid()::text));
