@@ -399,6 +399,33 @@ h2{font-size:24px}
 @media (hover:hover) and (min-width:981px){.dd:hover .menu.menu2,.dd:focus-within .menu.menu2{display:grid}}
 @media (max-width:980px){.menu.menu2{min-width:0;left:0;right:auto;grid-template-columns:1fr 1fr}.menu2 a{white-space:normal}}
 @media (max-width:560px){.menu.menu2{grid-auto-flow:row;grid-template-rows:none;grid-template-columns:1fr}}
+
+/* Legal pages: full policy text */
+.legal h3{font-size:18px;margin:24px 0 6px}
+.legal h4{font-size:16px;margin:18px 0 4px}
+.legal li>p{margin:0 0 6px}
+.legal ul ul{margin:6px 0 0}
+.legal a{text-decoration:underline;text-underline-offset:3px;overflow-wrap:anywhere}
+.legal p{line-height:1.7}
+
+/* Dark feature section with circular illustrations */
+.feats{margin-top:72px;background:#14201d;border-radius:14px;padding:56px 24px}
+.feats h2{color:#fff;text-align:center;margin:0 0 44px}
+.fx{display:flex;flex-direction:column;align-items:center;text-align:center}
+.fx .fimg{display:block;width:min(100%,230px);aspect-ratio:1;border-radius:50%;overflow:hidden;background:#fff}
+.fx .fimg svg{display:block;width:100%;height:100%}
+.fx h3{margin:26px 0 10px;font-size:26px;font-weight:400;line-height:1.2}
+.fx h3 a{color:#9ED9C9;text-decoration:none}
+.fx h3 a:hover,.fx h3 a:focus-visible{text-decoration:underline;text-underline-offset:5px}
+.fx p{color:#E9EEEC;font-size:17px;line-height:1.6;max-width:30ch;margin:0}
+@media (max-width:699px){.fgrid{grid-template-columns:1fr;gap:48px}}
+@media (max-width:560px){.feats{margin-top:40px;padding:40px 16px}.feats h2{margin-bottom:32px}.fx .fimg{width:min(100%,240px)}.fx h3{font-size:24px}}
+
+/* Numbered steps in the dark section */
+.fw{position:relative;width:min(100%,230px)}
+.fw .fimg{width:100%}
+.fnum{position:absolute;top:2px;left:2px;width:44px;height:44px;border-radius:50%;background:#E9B949;color:#14201D;border:3px solid #14201D;font:700 22px 'Newsreader',Georgia,serif;display:flex;align-items:center;justify-content:center}
+@media (max-width:560px){.fw{width:min(100%,240px)}}
 </style>
 </head>
 <body>
@@ -423,7 +450,8 @@ h2{font-size:24px}
 <div class="dd" data-p="about"><a href="#about">About</a><button class="tg" aria-label="About submenu" aria-expanded="false"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button><div class="menu"><a href="#about">Our Story</a><a href="#team">Our Team</a></div></div>
 <div class="dd" data-p="services"><a href="#services">Services</a><button class="tg" aria-label="Services submenu" aria-expanded="false"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button><div class="menu"><a href="#a-level">A Level</a><a href="#o-level">O Level</a><a href="#guides">Study Guides</a><a href="#exam-prep">Exam Prep Packs</a><a href="#tutoring">Tutoring Support</a></div></div>
 <div class="dd" data-p="resources"><a href="#resources">Resources</a><button class="tg" aria-label="Resources submenu" aria-expanded="false"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button><div class="menu menu2"><a href="#resources">All Resources</a><a href="#free">Free Guides</a><a href="#premium">Premium Guides</a><a href="#lesson-notes">Lesson Notes</a><a href="#guide-books">Guide Books</a><a href="#lesson-plans">Lesson Plans</a><a href="#schemes-of-work">Schemes of Work</a><a href="#exam-papers">Examination Papers</a><a href="#activities-of-integration">Activities of Integration</a></div></div>
-<a href="#blog" data-p="blog">Blog</a><a href="#faq" data-p="faqpage">FAQ</a><a href="#contact" data-p="contact">Contact</a>
+<div class="dd" data-p="blog"><a href="#blog">Blog</a><button class="tg" aria-label="Blog submenu" aria-expanded="false"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button><div class="menu"><a href="#blog">All Posts</a><a href="#blog-lesson-notes">Lesson Notes</a><a href="#blog-articles">Articles</a><a href="#blog-news">News and Updates</a><a href="#blog-global-news">Global News</a></div></div>
+<a href="#faq" data-p="faqpage">FAQ</a><a href="#contact" data-p="contact">Contact</a>
 <div class="mauth"><button class="btn alt" id="msi">Sign In</button><button class="btn" id="msu">Sign Up</button><a class="btn" id="mad" href="#dashboard" hidden>Admin</a></div></nav>
 <div class="auth"><button class="btn alt" id="signin">Sign In</button><button class="btn" id="signup">Sign Up</button></div>
 <button class="mtog" id="mt" aria-label="Open menu" aria-expanded="false"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
@@ -442,9 +470,9 @@ h2{font-size:24px}
 <rect x="30" y="250" width="100" height="80" fill="var(--gold)"/><g fill="none" stroke="var(--goldbg)" stroke-width="2"><ellipse cx="80" cy="290" rx="34" ry="12"/><ellipse cx="80" cy="290" rx="34" ry="12" transform="rotate(60 80 290)"/><ellipse cx="80" cy="290" rx="34" ry="12" transform="rotate(120 80 290)"/></g><circle cx="80" cy="290" r="5" fill="var(--goldbg)"/></svg></div>
 <section id="hsr" class="hsr" aria-live="polite" hidden><div class="hsr-h"><h2 id="hsr-t">Search results</h2><button type="button" class="chip" id="hsr-x">Clear results</button></div><div id="hsr-l"></div></section>
 <section class="feats" aria-labelledby="feat-h"><h2 id="feat-h">Everything you need to revise</h2><div class="fgrid">
-<div class="feat"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M32 4 14 60M32 4l18 56M32 4v56M20 24h24M16 40h32M12 56h40"/><path d="M32 4 6 22M32 4l26 18" /></svg><h3>Find your guide</h3><p>Notes and past papers for every subject.</p><a href="#resources">Browse resources <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
-<div class="feat"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M6 6c20 0 40 18 52 52M6 18c14 0 28 12 36 40M6 30c8 0 16 8 20 28M6 42c4 0 6 6 8 16"/><circle cx="6" cy="6" r="3"/><circle cx="26" cy="22" r="3"/><circle cx="46" cy="40" r="3"/></svg><h3>Go deeper</h3><p>Premium guides with worked answers.</p><a href="#premium">See premium guides <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
-<div class="feat"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="4" y="4" width="56" height="56"/><rect x="12" y="12" width="40" height="40"/><rect x="20" y="20" width="24" height="24"/><rect x="27" y="27" width="10" height="10"/></svg><h3>Get extra help</h3><p>Exam prep and tutoring support.</p><a href="#services">Our services <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+<div class="fx"><a class="fimg" href="#resources" tabindex="-1" aria-hidden="true"><svg viewBox="0 0 300 300" role="img" aria-label="Open book with a magnifying glass and a stack of books"><rect width="300" height="300" fill="#DDEBE6"/><rect x="190" y="30" width="80" height="110" fill="#F2F7F5"/><rect x="30" y="50" width="60" height="80" fill="#F2F7F5"/><rect y="215" width="300" height="85" fill="#E8DCCB"/><rect y="215" width="300" height="10" fill="#CFC3AE"/><rect x="205" y="168" width="64" height="22" rx="3" fill="#0F6E5C"/><rect x="211" y="190" width="58" height="22" rx="3" fill="#C9901E"/><rect x="203" y="212" width="66" height="4" fill="#B3772F" opacity=".0"/><path d="M150 190Q112 176 66 188V238Q112 228 150 242ZM150 190Q188 176 234 188V238Q188 228 150 242Z" fill="#fff"/><path d="M150 190V242" stroke="#CFC3AE" stroke-width="3"/><path d="M80 204Q112 198 138 206M80 218Q112 212 138 220M162 206Q188 198 220 204M162 220Q188 212 220 218" stroke="#9DBBB2" stroke-width="3" fill="none" stroke-linecap="round"/><circle cx="118" cy="112" r="42" fill="#fff" fill-opacity=".55" stroke="#1B1B1B" stroke-width="8"/><path d="M148 142 190 184" stroke="#4A2E22" stroke-width="14" stroke-linecap="round"/><path d="M96 100H140M96 114H132M96 128H122" stroke="#0F6E5C" stroke-width="5" stroke-linecap="round"/></svg></a><h3><a href="#resources">Find your guide</a></h3><p>Notes and past papers for every subject.</p></div>
+<div class="fx"><a class="fimg" href="#premium" tabindex="-1" aria-hidden="true"><svg viewBox="0 0 300 300" role="img" aria-label="Premium guide book with a gold medal"><rect width="300" height="300" fill="#F4E8CC"/><rect x="215" y="28" width="56" height="90" fill="#FBF4E2"/><rect y="228" width="300" height="72" fill="#E8DCCB"/><rect x="88" y="52" width="124" height="172" rx="6" fill="#0A5446"/><rect x="96" y="52" width="116" height="172" rx="6" fill="#0F6E5C"/><path d="M114 92H196M114 110H184M114 128H190" stroke="#fff" stroke-width="6" stroke-linecap="round" opacity=".9"/><path d="M114 160H160" stroke="#E9B949" stroke-width="6" stroke-linecap="round"/><path d="M172 224V258L184 248 196 258V224Z" fill="#C4673F"/><path d="M196 188 214 232 234 220 214 180Z" fill="#B3772F"/><path d="M146 188 126 232 106 220 126 180Z" fill="#B3772F"/><circle cx="170" cy="186" r="34" fill="#C9901E"/><circle cx="170" cy="186" r="26" fill="#E9B949"/><path d="M170 168l5.6 11.4 12.6 1.8-9.1 8.9 2.1 12.5-11.2-5.9-11.2 5.9 2.1-12.5-9.1-8.9 12.6-1.8Z" fill="#fff"/></svg></a><h3><a href="#premium">Go deeper</a></h3><p>Premium guides with worked answers.</p></div>
+<div class="fx"><a class="fimg" href="#services" tabindex="-1" aria-hidden="true"><svg viewBox="0 0 300 300" role="img" aria-label="A teacher and a student talking over an open book"><rect width="300" height="300" fill="#D9E6F2"/><rect x="118" y="20" width="64" height="100" fill="#EEF4FA"/><path d="M40 300C40 220 80 188 124 188S196 220 196 300Z" fill="#C4673F"/><path d="M124 188l-18 26 18 22 18-22z" fill="#F3E9DA"/><rect x="112" y="150" width="24" height="42" rx="10" fill="#8A5636"/><ellipse cx="124" cy="128" rx="34" ry="40" fill="#9A6140"/><path d="M88 128C82 80 112 70 124 70S168 80 160 128C156 108 148 98 124 98S92 108 88 128Z" fill="#1B1B1B"/><circle cx="112" cy="128" r="3.5" fill="#1B1B1B"/><circle cx="136" cy="128" r="3.5" fill="#1B1B1B"/><path d="M110 146q14 12 28 0" stroke="#fff" stroke-width="4" stroke-linecap="round" fill="none"/><path d="M170 300C170 224 206 196 244 196S296 224 296 300Z" fill="#2F4E73"/><path d="M244 196l-14 20 14 18 14-18z" fill="#EEF3F8"/><path d="M244 214l-5 10 5 40 5-40z" fill="#9C2F2F"/><rect x="232" y="162" width="24" height="38" rx="10" fill="#B87A57"/><ellipse cx="244" cy="142" rx="30" ry="36" fill="#C58B66"/><path d="M214 140C210 106 232 98 244 98S278 106 274 140C270 122 262 116 244 116S218 122 214 140Z" fill="#9A9A9A"/><circle cx="234" cy="142" r="3.2" fill="#1B1B1B"/><circle cx="254" cy="142" r="3.2" fill="#1B1B1B"/><path d="M234 158q10 8 20 0" stroke="#fff" stroke-width="3.5" stroke-linecap="round" fill="none"/><rect y="236" width="300" height="64" fill="#E8DCCB"/><path d="M150 226Q168 218 186 226V250Q168 244 150 250ZM150 226Q132 218 114 226V250Q132 244 150 250Z" fill="#fff"/><path d="M150 226V250" stroke="#CFC3AE" stroke-width="2"/><rect x="76" y="30" width="62" height="44" rx="14" fill="#fff"/><path d="M96 74l-8 14 24-14Z" fill="#fff"/><path d="M99 46q0-7 8-7t8 7q0 5-6 8" stroke="#0F6E5C" stroke-width="4" fill="none" stroke-linecap="round"/><circle cx="109" cy="63" r="2.6" fill="#0F6E5C"/></svg></a><h3><a href="#services">Get extra help</a></h3><p>Exam prep and tutoring support.</p></div>
 </div></section>
 <section class="subjects" aria-labelledby="subj-h"><h2 id="subj-h">Browse by subject</h2>
 <div class="sl">
@@ -467,7 +495,11 @@ h2{font-size:24px}
 <div><div class="lab"><div class="tag">Our motto</div><svg class="ill ai" viewBox="0 0 160 120" role="img" aria-label="Illustration of an open book with a sparkle"><circle cx="80" cy="60" r="52"/><path d="M80 42v52M80 42q-18-10-42-6v52q24-4 42 6M80 42q18-10 42-6v52q-24-4-42 6"/><path d="M124 22v12M118 28h12"/></svg></div><div><h3>“Learn clearly. Revise confidently.”</h3><p>Everything we publish is built to make studying simpler and results stronger.</p></div></div>
 <div><div class="lab"><div class="tag">Our values</div><svg class="ill ai" viewBox="0 0 160 120" role="img" aria-label="Illustration of a gem"><circle cx="80" cy="60" r="52"/><path d="M52 44h56l16 18-44 40L36 62z"/><path d="M36 62h88M64 44l16 18 16-18M80 62v40"/></svg></div><div><h3>Clarity, Originality, Access.</h3><p>Clear explanations, original guides and free access for every learner.</p></div></div>
 </div></section>
-<div style="margin-top:56px"><h2>How it works</h2><div class="grid hiw"><div class="card"><div class="num">1</div><h3>Pick your subject</h3><p>Browse by subject or search for a topic.</p></div><div class="card"><div class="num">2</div><h3>Download the guide</h3><p>Free PDFs are open to everyone. Premium guides go deeper.</p></div><div class="card"><div class="num">3</div><h3>Practise and revise</h3><p>Use worked examples and practice questions to test yourself.</p></div></div></div>
+<section class="feats" aria-labelledby="hiw-h"><h2 id="hiw-h">How it works</h2><div class="fgrid">
+<div class="fx"><div class="fw"><a class="fimg" href="#resources" tabindex="-1" aria-hidden="true"><svg viewBox="0 0 300 300" role="img" aria-label="Subject tiles with one selected"><rect width="300" height="300" fill="#E3EFE9"/><rect x="48" y="52" width="82" height="82" rx="14" fill="#fff"/><path d="M89 76v34M72 93h34" stroke="#0F6E5C" stroke-width="7" stroke-linecap="round"/><rect x="170" y="52" width="82" height="82" rx="14" fill="#fff"/><path d="M200 70h22M205 70v20l-14 26a5 5 0 0 0 4.5 7.500h31a5 5 0 0 0 4.500-7.500L217 90V70" fill="none" stroke="#C4673F" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/><rect x="109" y="158" width="82" height="82" rx="14" fill="#0F6E5C"/><path d="M132 199l13 14 24-28" fill="none" stroke="#fff" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/><path d="M186 204l8 46 11-14 18 8z" fill="#1B1B1B" stroke="#fff" stroke-width="3" stroke-linejoin="round" transform="translate(6 -6)"/></svg></a><span class="fnum" aria-hidden="true">1</span></div><h3><a href="#resources">Pick your subject</a></h3><p>Browse by subject or search for a topic.</p></div>
+<div class="fx"><div class="fw"><a class="fimg" href="#free" tabindex="-1" aria-hidden="true"><svg viewBox="0 0 300 300" role="img" aria-label="A PDF guide being downloaded"><rect width="300" height="300" fill="#F4E8CC"/><rect y="240" width="300" height="60" fill="#E8DCCB"/><path d="M96 40H178L212 74V196H96Z" fill="#fff" stroke="#D8C9A8" stroke-width="3" stroke-linejoin="round"/><path d="M178 40V74H212" fill="#EFE6D2" stroke="#D8C9A8" stroke-width="3" stroke-linejoin="round"/><rect x="112" y="96" width="52" height="24" rx="5" fill="#C4673F"/><text x="138" y="114" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="15" fill="#fff">PDF</text><path d="M112 140H196M112 156H196M112 172H170" stroke="#C9BFA9" stroke-width="5" stroke-linecap="round"/><circle cx="150" cy="212" r="38" fill="#0F6E5C" stroke="#F4E8CC" stroke-width="6"/><path d="M150 192v32M136 212l14 14 14-14" fill="none" stroke="#fff" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/></svg></a><span class="fnum" aria-hidden="true">2</span></div><h3><a href="#free">Download the guide</a></h3><p>Free PDFs are open to everyone. Premium guides go deeper.</p></div>
+<div class="fx"><div class="fw"><a class="fimg" href="#premium" tabindex="-1" aria-hidden="true"><svg viewBox="0 0 300 300" role="img" aria-label="A checklist notebook with a pencil and a top mark badge"><rect width="300" height="300" fill="#D9E6F2"/><rect y="236" width="300" height="64" fill="#E8DCCB"/><rect x="70" y="52" width="150" height="186" rx="10" fill="#fff" stroke="#BFD0E0" stroke-width="3"/><g fill="none" stroke="#0F6E5C" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"><path d="M90 96l9 9 16-18M90 138l9 9 16-18M90 180l9 9 16-18"/></g><path d="M132 96H200M132 138H200M132 180H186" stroke="#C9D6E2" stroke-width="6" stroke-linecap="round"/><path d="M198 262 252 168l16 9-54 94-20 2Z" fill="#E9B949"/><path d="M252 168l16 9 8-14a6 6 0 0 0-2-8l-6-3a6 6 0 0 0-8 2Z" fill="#C4673F"/><path d="M194 264l4-14 14 8Z" fill="#F3E3C3"/><circle cx="232" cy="78" r="34" fill="#C9901E"/><circle cx="232" cy="78" r="27" fill="#E9B949"/><text x="232" y="88" text-anchor="middle" font-family="Georgia,serif" font-weight="700" font-size="28" fill="#fff">A+</text></svg></a><span class="fnum" aria-hidden="true">3</span></div><h3><a href="#premium">Practise and revise</a></h3><p>Use worked examples and practice questions to test yourself.</p></div>
+</div></section>
 <div id="homePostsWrap" hidden style="margin-top:56px"><div class="row" style="justify-content:space-between;align-items:baseline"><h2>Latest from the blog</h2><a href="#blog" style="font-weight:600">View all posts</a></div><div class="grid" id="homePosts"></div></div>
 <div id="homeResWrap" hidden style="margin-top:56px"><div class="row" style="justify-content:space-between;align-items:baseline"><h2>New resources</h2><a href="#resources" style="font-weight:600">View all resources</a></div><div class="grid" id="homeRes"></div></div>
 <div class="pband"><div class="pt"><h2>Ready to study smarter?</h2><p>Want premium lesson notes, papers or extra lessons (coaching)? Contact the admin on the Contact page.</p><a class="btn big" href="#contact">Contact us <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div><svg class="pfig" viewBox="0 0 300 380" role="img" aria-label="Illustration of a smiling student holding a folder"><rect width="300" height="380" fill="#EFE9DC"/><rect x="0" y="0" width="90" height="380" fill="#C9BFA9"/><path d="M40 380C40 300 90 270 150 270S260 300 260 380Z" fill="#C4673F"/><path d="M150 270l-26 40 26 30 26-30z" fill="#E8DCCB"/><path d="M124 310l26 30M176 310l-26 30" stroke="#1B1B1B" stroke-width="3" fill="none"/><rect x="136" y="236" width="28" height="42" rx="12" fill="#8A5636"/><ellipse cx="150" cy="190" rx="52" ry="62" fill="#9A6140"/><path d="M96 190C90 120 130 100 150 100S212 120 204 190C200 160 190 140 150 138S100 160 96 190Z" fill="#1B1B1B"/><path d="M98 180C92 230 96 270 108 300M202 180C208 230 204 270 192 300" stroke="#1B1B1B" stroke-width="14" stroke-linecap="round" fill="none"/><path d="M130 214q20 18 40 0" stroke="#fff" stroke-width="5" stroke-linecap="round" fill="none"/><circle cx="132" cy="186" r="4" fill="#1B1B1B"/><circle cx="168" cy="186" r="4" fill="#1B1B1B"/><rect x="180" y="300" width="84" height="64" rx="8" fill="#4A2E22" transform="rotate(-8 222 332)"/><path d="M190 316h60" stroke="#6B4636" stroke-width="3" transform="rotate(-8 222 332)"/></svg></div>
@@ -477,7 +509,7 @@ h2{font-size:24px}
 <h1>Blog</h1><p>Study tips, exam advice and news.</p>
 <div id="blogadmin" hidden>
 <div class="admin"><h2 id="bh">Write a post</h2>
-<div class="row"><label>Title<input id="bt"></label><label>Category<select id="bc"><option>Study tips</option><option>Exams</option><option>A Level</option><option>O Level</option><option>Subjects</option><option>Revision</option><option>News</option></select></label></div>
+<div class="row"><label>Title<input id="bt"></label><label>Category<select id="bc"><option>Lesson Notes</option><option>Articles</option><option>News and Updates</option><option>Global News</option></select></label></div>
 <label style="margin-top:12px">Summary (short description on cards)<input id="bs" maxlength="140"></label>
 <label style="margin-top:12px">Thumbnail image (optional)<input id="bi" type="file" accept="image/*"></label>
 <div class="upl"><label>Upload the article from your computer (optional): Word (.docx) or web page (.html)<input id="bf" type="file" accept=".docx,.html,.htm,application/vnd.openxmlformats-officedocument.wordprocessingml.document,text/html"></label>
@@ -489,6 +521,7 @@ h2{font-size:24px}
 <div class="admin"><h2>Your posts</h2><div id="plist"></div></div>
 </div>
 <div class="filters" id="blogcats" role="group" aria-label="Blog categories" hidden></div>
+<p id="blogcatdesc" hidden style="margin:4px 0 0;color:var(--muted)"></p>
 <div class="grid" id="blogList"></div>
 <p id="blogNone" hidden style="margin-top:24px">No posts in this category yet.</p>
 <p id="blogEmpty" hidden style="margin-top:24px">No posts yet. Please check back soon.</p>
@@ -593,39 +626,413 @@ h2{font-size:24px}
 <section id="post" data-page hidden class="legal"><div id="postView"></div></section>
 
 <section id="privacy" data-page hidden class="legal">
-<h1>Privacy Policy</h1><p>Last updated: 21 October 2026</p>
-<h2>Who we are</h2><p>Academicstrata (“we”, “us”) publishes study guides for high school students. You can reach us at azabokennedy09@gmail.com or (+256) 786 535 915.</p>
-<h2>What we collect</h2><ul><li>Details you send us: your name, email address and message when you use the contact form or email or call us.</li><li>Account and purchase details, if and when sign-in and premium access are switched on.</li><li>Search words you type in the header search are used in your browser to filter resources. We do not receive them.</li></ul>
-<h2>How we use it</h2><ul><li>To reply to your questions.</li><li>To give you access to premium guides and manage your account.</li><li>To improve our guides and this website.</li></ul>
-<h2>Sharing</h2><p>We do not sell your personal information. We share it only with service providers who help us run the site (such as hosting, email and payment providers), and where the law requires it. Payments are processed by PayPal, and we never see or store your card details.</p>
-<h2>Keeping your data safe</h2><p>We keep personal information only as long as we need it and take reasonable steps to protect it. No online service can be guaranteed completely secure.</p>
-<h2>Your rights</h2><p>You can ask to see, correct or delete the personal information we hold about you by emailing azabokennedy09@gmail.com. We aim to handle personal data in line with applicable data protection law, including Uganda’s Data Protection and Privacy Act, 2019.</p>
-<h2>Children and students</h2><p>Our guides are made for high school students. If you are under 18, please ask a parent or guardian before sending us personal details.</p>
-<h2>Changes</h2><p>We may update this policy and will change the date above when we do.</p>
+<h1>Privacy Policy</h1>
+<p>Last updated: November 03, 2026</p>
+<p>This Privacy Policy describes Our policies and procedures on the collection, use and disclosure of Your information when You use the Service and tells You about Your privacy rights and how the law protects You.</p>
+<p>We use Your Personal Data to provide and improve the Service. We collect, use, and disclose Your information as described in this Privacy Policy and, where required by applicable law, only where We have a valid legal basis to do so, including Your consent (where consent is required). This Privacy Policy has been created with the help of the <a href="https://www.termsfeed.com/privacy-policy-generator/" target="_blank" rel="noopener noreferrer">Privacy Policy Generator</a>.</p>
+<h2>Interpretation and Definitions</h2>
+<h3>Interpretation</h3>
+<p>The words whose initial letters are capitalized have meanings defined under the following conditions. The following definitions shall have the same meaning regardless of whether they appear in singular or in plural.</p>
+<h3>Definitions</h3>
+<p>For the purposes of this Privacy Policy:</p>
+<ul>
+<li>
+<p><strong>Account</strong> means a unique account created for You to access Our Service or parts of Our Service.</p>
+</li>
+<li>
+<p><strong>Affiliate</strong> means an entity that controls, is controlled by, or is under common control with a party, where &quot;control&quot; means ownership of 50% or more of the shares, equity interest or other securities entitled to vote for election of directors or other managing authority.</p>
+</li>
+<li>
+<p><strong>Company</strong> (referred to as either &quot;the Company&quot;, &quot;We&quot;, &quot;Us&quot; or &quot;Our&quot; in this Privacy Policy) refers to Academic Strata.</p>
+</li>
+<li>
+<p><strong>Cookies</strong> are small files that are placed on Your computer, mobile device or any other device by a website, containing the details of Your browsing history on that website, among its many uses.</p>
+</li>
+<li>
+<p><strong>Country/State</strong> refers to: Uganda.</p>
+</li>
+<li>
+<p><strong>Device</strong> means any device that can access the Service, such as a computer, a cell phone or a digital tablet.</p>
+</li>
+<li>
+<p><strong>Personal Data</strong> (or &quot;Personal Information&quot;) is any information that relates to an identified or identifiable individual.</p>
+<p>We use &quot;Personal Data&quot; and &quot;Personal Information&quot; interchangeably unless a law uses a specific term.</p>
+</li>
+<li>
+<p><strong>Service</strong> refers to the Website.</p>
+</li>
+<li>
+<p><strong>Service Provider</strong> means any natural or legal person who processes the data on behalf of the Company. It refers to third-party companies or individuals employed by the Company to facilitate the Service, to provide the Service on behalf of the Company, to perform services related to the Service or to assist the Company in analyzing how the Service is used.</p>
+</li>
+<li>
+<p><strong>Usage Data</strong> refers to data collected automatically, either generated by the use of the Service or from the Service infrastructure itself (for example, the duration of a page visit).</p>
+</li>
+<li>
+<p><strong>User</strong> means any individual who accesses or uses the Service.</p>
+</li>
+<li>
+<p><strong>Website</strong> refers to Academic Strata, accessible from <a href="https://www.academicstrata.com" rel="external nofollow noopener" target="_blank">www.academicstrata.com</a>.</p>
+</li>
+<li>
+<p><strong>You</strong> means the individual accessing or using the Service, or the company, or other legal entity on behalf of which such individual is accessing or using the Service, as applicable.</p>
+</li>
+</ul>
+<h2>Collecting and Using Your Personal Information</h2>
+<h3>Types of Data Collected</h3>
+<h4>Personal Data</h4>
+<p>While using Our Service, We may ask You to provide Us with certain personally identifiable information that can be used to contact or identify You. Personally identifiable information may include, but is not limited to:</p>
+<ul>
+<li>Email address</li>
+<li>First name and last name</li>
+<li>Phone number</li>
+<li>Address, State, Province, ZIP/Postal code, City</li>
+</ul>
+<h4>Usage Data</h4>
+<p>Usage Data is collected automatically when using the Service.</p>
+<p>Usage Data may include information such as Your Device's Internet Protocol address (e.g. IP address), browser type, browser version, the pages of Our Service that You visit, the time and date of Your visit, the time spent on those pages, unique device identifiers and other diagnostic data.</p>
+<p>When You access the Service by or through a mobile device, We may collect certain information automatically, including, but not limited to, the type of mobile device You use, Your mobile device's unique ID, the IP address of Your mobile device, Your mobile operating system, the type of mobile Internet browser You use, unique device identifiers and other diagnostic data.</p>
+<p>We may also collect information that Your browser sends whenever You visit Our Service or when You access the Service by or through a mobile device.</p>
+<h4>Tracking Technologies and Cookies</h4>
+<p>We use tracking technologies (such as cookies) to track the activity and to improve Our Service. The technologies We use may include:</p>
+<ul>
+<li><strong>Cookies or Browser Cookies.</strong> A cookie is a small file placed on Your Device. You can instruct Your browser to refuse all Cookies or to indicate when a Cookie is being sent. However, if You do not accept Cookies, You may not be able to use some parts of Our Service.</li>
+<li><strong>Web Beacons.</strong> Certain sections of Our Service may contain small electronic files known as web beacons (also referred to as clear gifs, pixel tags, and single-pixel gifs) that permit the Company, for example, to count users who have visited those pages and for other related website statistics (for example, recording the popularity of a certain section and verifying system and server integrity).</li>
+</ul>
+<p>Cookies can be &quot;Persistent&quot; or &quot;Session&quot; Cookies. Persistent Cookies remain on Your personal computer or mobile device when You go offline, while Session Cookies are deleted as soon as You close Your web browser.</p>
+<p>Where required by law, We use non-essential cookies (that is, Cookies other than the Necessary / Essential Cookies described below) only with Your consent. You can withdraw or change Your consent at any time using Our cookie preferences tool (if available) or through Your browser/device settings. Withdrawing consent does not affect the lawfulness of processing based on consent before its withdrawal.</p>
+<p>We use both Session and Persistent Cookies for the purposes set out below:</p>
+<ul>
+<li>
+<p><strong>Necessary / Essential Cookies</strong></p>
+<p>Type: Session Cookies</p>
+<p>Administered by: Us</p>
+<p>Purpose: These Cookies are essential to provide You with services available through the Website and to enable You to use some of its features. They help to authenticate users and prevent fraudulent use of user accounts. Without these Cookies, the services that You have asked for cannot be provided, and We only use these Cookies to provide You with those services.</p>
+</li>
+<li>
+<p><strong>Cookies Policy / Notice Acceptance Cookies</strong></p>
+<p>Type: Persistent Cookies</p>
+<p>Administered by: Us</p>
+<p>Purpose: These Cookies identify whether users have accepted the use of cookies on the Website and record the consent choices You have made, so that We can honor those choices on future visits.</p>
+</li>
+<li>
+<p><strong>Functionality Cookies</strong></p>
+<p>Type: Persistent Cookies</p>
+<p>Administered by: Us</p>
+<p>Purpose: These Cookies allow Us to remember choices You make when You use the Website, such as remembering Your Account login details or language preference. The purpose of these Cookies is to provide You with a more personal experience and to avoid You having to re-enter Your preferences every time You use the Website.</p>
+</li>
+</ul>
+<h3>Use of Your Personal Data</h3>
+<p>The Company may use Personal Data for the following purposes:</p>
+<ul>
+<li>
+<p><strong>To provide and maintain Our Service</strong>, including to monitor the usage of Our Service.</p>
+</li>
+<li>
+<p><strong>To manage Your Account:</strong> to manage Your registration as a user of the Service. The Personal Data You provide can give You access to different functionalities of the Service that are available to You as a registered user.</p>
+</li>
+<li>
+<p><strong>For the performance of a contract:</strong> the development, compliance and undertaking of the purchase contract for the products, items or services You have purchased or of any other contract with Us through the Service.</p>
+</li>
+<li>
+<p><strong>To contact You:</strong> To contact You by email, telephone calls, SMS, or other equivalent forms of electronic communication, such as a mobile application's push notifications regarding updates or informative communications related to the functionalities, products or contracted services, including the security updates, when necessary or reasonable for their implementation.</p>
+</li>
+<li>
+<p><strong>To provide You</strong> with news, special offers, and general information about other goods, services and events which We offer that are similar to those that You have already purchased or inquired about. We send such marketing communications only where permitted by applicable law: where prior consent is required (for example, under the laws applicable in the EEA and the UK), We will send them only with Your consent; otherwise, We may send them until You opt out. You may opt out or withdraw Your consent at any time by using the unsubscribe link in any marketing email We send or by contacting Us.</p>
+</li>
+<li>
+<p><strong>To manage Your requests:</strong> To attend and manage Your requests to Us.</p>
+</li>
+<li>
+<p><strong>For business transfers:</strong> We may use Your Personal Data to evaluate or conduct a merger, divestiture, restructuring, reorganization, dissolution, or other sale or transfer of some or all of Our assets, whether as a going concern or as part of bankruptcy, liquidation, or similar proceeding, in which Personal Data held by Us about Our Service users is among the assets transferred.</p>
+</li>
+<li>
+<p><strong>For other purposes</strong>: We may use Your information for other purposes, such as data analysis, identifying usage trends, determining the effectiveness of Our promotional campaigns, and evaluating and improving Our Service, products, services, marketing and Your experience.</p>
+</li>
+</ul>
+<p>We may share Your Personal Data in the following situations:</p>
+<ul>
+<li><strong>With Service Providers:</strong> We may share Your Personal Data with Service Providers to monitor and analyze the use of Our Service, and to contact You.</li>
+<li><strong>For business transfers:</strong> We may share or transfer Your Personal Data in connection with, or during negotiations of, any merger, sale of Company assets, financing, or acquisition of all or a portion of Our business to another company.</li>
+<li><strong>With Affiliates:</strong> We may share Your Personal Data with Our affiliates, in which case We will require those affiliates to honor this Privacy Policy. Affiliates include Our parent company and any other subsidiaries, joint venture partners or other companies that We control or that are under common control with Us.</li>
+<li><strong>With other users:</strong> If Our Service offers public areas, when You share Personal Data or otherwise interact in the public areas with other users, such information may be viewed by all users and may be publicly distributed outside the Service.</li>
+<li><strong>With Your consent</strong>: We may disclose Your Personal Data for any other purpose with Your consent.</li>
+</ul>
+<h4>Text Messages Privacy Notice</h4>
+<p>You have the option to receive text (SMS) messages from Us. If You opt in to text messages, We will send You updates, notifications, and other communications as described below. When You opt in, We will collect and store the information You provide in connection with text messaging, such as Your phone number, the date and method of Your consent, and message delivery and read information.</p>
+<p>No mobile information will be shared with or sold to third parties or affiliates for marketing or promotional purposes. The phone numbers and consent records We collect for texting are never shared with anyone for any purpose, except the Service Providers that technically have to handle them to deliver the texts.</p>
+<p>Consent to receive text messages is not a condition of any purchase or use of Our Service. If You consent to receive SMS from Us, You agree to receive text messages from Us related to:</p>
+<ul>
+<li>Customer care and support</li>
+<li>Account notifications, such as activity, status, or renewal reminders</li>
+<li>Delivery notifications and updates on the status of a delivery</li>
+<li>Authentication messages, such as one-time passwords (OTP) and passcodes</li>
+<li>Security alerts, such as suspicious login attempts or unusual account activity</li>
+<li>Marketing and promotional offers, discounts, and other promotional content</li>
+</ul>
+<p>Reply STOP to opt-out. Reply HELP for support. Message &amp; data rates may apply. Messaging frequency may vary. Carriers are not liable for delayed or undelivered messages.</p>
+<h3>Retention of Your Personal Data</h3>
+<p>The Company will retain Your Personal Data only for as long as is necessary for the purposes set out in this Privacy Policy. We will retain and use Your Personal Data to the extent necessary to comply with Our legal obligations (for example, if We are required to retain Your data to comply with applicable laws), resolve disputes, and enforce Our legal agreements and policies.</p>
+<p>Where possible, We apply shorter retention periods and/or reduce identifiability by deleting, aggregating, or anonymizing data. Unless otherwise stated, the retention periods below are maximum periods (&quot;up to&quot;) and We may delete or anonymize data sooner when it is no longer needed for the relevant purpose. We apply different retention periods to different categories of Personal Data based on the purpose of processing and legal obligations:</p>
+<ul>
+<li>
+<p>Account Information</p>
+<ul>
+<li>User Accounts: retained for the duration of Your Account relationship plus up to 24 months after account closure to handle any post-termination issues or resolve disputes.</li>
+</ul>
+</li>
+<li>
+<p>Customer Support Data</p>
+<ul>
+<li>Support tickets and correspondence: up to 24 months from the date of ticket closure to resolve follow-up inquiries, track service quality, and defend against potential legal claims.</li>
+<li>Chat transcripts: up to 24 months for quality assurance and staff training purposes.</li>
+</ul>
+</li>
+<li>
+<p>Usage Data</p>
+<ul>
+<li>
+<p>Website analytics data (cookies, IP addresses, device identifiers): up to 24 months from the date of collection, which allows us to analyze trends while respecting privacy principles.</p>
+</li>
+<li>
+<p>Server logs (IP addresses, access times): up to 24 months for security monitoring and troubleshooting purposes.</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>Usage Data is retained in accordance with the retention periods described above, and may be retained longer only where necessary for security, fraud prevention, or legal compliance.</p>
+<p>We may retain Personal Data beyond the periods stated above for different reasons:</p>
+<ul>
+<li>Legal obligation: We are required by law to retain specific data (e.g., financial records for tax authorities).</li>
+<li>Legal claims: Data is necessary to establish, exercise, or defend legal claims.</li>
+<li>Your explicit request: You ask Us to retain specific information.</li>
+<li>Technical limitations: Data exists in backup systems that are scheduled for routine deletion.</li>
+</ul>
+<p>You may request information about how long We will retain Your Personal Data by contacting Us.</p>
+<p>When retention periods expire, We securely delete or anonymize Personal Data according to the following procedures:</p>
+<ul>
+<li>Deletion: Personal Data is removed from Our systems and no longer actively processed.</li>
+<li>Backup retention: Residual copies may remain in encrypted backups for a limited period consistent with Our backup retention schedule and are not restored except where necessary for security, disaster recovery, or legal compliance.</li>
+<li>Anonymization: In some cases, We convert Personal Data into anonymous statistical data that cannot be linked back to You. This anonymized data may be retained indefinitely for research and analytics.</li>
+</ul>
+<h3>Transfer of Your Personal Data</h3>
+<p>Your information, including Personal Data, is processed at the Company's operating offices and in any other places where the parties involved in the processing are located. This means that this information may be transferred to — and maintained on — computers located outside of Your state, province, country or other governmental jurisdiction where the data protection laws may differ from those of Your jurisdiction.</p>
+<p>Where required by applicable law, We will ensure that international transfers of Your Personal Data are subject to appropriate safeguards and, where relevant, supplementary measures. The Company will take all steps reasonably necessary to ensure that Your data is treated securely and in accordance with this Privacy Policy and no transfer of Your Personal Data will take place to an organization or a country unless there are adequate controls in place, including the security of Your data and other personal information.</p>
+<h3>Delete Your Personal Data</h3>
+<p>You have the right to delete or request that We assist in deleting the Personal Data that We have collected about You.</p>
+<p>Our Service may give You the ability to delete certain information about You from within the Service.</p>
+<p>You may update, amend, or delete Your information at any time by signing in to Your Account, if You have one, and visiting the account settings section that allows You to manage Your personal information. You may also contact Us to request access to, correct, or delete any Personal Data that You have provided to Us.</p>
+<p>Please note, however, that We may need to retain certain information when We have a legal obligation or lawful basis to do so.</p>
+<h3>Disclosure of Your Personal Data</h3>
+<h4>Business Transactions</h4>
+<p>If the Company is involved in a merger, acquisition or asset sale, Your Personal Data may be transferred. We will provide notice before Your Personal Data is transferred and becomes subject to a different Privacy Policy.</p>
+<h4>Law Enforcement</h4>
+<p>Under certain circumstances, the Company may disclose Your Personal Data if required to do so by law or in response to valid requests by public authorities (e.g. a court or a government agency).</p>
+<h4>Other Legal Requirements</h4>
+<p>The Company may disclose Your Personal Data in the good-faith belief that such action is necessary to:</p>
+<ul>
+<li>Comply with a legal obligation</li>
+<li>Protect and defend the rights or property of the Company</li>
+<li>Prevent or investigate possible wrongdoing in connection with the Service</li>
+<li>Protect the personal safety of Users of the Service or the public</li>
+<li>Protect against legal liability</li>
+</ul>
+<h3>Security of Your Personal Data</h3>
+<p>The security of Your Personal Data is important to Us, but remember that no method of transmission over the Internet, or method of electronic storage, is 100% secure. While We strive to use commercially reasonable means to protect Your Personal Data, We cannot guarantee its absolute security.</p>
+<h2>Detailed Information on the Processing of Your Personal Data</h2>
+<p>The Service Providers We use may have access to Your Personal Data. These third-party vendors collect, store, use, process and transfer information about Your activity on Our Service in accordance with their Privacy Policies.</p>
+<h3>Usage, Performance and Miscellaneous</h3>
+<p>We may use third-party Service Providers to maintain and improve Our Service.</p>
+<ul>
+<li>
+<p><strong>Google Places</strong></p>
+<p>Google Places is a service that returns information about places using HTTP requests. It is operated by Google.</p>
+<p>Google Places service may collect information from You and from Your Device for security purposes.</p>
+<p>The information gathered by Google Places is held in accordance with the Privacy Policy of Google: <a href="https://www.google.com/intl/en/policies/privacy/" rel="external nofollow noopener" target="_blank">https://www.google.com/intl/en/policies/privacy/</a></p>
+</li>
+</ul>
+<h2>Children's and Minors' Privacy</h2>
+<p>The Service is not directed to, and We do not knowingly collect Personal Information from, anyone under the age of 16.</p>
+<p>If You are a parent or guardian and You believe Your child has provided Us with Personal Information, please contact Us. If We become aware that We have collected Personal Information from anyone under the age of 16, We will take steps to remove that information from Our servers as soon as reasonably possible.</p>
+<p>Some countries and states set a higher age at which an individual can consent to the processing of their own Personal Information. Where We rely on consent as a legal basis and the law applicable to a User sets an age higher than 16, We may require the consent of that User's parent or guardian before We collect and use their Personal Information.</p>
+<h2>Links to Other Websites</h2>
+<p>Our Service may contain links to other websites that are not operated by Us. If You click on a third-party link, You will be directed to that third party's site. We strongly advise You to review the Privacy Policy of every site You visit.</p>
+<p>We have no control over and assume no responsibility for the content, privacy policies or practices of any third-party sites or services.</p>
+<h2>Changes to this Privacy Policy</h2>
+<p>We may update Our Privacy Policy from time to time. We will notify You of any changes by posting the new Privacy Policy on this page.</p>
+<p>We will let You know via email and/or a prominent notice on Our Service, prior to the change becoming effective and update the &quot;Last updated&quot; date at the top of this Privacy Policy.</p>
+<p>You are advised to review this Privacy Policy periodically for any changes. Changes to this Privacy Policy are effective when they are posted on this page.</p>
+<h2>Contact Us</h2>
+<p>If You have any questions about this Privacy Policy, You can contact Us:</p>
+<ul>
+<li>
+<p>By email: azabokennedy09@gmail.com</p>
+</li>
+<li>
+<p>By visiting this page on Our Website: <a href="#contact">academicstrata.com/contact</a></p>
+</li>
+</ul>
 </section>
 
 <section id="terms" data-page hidden class="legal">
-<h1>Terms &amp; Conditions</h1><p>Last updated: 21 October 2026</p>
-<h2>1. Using this site</h2><p>By using Academicstrata you agree to these terms. If you do not agree, please do not use the site.</p>
-<h2>2. Free and premium content</h2><p>Free guides can be downloaded by anyone. Premium guides are available only to people who have been given access. Prices and access details are shown when you get a premium guide.</p>
-<h2>3. Ownership and your use</h2><p>All guides, text and illustrations are original content owned by us. You may download and print them for your own personal study. You may not copy, resell, republish or share premium guides with others without our written permission.</p>
-<h2>4. Accounts</h2><p>If you create an account, keep your details private and give us accurate information. You are responsible for activity on your account.</p>
-<h2>5. Payments and refunds</h2><p>Each premium guide costs $1 (US dollars) and is paid through PayPal. Premium guides are digital downloads, so they are generally non-refundable once access is given. If a file is faulty, we will fix or replace it.</p>
-<h2>6. Acceptable use</h2><ul><li>Do not try to break, overload or gain unauthorised access to the site.</li><li>Do not upload or send anything unlawful, harmful or misleading.</li></ul>
-<h2>7. Study aids only</h2><p>Our guides are study aids. We work hard to keep them accurate but cannot promise any particular exam result.</p>
-<h2>8. Limits on our responsibility</h2><p>To the extent the law allows, we are not liable for losses that come from using, or not being able to use, the site or its guides.</p>
-<h2>9. Links to other sites</h2><p>We link to other websites, such as social media. We are not responsible for their content or practices.</p>
-<h2>10. Governing law</h2><p>These terms are governed by the laws of Uganda. [CONFIRM WITH YOUR LAWYER]</p>
-<h2>11. Contact</h2><p>Questions about these terms? Email azabokennedy09@gmail.com.</p>
+<h1>Terms and Conditions</h1>
+<p>Last updated: November 03, 2026</p>
+<p>Please read these terms and conditions carefully before using Our Service.</p>
+<h2>Interpretation and Definitions</h2>
+<h3>Interpretation</h3>
+<p>The words whose initial letters are capitalized have meanings defined under the following conditions. The following definitions shall have the same meaning regardless of whether they appear in singular or in plural.</p>
+<h3>Definitions</h3>
+<p>For the purposes of these Terms and Conditions:</p>
+<ul>
+<li>
+<p><strong>Affiliate</strong> means an entity that controls, is controlled by, or is under common control with a party, where &quot;control&quot; means ownership of 50% or more of the shares, equity interest or other securities entitled to vote for election of directors or other managing authority.</p>
+</li>
+<li>
+<p><strong>Country/State</strong> refers to:  Uganda</p>
+</li>
+<li>
+<p><strong>Company</strong> (referred to as either &quot;the Company&quot;, &quot;We&quot;, &quot;Us&quot; or &quot;Our&quot; in these Terms and Conditions) refers to Academic Strata.</p>
+</li>
+<li>
+<p><strong>Device</strong> means any device that can access the Service such as a computer, a cell phone or a digital tablet.</p>
+</li>
+<li>
+<p><strong>Service</strong> refers to the Website.</p>
+</li>
+<li>
+<p><strong>Terms and Conditions</strong> (also referred to as &quot;Terms&quot;) means these Terms and Conditions, including any documents expressly incorporated by reference, which govern Your access to and use of the Service and form the entire agreement between You and the Company regarding the Service. These Terms and Conditions have been created with the help of the <a href="https://www.termsfeed.com/terms-conditions-generator/" target="_blank" rel="noopener noreferrer">Terms and Conditions Generator</a>.</p>
+</li>
+<li>
+<p><strong>Third-Party Social Media Service</strong> means any services or content (including data, information, products or services) provided by a third party that is displayed, included, made available, or linked to through the Service.</p>
+</li>
+<li>
+<p><strong>Website</strong> refers to Academic Strata, accessible from <a href="https://www.academicstrata.com" rel="external nofollow noopener" target="_blank">www.academicstrata.com</a></p>
+</li>
+<li>
+<p><strong>You</strong> means the individual accessing or using the Service, or the company, or other legal entity on behalf of which such individual is accessing or using the Service, as applicable.</p>
+</li>
+</ul>
+<h2>Acknowledgment</h2>
+<p>These are the Terms and Conditions governing the use of this Service and the agreement between You and the Company. These Terms and Conditions set out the rights and obligations of all users regarding the use of the Service.</p>
+<p>Your access to and use of the Service is conditioned on Your acceptance of and compliance with these Terms and Conditions. These Terms and Conditions apply to all visitors, users and others who access or use the Service.</p>
+<p>By accessing or using the Service You agree to be bound by these Terms and Conditions. If You disagree with any part of these Terms and Conditions then You may not access the Service.</p>
+<p>You represent that you are over the age of 18. The Company does not permit those under 18 to use the Service.</p>
+<p>Your access to and use of the Service is also subject to Our Privacy Policy, which describes how We collect, use, and disclose personal information. Please read Our Privacy Policy carefully before using Our Service.</p>
+<h2>Links to Other Websites</h2>
+<p>Our Service may contain links to third-party websites or services that are not owned or controlled by the Company.</p>
+<p>The Company has no control over, and assumes no responsibility for, the content, privacy policies, or practices of any third-party websites or services. You further acknowledge and agree that the Company shall not be responsible or liable, directly or indirectly, for any damage or loss caused or alleged to be caused by or in connection with the use of or reliance on any such content, goods or services available on or through any such websites or services.</p>
+<p>We strongly advise You to read the terms and conditions and privacy policies of any third-party websites or services that You visit.</p>
+<h3>Links from a Third-Party Social Media Service</h3>
+<p>The Service may display, include, make available, or link to content or services provided by a Third-Party Social Media Service. A Third-Party Social Media Service is not owned or controlled by the Company, and the Company does not endorse or assume responsibility for any Third-Party Social Media Service.</p>
+<p>You acknowledge and agree that the Company shall not be responsible or liable, directly or indirectly, for any damage or loss caused or alleged to be caused by or in connection with Your access to or use of any Third-Party Social Media Service, including any content, goods, or services made available through them. Your use of any Third-Party Social Media Service is governed by that Third-Party Social Media Service's terms and privacy policies.</p>
+<h2>Termination</h2>
+<p>We may terminate or suspend Your access immediately, without prior notice or liability, for any reason whatsoever, including without limitation if You breach these Terms and Conditions.</p>
+<p>Upon termination, Your right to use the Service will cease immediately.</p>
+<h2>Limitation of Liability</h2>
+<p>Notwithstanding any damages that You might incur, the entire liability of the Company and any of its suppliers under any provision of these Terms and Your exclusive remedy for all of the foregoing shall be limited to the amount actually paid by You through the Service or 100 USD if You haven't purchased anything through the Service.</p>
+<p>To the maximum extent permitted by applicable law, in no event shall the Company or its suppliers be liable for any special, incidental, indirect, or consequential damages whatsoever (including, but not limited to, damages for loss of profits, loss of data or other information, for business interruption, for personal injury, loss of privacy arising out of or in any way related to the use of or inability to use the Service, third-party software and/or third-party hardware used with the Service, or otherwise in connection with any provision of these Terms), even if the Company or any supplier has been advised of the possibility of such damages and even if the remedy fails of its essential purpose.</p>
+<p>Some states do not allow the exclusion of implied warranties or limitation of liability for incidental or consequential damages, which means that some of the above limitations may not apply. In these states, each party's liability will be limited to the greatest extent permitted by law.</p>
+<h2>&quot;AS IS&quot; and &quot;AS AVAILABLE&quot; Disclaimer</h2>
+<p>The Service is provided to You &quot;AS IS&quot; and &quot;AS AVAILABLE&quot; and with all faults and defects without warranty of any kind. To the maximum extent permitted under applicable law, the Company, on its own behalf and on behalf of its Affiliates and its and their respective licensors and service providers, expressly disclaims all warranties, whether express, implied, statutory or otherwise, with respect to the Service, including all implied warranties of merchantability, fitness for a particular purpose, title and non-infringement, and warranties that may arise out of course of dealing, course of performance, usage or trade practice. Without limitation to the foregoing, the Company provides no warranty or undertaking, and makes no representation of any kind that the Service will meet Your requirements, achieve any intended results, be compatible or work with any other software, applications, systems or services, operate without interruption, meet any performance or reliability standards or be error free or that any errors or defects can or will be corrected.</p>
+<p>Without limiting the foregoing, neither the Company nor any of the company's provider makes any representation or warranty of any kind, express or implied: (i) as to the operation or availability of the Service, or the information, content, and materials or products included thereon; (ii) that the Service will be uninterrupted or error-free; (iii) as to the accuracy, reliability, or currency of any information or content provided through the Service; or (iv) that the Service, its servers, the content, or e-mails sent from or on behalf of the Company are free of viruses, scripts, trojan horses, worms, malware, timebombs or other harmful components.</p>
+<p>Some jurisdictions do not allow the exclusion of certain types of warranties or limitations on applicable statutory rights of a consumer, so some or all of the above exclusions and limitations may not apply to You. But in such a case the exclusions and limitations set forth in this section shall be applied to the greatest extent enforceable under applicable law.</p>
+<h2>Governing Law</h2>
+<p>The laws of the Country/State, excluding its conflicts of law rules, shall govern these Terms and Your use of the Service. Your use of the Application may also be subject to other local, state, national, or international laws.</p>
+<h2>Disputes Resolution</h2>
+<p>If You have any concern or dispute about the Service, You agree to first try to resolve the dispute informally by contacting the Company.</p>
+<h2>For European Union (EU) Users</h2>
+<p>If You are a European Union consumer, you will benefit from any mandatory provisions of the law of the country in which You are resident.</p>
+<h2>United States Legal Compliance</h2>
+<p>You represent and warrant that (i) You are not located in a country that is subject to the United States government embargo, or that has been designated by the United States government as a &quot;terrorist supporting&quot; country, and (ii) You are not listed on any United States government list of prohibited or restricted parties.</p>
+<h2>Severability and Waiver</h2>
+<h3>Severability</h3>
+<p>If any provision of these Terms is held to be unenforceable or invalid, such provision will be changed and interpreted to accomplish the objectives of such provision to the greatest extent possible under applicable law and the remaining provisions will continue in full force and effect.</p>
+<h3>Waiver</h3>
+<p>Except as provided herein, the failure to exercise a right or to require performance of an obligation under these Terms shall not affect a party's ability to exercise such right or require such performance at any time thereafter nor shall the waiver of a breach constitute a waiver of any subsequent breach.</p>
+<h2>Translation Interpretation</h2>
+<p>These Terms and Conditions may have been translated if We have made them available to You on our Service.
+You agree that the original English text shall prevail in the case of a dispute.</p>
+<h2>Changes to These Terms and Conditions</h2>
+<p>We reserve the right, at Our sole discretion, to modify or replace these Terms at any time. If a revision is material We will make reasonable efforts to provide at least 30 days' notice prior to any new terms taking effect. What constitutes a material change will be determined at Our sole discretion.</p>
+<p>By continuing to access or use Our Service after those revisions become effective, You agree to be bound by the revised terms. If You do not agree to the new terms, in whole or in part, please stop using the Service.</p>
+<h2>Contact Us</h2>
+<p>If you have any questions about these Terms and Conditions, You can contact us:</p>
+<ul>
+<li>
+<p>By email: azabokennedy09@gmail.com</p>
+</li>
+<li>
+<p>By visiting this page on our website: <a href="#contact">academicstrata.com/contact</a></p>
+</li>
+</ul>
 </section>
 
 <section id="cookies" data-page hidden class="legal">
-<h1>Cookie Policy</h1><p>Last updated: 21 October 2026</p>
-<h2>What are cookies?</h2><p>Cookies are small files that a website stores on your device to make it work or to remember things about your visit.</p>
-<h2>What we use</h2><p>We do not use advertising or tracking cookies of our own. The platform that hosts this site may use essential cookies or similar browser storage so that the site loads securely and works properly. We also remember on your device that you have seen our cookie notice. If you sign in, your session is kept in your browser storage. [UPDATE THIS IF YOU ADD ANALYTICS]</p>
-<h2>Third-party content</h2><ul><li>Fonts are loaded from Google Fonts, which may receive your IP address when the page loads.</li><li>Links to Facebook, TikTok, Instagram and YouTube open other sites that set their own cookies.</li></ul>
-<h2>Managing cookies</h2><p>You can block or delete cookies in your browser settings. Some parts of the site may not work properly if you block all of them.</p>
-<h2>Questions</h2><p>Email azabokennedy09@gmail.com and we will be happy to help.</p>
+<h1>Cookies Policy</h1>
+<p>Last updated: November 03, 2026</p>
+<p>This Cookies Policy explains what Cookies are and how We use them. You should read this policy so You can understand what type of cookies We use, or the information We collect using Cookies and how that information is used. This Cookies Policy has been created with the help of the <a href="https://www.termsfeed.com/cookies-policy-generator/" target="_blank" rel="noopener noreferrer">Cookies Policy Generator</a>.</p>
+<p>Cookies do not typically contain any information that personally identifies a user, but personal information that We store about You may be linked to the information stored in and obtained from Cookies. For further information on how We use, store and keep your personal data secure, see our Privacy Policy, if and when We make it available within the Website or on our website.</p>
+<p>We do not store sensitive personal information, such as mailing addresses, account passwords, etc. in the Cookies We use.</p>
+<h2>Interpretation and Definitions</h2>
+<h3>Interpretation</h3>
+<p>The words whose initial letters are capitalized have meanings defined under the following conditions. The following definitions shall have the same meaning regardless of whether they appear in singular or in plural.</p>
+<h3>Definitions</h3>
+<p>For the purposes of this Cookies Policy:</p>
+<ul>
+<li><strong>Company</strong> (referred to as either &quot;the Company&quot;, &quot;We&quot;, &quot;Us&quot; or &quot;Our&quot; in this Cookies Policy) refers to Academic Strata.</li>
+<li><strong>Cookies</strong> means small files that are placed on Your computer, mobile device or any other device by a website, containing details of your browsing history on that website among its many uses.</li>
+<li><strong>Website</strong> refers to Academic Strata, accessible from <a href="https://www.academicstrata.com" rel="external nofollow noopener" target="_blank">www.academicstrata.com</a>.</li>
+<li><strong>You</strong> means the individual accessing or using the Website, or a company, or any legal entity on behalf of which such individual is accessing or using the Website, as applicable.</li>
+</ul>
+<h2>The use of the Cookies</h2>
+<h3>Type of Cookies We Use</h3>
+<p>Cookies can be &quot;Persistent&quot; or &quot;Session&quot; Cookies. Persistent Cookies remain on your personal computer or mobile device when You go offline, while Session Cookies are deleted as soon as You close your web browser.</p>
+<p>Where required by law, We will request your consent before using Cookies that are not strictly necessary. Strictly necessary Cookies are used to provide the Website and cannot be switched off in our systems.</p>
+<p>We use both session and persistent Cookies for the purposes set out below:</p>
+<ul>
+<li>
+<p><strong>Necessary / Essential Cookies</strong></p>
+<p>Type: Session Cookies</p>
+<p>Administered by: Us</p>
+<p>Purpose: These Cookies are essential to provide You with services available through the Website and to enable You to use some of its features. They help to authenticate users and prevent fraudulent use of user accounts. Without these Cookies, the services that You have asked for cannot be provided, and We only use these Cookies to provide You with those services.</p>
+</li>
+<li>
+<p><strong>Functionality Cookies</strong></p>
+<p>Type: Persistent Cookies</p>
+<p>Administered by: Us</p>
+<p>Purpose: These Cookies allow Us to remember choices You make when You use the Website, such as remembering your login details or language preference. The purpose of these Cookies is to provide You with a more personal experience and to avoid You having to re-enter your preferences every time You use the Website.</p>
+</li>
+</ul>
+<h3>Your Choices Regarding Cookies</h3>
+<p>If You prefer to avoid the use of Cookies on the Website, first You must disable the use of Cookies in your browser and then delete the Cookies saved in your browser associated with the Website. You may use this option for preventing the use of Cookies at any time.</p>
+<p>If You do not accept Our Cookies, You may experience some inconvenience in your use of the Website and some features may not function properly.</p>
+<p>If You'd like to delete Cookies or instruct your web browser to delete or refuse Cookies, please visit the help pages of your web browser.</p>
+<ul>
+<li>
+<p>For the Chrome web browser, please visit this page from Google: <a href="https://support.google.com/accounts/answer/32050" rel="external nofollow noopener" target="_blank">https://support.google.com/accounts/answer/32050</a></p>
+</li>
+<li>
+<p>For the Microsoft Edge browser, please visit this page from Microsoft: <a href="https://support.microsoft.com/microsoft-edge/delete-cookies-in-microsoft-edge-63947406-40ac-c3b8-57b9-2a946a29ae09" rel="external nofollow noopener" target="_blank">https://support.microsoft.com/microsoft-edge/delete-cookies-in-microsoft-edge-63947406-40ac-c3b8-57b9-2a946a29ae09</a></p>
+</li>
+<li>
+<p>For the Firefox web browser, please visit this page from Mozilla: <a href="https://support.mozilla.org/en-US/kb/delete-cookies-remove-info-websites-stored" rel="external nofollow noopener" target="_blank">https://support.mozilla.org/en-US/kb/delete-cookies-remove-info-websites-stored</a></p>
+</li>
+<li>
+<p>For the Safari web browser, please visit this page from Apple: <a href="https://support.apple.com/guide/safari/manage-cookies-and-website-data-sfri11471/mac" rel="external nofollow noopener" target="_blank">https://support.apple.com/guide/safari/manage-cookies-and-website-data-sfri11471/mac</a></p>
+</li>
+</ul>
+<p>For any other web browser, please visit your web browser's official web pages.</p>
+<h3>Changes to this Cookies Policy</h3>
+<p>We may update this Cookies Policy from time to time. The &quot;Last updated&quot; date at the top indicates when it was last revised.</p>
+<h3>Contact Us</h3>
+<p>If you have any questions about this Cookies Policy, You can contact us:</p>
+<ul>
+<li>
+<p>By email: azabokennedy09@gmail.com</p>
+</li>
+<li>
+<p>By phone: 0786535915</p>
+</li>
+</ul>
 </section>
 
 <section id="contact" data-page hidden>
@@ -673,13 +1080,14 @@ h2{font-size:24px}
 </footer>
 <button id="totop" aria-label="Back to top"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m18 15-6-6-6 6"/></svg></button>
 <script>
-var map={home:"home",dashboard:"dashboard",faq:"faqpage",privacy:"privacy",terms:"terms",cookies:"cookies",about:"about",team:"team",services:"services",guides:"services","a-level":"services","o-level":"services","exam-prep":"services",tutoring:"services",resources:"resources",free:"resources",premium:"resources","lesson-notes":"resources","guide-books":"resources","lesson-plans":"resources","schemes-of-work":"resources","exam-papers":"resources","activities-of-integration":"resources",blog:"blog",contact:"contact"};
+var map={home:"home",dashboard:"dashboard",faq:"faqpage",privacy:"privacy",terms:"terms",cookies:"cookies",about:"about",team:"team",services:"services",guides:"services","a-level":"services","o-level":"services","exam-prep":"services",tutoring:"services",resources:"resources",free:"resources",premium:"resources","lesson-notes":"resources","guide-books":"resources","lesson-plans":"resources","schemes-of-work":"resources","exam-papers":"resources","activities-of-integration":"resources",blog:"blog","blog-lesson-notes":"blog","blog-articles":"blog","blog-news":"blog","blog-global-news":"blog",contact:"contact"};
 var TT={home:"Academicstrata | Study Guides for High School Students",about:"About | Academicstrata",faqpage:"FAQ | Academicstrata",team:"Our Team | Academicstrata",services:"Services | Academicstrata",resources:"Resources | Academicstrata",blog:"Blog | Academicstrata",contact:"Contact | Academicstrata",privacy:"Privacy Policy | Academicstrata",terms:"Terms & Conditions | Academicstrata",cookies:"Cookie Policy | Academicstrata",dashboard:"Admin | Academicstrata"};
 function route(){var h=(location.hash||"#home").slice(1);var pg=map[h]||(h.indexOf("post-")===0?"post":"home");
 document.querySelectorAll("[data-page]").forEach(function(s){s.hidden=s.id!==pg});
 document.querySelectorAll("nav [data-p]").forEach(function(a){var on=a.dataset.p===(pg==="post"?"blog":pg);a.classList.toggle("on",on);if(on&&a.tagName==="A")a.setAttribute("aria-current","page");else a.removeAttribute("aria-current")});
 document.querySelectorAll(".dd.open").forEach(function(d){d.classList.remove("open")});
 if(pg==="post")renderPost(h.slice(5));else document.title=TT[pg]||"Academicstrata";
+if(pg==="blog"){var BSL={"blog-lesson-notes":"Lesson Notes","blog-articles":"Articles","blog-news":"News and Updates","blog-global-news":"Global News"};window.__bcat=BSL[h]||"all";if(typeof catSel!=="undefined"&&Array.isArray(posts)){catSel=window.__bcat;renderPosts()}}
 if(items&&(h==="free"||h==="premium"||h==="resources"||RSLUG[h])){if(RSLUG[h]){rcat=RSLUG[h];filter="all"}else{filter=h==="resources"?"all":h;rcat="all"}filters();render()}
 if(h==="faq"){var fa=document.querySelector(".faqall");if(fa)fa.open=true}var t=document.getElementById(h);if(t&&h!==pg&&t.closest("[data-page]")===document.getElementById(pg)){t.scrollIntoView()}else{scrollTo(0,0)}}
 addEventListener("hashchange",route);route();
@@ -709,11 +1117,15 @@ function chip(t,on,fn){var b=el("button","chip"+(on?" on":""),t);b.onclick=fn;F.
 [["all","All"],["free","Free"],["premium","Premium"]].forEach(function(p){chip(p[1],filter===p[0],function(){filter=p[0];render()})});
 chip("All subjects",subj==="all",function(){subj="all";render()});
 var seen={};items.forEach(function(r){if(r.subject&&!seen[r.subject]){seen[r.subject]=1;chip(r.subject,subj===r.subject,function(){subj=r.subject;render()})}});var br=el("span","");br.style.cssText="flex-basis:100%;height:0";F.appendChild(br);chip("All types",rcat==="all",function(){rcat="all";render()});RCATS.forEach(function(n){chip(n,rcat===n,function(){rcat=n;render()})})}
-var CATS=["Study tips","Exams","A Level","O Level","Subjects","Revision","News"],catSel="all";
+var CATS=["Lesson Notes","Articles","News and Updates","Global News"],catSel=window.__bcat||"all";
+var CSLUG={"Lesson Notes":"blog-lesson-notes","Articles":"blog-articles","News and Updates":"blog-news","Global News":"blog-global-news"};
+var CDESC={"Lesson Notes":"Topic notes and summaries for your revision.","Articles":"Study advice, guides and features for learners and teachers.","News and Updates":"Announcements and updates from Academicstrata.","Global News":"Education news from around the world."};
+function goCat(v){var hs=v==="all"?"blog":CSLUG[v];if(hs){if(location.hash==="#"+hs){catSel=v;renderPosts()}else location.hash=hs}else{catSel=v;renderPosts()}}
 function blogCats(){var F=document.getElementById("blogcats");if(!F)return;F.textContent="";var cnt={};posts.forEach(function(p){if(p.category)cnt[p.category]=(cnt[p.category]||0)+1});
-var names=CATS.filter(function(c){return cnt[c]});Object.keys(cnt).forEach(function(c){if(names.indexOf(c)<0)names.push(c)});F.hidden=!posts.length;
-function add(label,val,n){var b=el("button","chip"+(catSel===val?" on":""),label+" ("+n+")");b.type="button";b.setAttribute("aria-pressed",catSel===val?"true":"false");b.onclick=function(){catSel=val;renderPosts()};F.appendChild(b)}
-add("All","all",posts.length);names.forEach(function(c){add(c,c,cnt[c])})}
+var names=CATS.slice();Object.keys(cnt).forEach(function(c){if(names.indexOf(c)<0)names.push(c)});F.hidden=false;
+function add(label,val,n){var b=el("button","chip"+(catSel===val?" on":""),label+" ("+n+")");b.type="button";b.setAttribute("aria-pressed",catSel===val?"true":"false");b.onclick=function(){goCat(val)};F.appendChild(b)}
+add("All","all",posts.length);names.forEach(function(c){add(c,c,cnt[c]||0)});
+var dsc=document.getElementById("blogcatdesc");if(dsc){dsc.hidden=!CDESC[catSel];dsc.textContent=CDESC[catSel]||""}}
 var OKT={P:"p",H1:"h2",H2:"h2",H3:"h3",H4:"h4",H5:"h4",H6:"h4",UL:"ul",OL:"ol",LI:"li",STRONG:"strong",B:"strong",EM:"em",I:"em",U:"u",BR:"br",BLOCKQUOTE:"blockquote",TABLE:"table",THEAD:"thead",TBODY:"tbody",TR:"tr",TH:"th",TD:"td",HR:"hr",CODE:"code",PRE:"pre",SUP:"sup",SUB:"sub",A:"a"};
 var DROPT={SCRIPT:1,STYLE:1,IFRAME:1,OBJECT:1,EMBED:1,FORM:1,INPUT:1,BUTTON:1,SELECT:1,TEXTAREA:1,SVG:1,MATH:1,NOSCRIPT:1,TEMPLATE:1,HEAD:1,LINK:1,META:1,TITLE:1,IMG:1,VIDEO:1,AUDIO:1,CANVAS:1};
 function cleanInto(src,dst){src.childNodes.forEach(function(n){if(n.nodeType===3){dst.appendChild(document.createTextNode(n.nodeValue));return}if(n.nodeType!==1)return;
@@ -755,13 +1167,13 @@ var rm=el("span","","Read article →");rm.style.cssText="font-weight:600;margin
 return c}
 function renderPosts(){refreshSR();var H=document.getElementById("homePosts"),B=document.getElementById("blogList");H.textContent="";B.textContent="";
 posts.slice(0,6).forEach(function(p){H.appendChild(pcard(p,false))});
-if(catSel!=="all"&&!posts.some(function(p){return p.category===catSel}))catSel="all";blogCats();var shownP=posts.filter(function(p){return catSel==="all"||p.category===catSel});shownP.forEach(function(p){B.appendChild(pcard(p,true))});var bnn=document.getElementById("blogNone");if(bnn)bnn.hidden=!(posts.length&&!shownP.length);
+if(catSel!=="all"&&CATS.indexOf(catSel)<0&&!posts.some(function(p){return p.category===catSel}))catSel="all";blogCats();var shownP=posts.filter(function(p){return catSel==="all"||p.category===catSel});shownP.forEach(function(p){B.appendChild(pcard(p,true))});var bnn=document.getElementById("blogNone");if(bnn)bnn.hidden=!(posts.length&&!shownP.length);
 document.getElementById("homePostsWrap").hidden=!posts.length;document.getElementById("blogEmpty").hidden=posts.length>0||!loaded;if((location.hash||"").indexOf("#post-")===0)renderPost(location.hash.slice(6));renderPlist()}
 function rich(P,txt){var re=/\[([^\]]+)\]\((#[a-z0-9_~.-]+)\)/g,last=0,m;while((m=re.exec(txt))){if(m.index>last)P.appendChild(document.createTextNode(txt.slice(last,m.index)));var a=el("a","",m[1]);a.href=m[2];a.style.textDecoration="underline";P.appendChild(a);last=re.lastIndex}if(last<txt.length)P.appendChild(document.createTextNode(txt.slice(last)))}
 function seo(p){document.title=p.title+" | Academicstrata";var md=document.querySelector('meta[name="description"]');if(!md){md=document.createElement("meta");md.name="description";document.head.appendChild(md)}md.content=p.summary||"";var ld=document.getElementById("ld");if(!ld){ld=document.createElement("script");ld.id="ld";ld.type="application/ld+json";document.head.appendChild(ld)}ld.textContent=JSON.stringify({"@context":"https://schema.org","@type":"Article",headline:p.title,description:p.summary,datePublished:new Date(p.createdAt||0).toISOString(),author:{"@type":"Organization",name:"Academicstrata"},publisher:{"@type":"Organization",name:"Academicstrata"}})}
 function renderPost(id){var V=document.getElementById("postView");V.textContent="";var p=null;(posts||[]).forEach(function(x){if(x.id===id)p=x});
 if(!p){V.appendChild(el("h1","",posts&&posts.length?"Post not found":"Loading…"));var b0=el("a","btn alt","Back to all posts");b0.href="#blog";V.appendChild(b0);return}
-seo(p);var tg=el("div","tag");var ca=el("a","",p.category||"Post");ca.href="#blog";ca.style.cssText="text-decoration:underline;text-underline-offset:3px";ca.onclick=function(e){e.preventDefault();catSel=p.category||"all";location.hash="blog";renderPosts()};tg.appendChild(ca);tg.appendChild(document.createTextNode(" · "+new Date(p.createdAt||0).toLocaleDateString()+" · "+Math.max(1,Math.round((p.body||"").split(/\s+/).length/200))+" min read"));V.appendChild(tg);var h=el("h1","",p.title);h.style.marginTop="8px";V.appendChild(h);var t=thumb(p);t.style.margin="16px 0 24px";V.appendChild(t);
+seo(p);var tg=el("div","tag");var ca=el("a","",p.category||"Post");ca.href="#blog";ca.style.cssText="text-decoration:underline;text-underline-offset:3px";ca.onclick=function(e){e.preventDefault();var c0=p.category||"all";if(CSLUG[c0])location.hash=CSLUG[c0];else{location.hash="blog";setTimeout(function(){catSel=c0;renderPosts()},40)}};tg.appendChild(ca);tg.appendChild(document.createTextNode(" · "+new Date(p.createdAt||0).toLocaleDateString()+" · "+Math.max(1,Math.round((p.body||"").split(/\s+/).length/200))+" min read"));V.appendChild(tg);var h=el("h1","",p.title);h.style.marginTop="8px";V.appendChild(h);var t=thumb(p);t.style.margin="16px 0 24px";V.appendChild(t);
 if(p.html){var ab=el("div","article"),cb=cleanHtml(p.html);while(cb.firstChild)ab.appendChild(cb.firstChild);V.appendChild(ab)}else(p.body||"").split(/\n\n+/).forEach(function(b){if(b.indexOf("### ")===0){V.appendChild(el("h3","",b.slice(4)))}else if(b.indexOf("## ")===0){V.appendChild(el("h2","",b.slice(3)))}else if(b.indexOf("- ")===0){var u=el("ul","");b.split("\n").forEach(function(l){var li=el("li","");rich(li,l.replace(/^- /,""));u.appendChild(li)});V.appendChild(u)}else{var pp=el("p","");rich(pp,b);V.appendChild(pp)}});
 var bk=el("a","btn alt","Back to all posts");bk.href="#blog";bk.style.marginTop="24px";V.appendChild(bk)}
 function renderHome(){var H=document.getElementById("homeRes");H.textContent="";
@@ -831,7 +1243,7 @@ document.querySelectorAll("section[data-page]").forEach(function(sec){
 var id=sec.id;if(!PN[id])return;var ph=pageHash(id),pn=PN[id];
 var h1=sec.querySelector("h1"),lead=sec.querySelector("p.lead,p.sub,.lede");
 add({type:pn,title:id==="home"?"Home":(cl(h1&&h1.textContent)||pn),text:cl((h1?h1.textContent:"")+" "+(lead?lead.textContent:"")+" "+pn+" "+(PK[id]||"")),href:"#"+ph});
-sec.querySelectorAll(".card,.cat,.feat,details").forEach(function(e){
+sec.querySelectorAll(".card,.cat,.feat,.fx,details").forEach(function(e){
 if(e.closest("#homeRes,#homePosts,#hsr"))return;
 var t=e.querySelector("summary,h3,h4");var title=cl(t&&t.textContent);if(!title)return;
 var full=tx(e);if(full.indexOf(title)===0)full=cl(full.slice(title.length));var o={type:pn,title:title,text:full,href:"#"+(e.id&&map[e.id]?e.id:ph)};
@@ -840,7 +1252,7 @@ add(o)});
 sec.querySelectorAll("h2").forEach(function(h){
 if(h.closest("#hsr"))return;
 var txt=[],skip=false,n=h.nextElementSibling;
-while(n&&n.tagName!=="H2"&&n.tagName!=="H1"){if(n.matches(".card,.cat,.feat,details,.grid,.fgrid")||n.querySelector(".card,.cat,.feat,details"))skip=true;txt.push(tx(n));n=n.nextElementSibling}
+while(n&&n.tagName!=="H2"&&n.tagName!=="H1"){if(n.matches(".card,.cat,.feat,.fx,details,.grid,.fgrid")||n.querySelector(".card,.cat,.feat,.fx,details"))skip=true;txt.push(tx(n));n=n.nextElementSibling}
 if(skip||!txt.length)return;
 add({type:pn,title:cl(h.textContent),text:cl(txt.join(" ")),href:"#"+(h.id&&map[h.id]?h.id:ph)})})});
 (items||[]).forEach(function(r){add({type:r.premium?"Premium guide":"Free guide",title:r.title,text:cl((r.subject||"")+" study guide PDF"),href:"#resources",res:r})});
