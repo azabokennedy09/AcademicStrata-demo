@@ -409,23 +409,67 @@ h2{font-size:24px}
 .legal p{line-height:1.7}
 
 /* Dark feature section with circular illustrations */
-.feats{margin-top:72px;background:#14201d;border-radius:14px;padding:56px 24px}
-.feats h2{color:#fff;text-align:center;margin:0 0 44px}
+.feats{margin-top:72px;background:color-mix(in srgb,var(--accent) 10%,var(--surface));border-radius:6px;padding:56px 24px}
+.feats h2{color:var(--ink);text-align:center;margin:0 0 44px}
 .fx{display:flex;flex-direction:column;align-items:center;text-align:center}
-.fx .fimg{display:block;width:min(100%,230px);aspect-ratio:1;border-radius:50%;overflow:hidden;background:#fff}
+.fx .fimg{display:block;width:min(100%,230px);aspect-ratio:1;border-radius:50%;overflow:hidden;background:#fff;box-shadow:0 0 0 1px var(--line)}
 .fx .fimg svg{display:block;width:100%;height:100%}
 .fx h3{margin:26px 0 10px;font-size:26px;font-weight:400;line-height:1.2}
-.fx h3 a{color:#9ED9C9;text-decoration:none}
+.fx h3 a{color:var(--accent);text-decoration:none}
 .fx h3 a:hover,.fx h3 a:focus-visible{text-decoration:underline;text-underline-offset:5px}
-.fx p{color:#E9EEEC;font-size:17px;line-height:1.6;max-width:30ch;margin:0}
+.fx p{color:var(--ink);font-size:17px;line-height:1.6;max-width:30ch;margin:0}
 @media (max-width:699px){.fgrid{grid-template-columns:1fr;gap:48px}}
 @media (max-width:560px){.feats{margin-top:40px;padding:40px 16px}.feats h2{margin-bottom:32px}.fx .fimg{width:min(100%,240px)}.fx h3{font-size:24px}}
 
 /* Numbered steps in the dark section */
 .fw{position:relative;width:min(100%,230px)}
 .fw .fimg{width:100%}
-.fnum{position:absolute;top:2px;left:2px;width:44px;height:44px;border-radius:50%;background:#E9B949;color:#14201D;border:3px solid #14201D;font:700 22px 'Newsreader',Georgia,serif;display:flex;align-items:center;justify-content:center}
+.fnum{position:absolute;top:2px;left:2px;width:44px;height:44px;border-radius:50%;background:var(--accent);color:var(--onaccent);border:3px solid color-mix(in srgb,var(--accent) 10%,var(--surface));font:700 22px 'Newsreader',Georgia,serif;display:flex;align-items:center;justify-content:center}
 @media (max-width:560px){.fw{width:min(100%,240px)}}
+
+/* About page redesign */
+#about .ab-hero{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:40px;align-items:center;padding:8px 0 0}
+#about .ab-hero h1{font-size:clamp(36px,5.6vw,60px);line-height:1.06;font-weight:400;margin:0 0 20px}
+#about .ab-hero .lead{margin:0 0 28px;max-width:56ch}
+#about .ab-cta{display:flex;flex-wrap:wrap;gap:12px}
+#about .ab-cta .btn.big.alt{background:transparent}
+#about .ab-art{width:100%;max-width:520px;height:auto;justify-self:center;display:block}
+#about .ab-stats{margin-top:48px;display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+#about .ab-stats>div{background:var(--surface);padding:22px 20px;display:flex;flex-direction:column;gap:2px}
+#about .ab-stats strong{font:400 clamp(30px,4vw,42px)/1.1 'Newsreader',Georgia,serif;color:var(--accent)}
+#about .ab-stats span{font-size:14px;color:var(--muted);font-weight:500}
+#about .ab-sec{margin-top:72px}
+#about .ab-sec h2{font-size:clamp(28px,3.6vw,38px);font-weight:400;margin:0 0 24px}
+#about .ab-duo{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:16px}
+#about .ab-duo .card{padding:28px}
+#about .ab-duo h3{font-size:24px}
+#about .ab-duo p{font-size:17px;line-height:1.65}
+#about .ab-quote{margin-top:56px;background:color-mix(in srgb,var(--accent) 10%,var(--surface));border-radius:6px;padding:40px 5%;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:32px 48px;align-items:center}
+#about .ab-big{font:400 clamp(28px,4.2vw,46px)/1.15 'Newsreader',Georgia,serif;color:var(--ink);margin:0;max-width:16ch}
+#about .ab-quote h3{font-size:26px;margin:0 0 10px}
+#about .ab-quote p:not(.ab-big){font-size:18px;line-height:1.7;margin:0}
+#about .ab-vals,#about .ab-find{display:grid;gap:16px}
+#about .ab-vals{grid-template-columns:repeat(auto-fit,minmax(min(240px,100%),1fr))}
+#about .ab-find{grid-template-columns:repeat(auto-fit,minmax(min(220px,100%),1fr))}
+#about .ab-ic{width:46px;height:46px;border-radius:50%;background:var(--accent);color:var(--onaccent);display:flex;align-items:center;justify-content:center;margin-bottom:6px}
+#about .ab-ic svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+#about .ab-vals .card,#about .ab-find .card{padding:24px;transition:box-shadow .2s ease,transform .2s ease}
+#about .ab-vals .card:hover,#about .ab-find .card:hover{box-shadow:0 8px 22px rgba(0,0,0,.10);transform:translateY(-2px)}
+#about .ab-vals h3{font-size:24px}
+#about .ab-steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(220px,100%),1fr));gap:28px;counter-reset:abs}
+#about .ab-steps li{counter-increment:abs;border-top:3px solid var(--accent);padding-top:18px;position:relative}
+#about .ab-steps li::before{content:"0" counter(abs);display:block;font:400 34px/1 'Newsreader',Georgia,serif;color:var(--accent);margin-bottom:10px}
+#about .ab-steps h3{font-size:22px;margin:0 0 6px}
+#about .ab-steps p{font-size:16px;margin:0}
+#about .ab-founder{margin-top:72px;display:flex;flex-wrap:wrap;align-items:center;gap:20px 28px;padding:28px;background:var(--surface);border:1px solid var(--line);border-radius:14px}
+#about .ab-av{flex:0 0 88px;width:88px;height:88px;border-radius:50%;background:color-mix(in srgb,var(--accent) 14%,var(--surface));color:var(--accent);border:2px solid var(--accent);display:flex;align-items:center;justify-content:center;font:400 30px 'Newsreader',Georgia,serif}
+#about .ab-founder>div{flex:1 1 260px}
+#about .ab-founder h3{font-size:24px;margin:0 0 6px}
+#about .ab-founder p{margin:0;font-size:16px}
+#about .band{margin-top:56px}
+#about .band .ab-cta .btn{background:var(--onaccent);color:var(--accent)}
+@media (min-width:700px){#about .ab-stats{grid-template-columns:repeat(4,1fr)}}
+@media (max-width:560px){#about .ab-sec{margin-top:48px}#about .ab-quote{margin-top:40px;padding:28px 6%}#about .ab-founder{margin-top:48px;padding:20px}#about .ab-hero{gap:28px}#about .ab-cta .btn.big{min-height:48px;padding:0 20px;font-size:15px}}
 </style>
 </head>
 <body>
@@ -554,22 +598,63 @@ h2{font-size:24px}
 </section>
 
 <section id="about" data-page hidden>
+<div class="ab-hero">
+<div>
 <span class="kicker">About us</span>
-<h1>About Academicstrata</h1>
+<h1>Study material that is clear, original and easy to find.</h1>
 <p class="lead" data-k="about_story" data-l="About page: our story">Academicstrata began with a simple idea: students learn better when their notes are clear, original and easy to find. We write study guides, summaries and practice questions for high school students, and we share many of them for free so no learner is left behind.</p>
-<div class="grid">
+<div class="ab-cta"><a class="btn big" href="#resources">Browse resources <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><a class="btn big alt" href="#team">Meet the team</a></div>
+</div>
+<svg class="ab-art" viewBox="0 0 520 400" role="img" aria-label="Illustration of an open book with a graduation cap, a checklist, a bar chart and a pencil"><defs><pattern id="abg" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="var(--line)" stroke-width="1"/></pattern></defs><rect width="520" height="400" rx="6" fill="var(--surface)" stroke="var(--line)"/><rect width="520" height="400" rx="6" fill="url(#abg)"/><circle cx="260" cy="215" r="160" fill="var(--accent)" opacity=".12"/><circle cx="260" cy="215" r="108" fill="var(--accent)" opacity=".12"/>
+<rect x="36" y="48" width="132" height="92" rx="8" fill="var(--surface)" stroke="var(--ink)" stroke-width="2"/><path d="M54 76l6 6 11-12M54 106l6 6 11-12" fill="none" stroke="var(--accent)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M86 76h62M86 106h46" stroke="var(--muted)" stroke-width="5" stroke-linecap="round" opacity=".5"/>
+<rect x="378" y="52" width="108" height="88" rx="8" fill="var(--surface)" stroke="var(--ink)" stroke-width="2"/><rect x="394" y="104" width="14" height="22" fill="var(--accent)"/><rect x="418" y="90" width="14" height="36" fill="var(--goldbg)"/><rect x="442" y="72" width="14" height="54" fill="var(--accent)"/><path d="M390 126H474" stroke="var(--ink)" stroke-width="2"/>
+<path d="M260 205Q205 183 140 197V305Q205 293 260 313ZM260 205Q315 183 380 197V305Q315 293 260 313Z" fill="var(--accent)"/><path d="M260 213Q205 193 150 205V295Q205 285 260 303ZM260 213Q315 193 370 205V295Q315 285 260 303Z" fill="var(--onaccent)"/><path d="M260 213V303" stroke="var(--line)" stroke-width="3"/><path d="M168 229Q205 221 240 233M168 249Q205 241 240 253M168 269Q205 261 240 273M280 233Q315 221 352 229M280 253Q315 241 352 249M280 273Q315 261 352 269" fill="none" stroke="var(--accent)" stroke-width="3" stroke-linecap="round" opacity=".7"/>
+<path d="M222 140v26q38 20 76 0v-26Z" fill="var(--gold)"/><path d="M260 102 336 132 260 162 184 132Z" fill="var(--goldbg)"/><path d="M326 136v34" stroke="var(--goldbg)" stroke-width="4" stroke-linecap="round"/><circle cx="326" cy="174" r="5" fill="var(--goldbg)"/>
+<g transform="rotate(-32 405 335)"><rect x="345" y="324" width="86" height="22" fill="var(--goldbg)"/><rect x="331" y="324" width="16" height="22" rx="3" fill="var(--accent)"/><path d="M431 324L462 335 431 346Z" fill="var(--surface)" stroke="var(--ink)" stroke-width="2" stroke-linejoin="round"/><path d="M453 332L462 335 453 338Z" fill="var(--ink)"/></g>
+<path d="M92 220v22M81 231h22M456 214v16M448 222h16" fill="none" stroke="var(--goldbg)" stroke-width="3" stroke-linecap="round"/></svg>
+</div>
+
+<div class="ab-stats" role="list">
+<div role="listitem"><strong>12</strong><span>Subjects covered</span></div>
+<div role="listitem"><strong>A &amp; O</strong><span>Level material</span></div>
+<div role="listitem"><strong>Free</strong><span>Guides open to everyone</span></div>
+<div role="listitem"><strong>100%</strong><span>Original content</span></div>
+</div>
+
+<div class="ab-sec"><span class="kicker">Why we exist</span><h2>Our mission and our people</h2>
+<div class="ab-duo">
 <div class="card top"><h3>Our mission</h3><p data-k="about_mission" data-l="About page: our mission">To help every student understand their subjects and approach exams with confidence.</p></div>
 <div class="card top"><h3>Who writes the guides</h3><p data-k="about_writers" data-l="About page: who writes the guides">Our guides are written by educators and subject specialists who know the syllabus and how students really study.</p></div>
-</div>
-<div class="offer"><h2>What you’ll find here</h2><div class="grid">
-<div class="card"><h3>Study guides</h3><p>Clear, topic-by-topic explanations with worked examples.</p></div>
-<div class="card"><h3>Notes and summaries</h3><p>Short, focused revision notes you can read quickly before class or exams.</p></div>
-<div class="card"><h3>Past papers</h3><p>Real exam-style material to practise under the right conditions.</p></div>
-<div class="card"><h3>Practice questions</h3><p>Questions that test understanding, not just memory.</p></div>
-</div><p style="margin-top:20px"><a class="btn" href="#resources">Browse resources</a></p></div>
-<div class="split"><svg class="ill" viewBox="0 0 400 300" role="img" aria-label="Illustration of a graduation cap"><circle cx="200" cy="150" r="130" fill="var(--line)"/><path d="M120 160v50q80 40 160 0v-50l-80 36z" fill="var(--gold)"/><path d="M200 70 330 125 200 180 70 125z" fill="var(--accent)"/><path d="M310 135v70" stroke="var(--gold)" stroke-width="6"/><circle cx="310" cy="212" r="10" fill="var(--gold)"/></svg><div><h2>What we believe</h2><ul class="checks"><li>Clear explanations beat long notes.</li><li>Every guide is original and written for students.</li><li>Good revision material should be easy to find.</li></ul><a class="btn" href="#team">Meet the team</a></div></div>
-<div style="margin-top:56px"><h2>How we make our guides</h2><div class="grid steps"><div class="card"><h3>Write</h3><p>Guides are written with plain explanations and worked examples for each topic.</p></div><div class="card"><h3>Check</h3><p>Every file is reviewed by an admin before it appears on the site.</p></div><div class="card"><h3>Publish</h3><p>Free guides are open to everyone. Premium guides unlock by arrangement.</p></div><div class="card"><h3>Improve</h3><p>We update guides when students and teachers send us feedback.</p></div></div></div>
-<div class="band"><h2>Questions, feedback or a guide you need?</h2><a class="btn" href="#contact" style="background:var(--onaccent);color:var(--accent)">Get in touch</a></div>
+</div></div>
+
+<div class="ab-quote"><div><span class="kicker">Our motto</span><p class="ab-big">“Learn clearly. Revise confidently.”</p></div><div><span class="kicker">Our vision</span><h3>Every student, well prepared.</h3><p>A future where every high school student has clear, dependable study material within reach, wherever they learn.</p></div></div>
+
+<div class="ab-sec"><span class="kicker">What we believe</span><h2>Three values behind every guide</h2>
+<div class="ab-vals">
+<div class="card"><span class="ab-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z"/></svg></span><h3>Clarity</h3><p>Clear explanations beat long notes. We say it plainly, then show a worked example.</p></div>
+<div class="card"><span class="ab-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20h9M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg></span><h3>Originality</h3><p>Every guide is original and written for students, never copied from elsewhere.</p></div>
+<div class="card"><span class="ab-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"/></svg></span><h3>Access</h3><p>Good revision material should be easy to find, with free guides open to every learner.</p></div>
+</div></div>
+
+<div class="ab-sec"><span class="kicker">Inside the library</span><h2>What you’ll find here</h2>
+<div class="ab-find">
+<div class="card"><span class="ab-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 4h6a4 4 0 0 1 4 4v13a3 3 0 0 0-3-3H2zM22 4h-6a4 4 0 0 0-4 4v13a3 3 0 0 1 3-3h7z"/></svg></span><h3>Study guides</h3><p>Clear, topic-by-topic explanations with worked examples.</p></div>
+<div class="card"><span class="ab-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8zM14 2v6h6M8 13h8M8 17h5"/></svg></span><h3>Notes and summaries</h3><p>Short, focused revision notes you can read quickly before class or exams.</p></div>
+<div class="card"><span class="ab-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 2h6v4H9zM9 4H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-3M8 12h8M8 16h5"/></svg></span><h3>Past papers</h3><p>Real exam-style material to practise under the right conditions.</p></div>
+<div class="card"><span class="ab-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M9.1 9a3 3 0 0 1 5.8 1c0 2-3 3-3 3M12 17h.01"/></svg></span><h3>Practice questions</h3><p>Questions that test understanding, not just memory.</p></div>
+</div></div>
+
+<div class="ab-sec"><span class="kicker">Our process</span><h2>How we make our guides</h2>
+<ol class="ab-steps">
+<li><h3>Write</h3><p>Guides are written with plain explanations and worked examples for each topic.</p></li>
+<li><h3>Check</h3><p>Every file is reviewed by an admin before it appears on the site.</p></li>
+<li><h3>Publish</h3><p>Free guides are open to everyone. Premium guides unlock by arrangement.</p></li>
+<li><h3>Improve</h3><p>We update guides when students and teachers send us feedback.</p></li>
+</ol></div>
+
+<div class="ab-founder"><span class="ab-av" aria-hidden="true">AK</span><div><span class="kicker">The person behind it</span><h3>Led by Mr. Azabo Kennedy, Founder</h3><p>Leads the vision of the library and makes sure every guide is clear, accurate and original.</p></div><a class="btn alt" href="#team">Meet the team</a></div>
+
+<div class="band"><div class="bt"><h2>Questions, feedback or a guide you need?</h2><p style="color:var(--onaccent);margin:8px 0 0">Tell us what would help you revise. We read every message.</p></div><div class="ab-cta"><a class="btn" href="#contact">Get in touch</a><a class="btn" href="#resources">Browse resources</a></div></div>
 </section>
 
 <section id="services" data-page hidden>
