@@ -474,6 +474,7 @@ h2{font-size:24px}
 .menu a:hover::before,.menu a:focus-visible::before{width:16px;opacity:1}
 @media (min-width:981px){.dd .menu.menu2{left:50%;right:auto;transform:translateX(-50%);grid-template-columns:repeat(2,minmax(0,1fr));column-gap:14px;min-width:480px;max-width:calc(100vw - 24px);animation:pop2 .18s ease}}
 @keyframes pop2{from{opacity:0;transform:translate(-50%,-6px)}to{opacity:1;transform:translate(-50%,0)}}
+.rtab{border-collapse:collapse;width:100%;max-width:560px;margin-top:16px}.rtab th,.rtab td{text-align:left;padding:11px 12px;border-bottom:1px solid var(--line);font-size:15px}.rtab th{width:140px;color:var(--muted);font-weight:600}#list .card h3 a:hover{text-decoration:underline}
 </style>
 </head>
 <body>
@@ -583,6 +584,7 @@ h2{font-size:24px}
 <label>Title<input id="t" placeholder="e.g. Quadratic equations"></label>
 <label>Subject<select id="s"><option>Mathematics</option><option>History and Political Education</option><option>Geography</option><option>Physics</option><option>General Science</option><option>Chemistry</option><option>Biology</option><option>Entrepreneurship Education</option><option>Kiswahili</option><option>Lugbara Ti</option><option>English Language</option><option>Physical Education</option><option>Christian Religious Education (CRE)</option><option>Islamic Religious Education (IRE)</option><option>Other</option></select></label>
 <label>Type<select id="rc"><option>Lesson Notes</option><option>Guide Books</option><option>Lesson Plans</option><option>Schemes of Work</option><option>Examination Papers</option><option>Activities of Integration</option></select></label>
+<label>Description (optional)<textarea id="rdsc" rows="2" maxlength="400" placeholder="A short note about this file"></textarea></label>
 <label>File (PDF or Word)<input id="f" type="file" accept=".pdf,.docx"></label>
 <label id="pw" style="flex-direction:row;align-items:center;gap:8px"><input id="p" type="checkbox" style="min-height:auto"> Premium</label>
 <button class="btn" id="up">Upload</button>
@@ -710,6 +712,8 @@ h2{font-size:24px}
 <div class="admin"><h2>Premium access</h2><div class="row"><label>Member email<input id="ge" type="email"></label><button class="btn" id="gy">Grant</button><button class="btn alt" id="gn">Revoke</button></div><div id="gm" role="status" style="margin-top:10px;font-size:14px;color:var(--muted)"></div></div>
 <div class="admin"><h2>Messages</h2><div id="msgs"></div></div>
 <div class="admin"><h2>Subscribers</h2><div id="subs"></div></div></div></section>
+
+<section id="resource" data-page hidden class="legal"><div id="resView"></div></section>
 
 <section id="post" data-page hidden class="legal"><div id="postView"></div></section>
 
@@ -1172,21 +1176,21 @@ You agree that the original English text shall prevail in the case of a dispute.
 <script>
 var map={home:"home",dashboard:"dashboard",faq:"faqpage",privacy:"privacy",terms:"terms",cookies:"cookies",about:"about",team:"team",services:"services",guides:"services","a-level":"services","o-level":"services","exam-prep":"services",tutoring:"services",resources:"resources",free:"resources",premium:"resources","lesson-notes":"resources","guide-books":"resources","lesson-plans":"resources","schemes-of-work":"resources","exam-papers":"resources","activities-of-integration":"resources",blog:"blog","blog-lesson-notes":"blog","blog-articles":"blog","blog-news":"blog","blog-global-news":"blog",contact:"contact"};
 var TT={home:"Academicstrata | Study Guides for High School Students",about:"About | Academicstrata",faqpage:"FAQ | Academicstrata",team:"Our Team | Academicstrata",services:"Services | Academicstrata",resources:"Resources | Academicstrata",blog:"Blog | Academicstrata",contact:"Contact | Academicstrata",privacy:"Privacy Policy | Academicstrata",terms:"Terms & Conditions | Academicstrata",cookies:"Cookie Policy | Academicstrata",dashboard:"Admin | Academicstrata"};
-function route(){var h=(location.hash||"#home").slice(1);if(!map[h]&&h.indexOf("post-")!==0){var ah=document.getElementById("art-"+h);if(ah){ah.scrollIntoView();return}}var pg=map[h]||(h.indexOf("post-")===0?"post":"home");
+function route(){var h=(location.hash||"#home").slice(1);if(!map[h]&&h.indexOf("post-")!==0&&h.indexOf("res-")!==0){var ah=document.getElementById("art-"+h);if(ah){ah.scrollIntoView();return}}var pg=map[h]||(h.indexOf("post-")===0?"post":h.indexOf("res-")===0?"resource":"home");
 document.querySelectorAll("[data-page]").forEach(function(s){s.hidden=s.id!==pg});
-document.querySelectorAll("nav [data-p]").forEach(function(a){var on=a.dataset.p===(pg==="post"?"blog":pg);a.classList.toggle("on",on);if(on&&a.tagName==="A")a.setAttribute("aria-current","page");else a.removeAttribute("aria-current")});
+document.querySelectorAll("nav [data-p]").forEach(function(a){var on=a.dataset.p===(pg==="post"?"blog":pg==="resource"?"resources":pg);a.classList.toggle("on",on);if(on&&a.tagName==="A")a.setAttribute("aria-current","page");else a.removeAttribute("aria-current")});
 document.querySelectorAll(".dd.open").forEach(function(d){d.classList.remove("open")});
-if(pg==="post")renderPost(h.slice(5));else document.title=TT[pg]||"Academicstrata";
+if(pg==="post")renderPost(h.slice(5));else if(pg==="resource")renderRes(h.slice(4));else document.title=TT[pg]||"Academicstrata";
 if(pg==="blog"){var BSL={"blog-lesson-notes":"Lesson Notes","blog-articles":"Articles","blog-news":"News and Updates","blog-global-news":"Global News"};window.__bcat=BSL[h]||"all";if(typeof catSel!=="undefined"&&Array.isArray(posts)){catSel=window.__bcat;renderPosts()}}
 if(items&&(h==="free"||h==="premium"||h==="resources"||RSLUG[h])){if(RSLUG[h]){rcat=RSLUG[h];filter="all"}else{filter=h==="resources"?"all":h;rcat="all"}filters();render()}
 if(h==="faq"){var fa=document.querySelector(".faqall");if(fa)fa.open=true}var t=document.getElementById(h);if(t&&h!==pg&&t.closest("[data-page]")===document.getElementById(pg)){t.scrollIntoView()}else{scrollTo(0,0)}}
 addEventListener("hashchange",route);route();
 
 var loaded=false,items=[],filter="all",subj="all",sortBy="new",pend=[],isEditor=false,canPrem=false,ents={},ords={},orders=[],memb=false,meId="",meEmail="",db=null,assets=null;
-var RCATS=["Lesson Notes","Guide Books","Lesson Plans","Schemes of Work","Examination Papers","Activities of Integration"],RSLUG={"lesson-notes":"Lesson Notes","guide-books":"Guide Books","lesson-plans":"Lesson Plans","schemes-of-work":"Schemes of Work","exam-papers":"Examination Papers","activities-of-integration":"Activities of Integration"},rcat="all";
+var RCATS=["Lesson Notes","Guide Books","Lesson Plans","Schemes of Work","Examination Papers","Activities of Integration"],RSLUG={"lesson-notes":"Lesson Notes","guide-books":"Guide Books","lesson-plans":"Lesson Plans","schemes-of-work":"Schemes of Work","exam-papers":"Examination Papers","activities-of-integration":"Activities of Integration"},rcat="all",dcounts={};
 function el(t,c,x){var e=document.createElement(t);if(c)e.className=c;if(x!=null)e.textContent=x;return e}
 function render(){
-renderHome();stat();var L=document.getElementById("list");L.textContent="";
+renderHome();stat();if(location.hash.indexOf("#res-")===0)renderRes(location.hash.slice(5));var L=document.getElementById("list");L.textContent="";
 var n=document.getElementById("qnote");n.hidden=!q;n.textContent="";if(q){n.appendChild(document.createTextNode("Showing results for “"+q+"”. "));var cb=el("button","chip","Clear search");cb.onclick=function(){q="";document.getElementById("sq").value="";render()};n.appendChild(cb)}
 var shown=items.filter(function(r){return (filter==="all"||(filter==="free"&&!r.premium)||(filter==="premium"&&r.premium))&&(subj==="all"||r.subject===subj)&&(rcat==="all"||r.category===rcat)&&(!q||(r.title+" "+r.subject+" "+(r.category||"")).toLowerCase().indexOf(q)>-1)});
 shown.sort(function(a,b){return sortBy==="az"?(a.title||"").localeCompare(b.title||""):(b.createdAt||0)-(a.createdAt||0)});
@@ -1194,7 +1198,7 @@ document.getElementById("cnt").textContent=shown.length+" of "+items.length+" re
 document.getElementById("empty").hidden=items.length>0||!loaded;if(loaded&&items.length&&!shown.length){var nm=el("p","","No resources match these filters yet. Please check back soon.");nm.style.gridColumn="1/-1";L.appendChild(nm)}
 shown.forEach(function(r){
 var c=el("div","card");c.appendChild(el("span",r.premium?"prem":"free",r.premium?"Premium \u00b7 $1":"Free"));
-c.appendChild(el("h3","",r.title));c.appendChild(el("p","",r.subject+" · "+(r.category?r.category+" · ":"")+((r.assetId||"").split(".").pop()||"file").toUpperCase()+(r.size?" · "+fsz(r.size):"")+(r.createdAt?" · "+new Date(r.createdAt).toLocaleDateString():"")+" · Verified"));
+var h3=el("h3","");var al=el("a","",r.title);al.href="#res-"+r.id;h3.appendChild(al);c.appendChild(h3);c.appendChild(el("p","",r.subject+" · "+(r.category?r.category+" · ":"")+((r.assetId||"").split(".").pop()||"file").toUpperCase()+(r.size?" · "+fsz(r.size):"")+(r.createdAt?" · "+new Date(r.createdAt).toLocaleDateString():"")+" · Verified"));
 var locked=r.premium&&!canPrem&&!ents[r.id];
 var b=el("button","btn",locked?(memb?"Pay $1 with PayPal":"Sign in to buy ($1)"):"Download PDF");
 if(locked){b.onclick=function(){buyItem(r)}}
@@ -1267,7 +1271,7 @@ seo(p);var tg=el("div","tag");var ca=el("a","",p.category||"Post");ca.href="#blo
 if(p.html){var ab=el("div","article"),cb=cleanHtml(p.html);while(cb.firstChild)ab.appendChild(cb.firstChild);ab.querySelectorAll("[data-aid]").forEach(function(x){x.id="art-"+x.getAttribute("data-aid")});ab.addEventListener("click",function(e){var a=e.target.closest("a");if(!a)return;var h=a.getAttribute("href")||"";if(h.charAt(0)!=="#")return;var id=h.slice(1);if(map[id]||id.indexOf("post-")===0)return;e.preventDefault();tocGo(ab,a)});V.appendChild(ab)}else(p.body||"").split(/\n\n+/).forEach(function(b){if(b.indexOf("### ")===0){V.appendChild(el("h3","",b.slice(4)))}else if(b.indexOf("## ")===0){V.appendChild(el("h2","",b.slice(3)))}else if(b.indexOf("- ")===0){var u=el("ul","");b.split("\n").forEach(function(l){var li=el("li","");rich(li,l.replace(/^- /,""));u.appendChild(li)});V.appendChild(u)}else{var pp=el("p","");rich(pp,b);V.appendChild(pp)}});
 var bk=el("a","btn alt","Back to all posts");bk.href="#blog";bk.style.marginTop="24px";V.appendChild(bk)}
 function renderHome(){var H=document.getElementById("homeRes");H.textContent="";
-items.slice(0,12).forEach(function(r){var c=el("a","card");c.href="#resources";c.onclick=function(e){e.preventDefault();openRes(r)};var lk=r.premium&&!canPrem&&!ents[r.id];c.appendChild(el("span",r.premium?"prem":"free",r.premium?"Premium \u00b7 $1":"Free"));c.appendChild(el("h3","",r.title));c.appendChild(el("p","",r.subject));var oa=el("p","",lk?"Buy on the Resources page":"Open file \u2197");oa.style.cssText="font-weight:600;margin-top:4px";c.appendChild(oa);H.appendChild(c)});
+items.slice(0,12).forEach(function(r){var c=el("a","card");c.href="#res-"+r.id;c.appendChild(el("span",r.premium?"prem":"free",r.premium?"Premium \u00b7 $1":"Free"));c.appendChild(el("h3","",r.title));c.appendChild(el("p","",r.subject));var oa=el("p","","View details \u2192");oa.style.cssText="font-weight:600;margin-top:4px";c.appendChild(oa);H.appendChild(c)});
 document.getElementById("homeResWrap").hidden=!items.length}
 filters();render();renderPosts();route();
 
@@ -1282,6 +1286,7 @@ if(db){db.collection("resources").onSnapshot(function(s){loaded=true;items=s.doc
 if(db){db.collection("posts").onSnapshot(function(s){loaded=true;posts=s.docs.map(function(d){var o=Object.assign({},d.data());o.id=d.id;return o});posts.sort(function(a,b){return (b.createdAt||0)-(a.createdAt||0)});renderPosts()},function(){})}
 if(db&&memb){db.collection("entitlements").onSnapshot(function(s){ents={};s.docs.forEach(function(d){var x=d.data();if(x&&x.resourceId&&(isEditor||x.userId===meId))ents[x.resourceId]=true});render()},function(){});
 db.collection("orders").onSnapshot(function(s){ords={};orders=[];s.docs.forEach(function(d){var x=Object.assign({},d.data());x.id=d.id;orders.push(x);if(x.userId===meId&&x.status==="pending")ords[x.resourceId]="pending"});renderOrders();render()},function(){})}
+if(window.SS&&SS.counts){SS.counts().then(function(m){dcounts=m;if(location.hash.indexOf("#res-")===0)renderRes(location.hash.slice(5))}).catch(function(){})}
 if(db){db.collection("pagetext").onSnapshot(function(s){s.docs.forEach(function(d){var x=d.data(),n=document.querySelector('[data-k="'+x.key+'"]');if(n&&x.text)n.textContent=x.text});buildPE()},function(){buildPE()})}
 if(db&&assets){document.getElementById("locked").hidden=true;document.getElementById("admin").hidden=false;document.getElementById("uph").textContent=isEditor?"Upload a file (PDF or Word)":"Submit a file for review (PDF or Word)";if(!isEditor)document.getElementById("pw").hidden=true}
 if(isEditor&&db){document.getElementById("review").hidden=false;db.collection("submissions").onSnapshot(function(s){pend=s.docs.map(function(d){var o=Object.assign({},d.data());o.id=d.id;return o});renderPend()},function(){})}
@@ -1308,17 +1313,17 @@ function renderPend(){var P=document.getElementById("pend");P.textContent="";doc
 pend.forEach(function(r){var c=el("div","card");c.appendChild(el("h3","",r.title));c.appendChild(el("p","",r.subject+" · "+((r.assetId||"").split(".").pop()||"file").toUpperCase()+(r.size?" · "+fsz(r.size):"")));
 var v=el("a","btn alt","Open file");v.href=r.url;v.target="_blank";v.rel="noopener";v.style.alignSelf="flex-start";c.appendChild(v);
 var row=el("div","row"),pl=el("label","",""),cb=document.createElement("input");pl.style.cssText="flex-direction:row;align-items:center;gap:8px";cb.type="checkbox";cb.style.minHeight="auto";pl.appendChild(cb);pl.appendChild(document.createTextNode("Premium"));row.appendChild(pl);
-var ok=el("button","btn","Approve");ok.onclick=async function(){try{await db.collection("resources").add({title:r.title,subject:r.subject,category:r.category||"",premium:cb.checked,assetId:r.assetId,url:r.url,size:r.size,createdAt:Date.now(),verified:true});await db.collection("submissions").doc(r.id).delete()}catch(e){alert("Could not approve. Try again.")}};
+var ok=el("button","btn","Approve");ok.onclick=async function(){try{await db.collection("resources").add({title:r.title,subject:r.subject,category:r.category||"",description:r.description||"",premium:cb.checked,assetId:r.assetId,url:r.url,size:r.size,createdAt:Date.now(),verified:true});await db.collection("submissions").doc(r.id).delete()}catch(e){alert("Could not approve. Try again.")}};
 var no=el("button","chip","Reject");no.onclick=async function(){if(!no.dataset.sure){no.dataset.sure="1";no.textContent="Click again to confirm";setTimeout(function(){no.dataset.sure="";no.textContent="Reject"},4000);return}try{await db.collection("submissions").doc(r.id).delete();pend=pend.filter(function(x){return x.id!==r.id});renderPend();if(assets&&r.assetId)assets.delete(r.assetId).catch(function(){})}catch(e){no.textContent="Could not reject"}};
 row.appendChild(ok);row.appendChild(no);c.appendChild(row);P.appendChild(c)})}
 document.getElementById("lsi").onclick=function(){openAuth("Sign In")};document.getElementById("lsu").onclick=function(){openAuth("Sign Up")};
-async function dl(r,open){var m=document.getElementById("msg");m.textContent="";var w=open?window.open("","_blank"):null;try{var u=await SS.url(r.assetId,!open);if(w){w.opener=null;w.location.href=u}else{var a=document.createElement("a");a.href=u;a.rel="noopener";document.body.appendChild(a);a.click();a.remove()}}catch(e){if(w)w.close();m.appendChild(el("div","msg","Could not open the file. Please try again or contact us."));toast("Could not open the file. Please try again or contact us.")}}
+async function dl(r,open){var m=document.getElementById("msg");m.textContent="";var w=open?window.open("","_blank"):null;try{var u=await SS.url(r.assetId,!open);if(w){w.opener=null;w.location.href=u}else{var a=document.createElement("a");a.href=u;a.rel="noopener";document.body.appendChild(a);a.click();a.remove()}if(window.SS&&SS.bump){SS.bump(r.id).then(function(n){if(typeof n==="number"&&n>0){dcounts[r.id]=n;if(location.hash==="#res-"+r.id)renderRes(r.id)}}).catch(function(){})}}catch(e){if(w)w.close();m.appendChild(el("div","msg","Could not open the file. Please try again or contact us."));toast("Could not open the file. Please try again or contact us.")}}
 function fsz(n){return n<1048576?Math.max(1,Math.round(n/1024))+" KB":(n/1048576).toFixed(1)+" MB"}
-function editRes(r,c){c.textContent="";var t=document.createElement("input");t.value=r.title;t.setAttribute("aria-label","Title");var s=document.createElement("select");s.setAttribute("aria-label","Subject");var cs=document.createElement("select");cs.setAttribute("aria-label","Type");var o0=document.createElement("option");o0.value="";o0.textContent="No type";cs.appendChild(o0);RCATS.forEach(function(n){var o=document.createElement("option");o.textContent=n;if(n===r.category)o.selected=true;cs.appendChild(o)});["Mathematics","History and Political Education","Geography","Physics","General Science","Chemistry","Biology","Entrepreneurship Education","Kiswahili","Lugbara Ti","English Language","Physical Education","Christian Religious Education (CRE)","Islamic Religious Education (IRE)","Other",r.subject].filter(function(v,i,a){return v&&a.indexOf(v)===i}).forEach(function(v){var o=document.createElement("option");o.textContent=v;if(v===r.subject)o.selected=true;s.appendChild(o)});
+function editRes(r,c){c.textContent="";var t=document.createElement("input");t.value=r.title;t.setAttribute("aria-label","Title");var s=document.createElement("select");s.setAttribute("aria-label","Subject");var ds=document.createElement("textarea");ds.rows=2;ds.maxLength=400;ds.value=r.description||"";ds.setAttribute("aria-label","Description");ds.placeholder="Description (optional)";var cs=document.createElement("select");cs.setAttribute("aria-label","Type");var o0=document.createElement("option");o0.value="";o0.textContent="No type";cs.appendChild(o0);RCATS.forEach(function(n){var o=document.createElement("option");o.textContent=n;if(n===r.category)o.selected=true;cs.appendChild(o)});["Mathematics","History and Political Education","Geography","Physics","General Science","Chemistry","Biology","Entrepreneurship Education","Kiswahili","Lugbara Ti","English Language","Physical Education","Christian Religious Education (CRE)","Islamic Religious Education (IRE)","Other",r.subject].filter(function(v,i,a){return v&&a.indexOf(v)===i}).forEach(function(v){var o=document.createElement("option");o.textContent=v;if(v===r.subject)o.selected=true;s.appendChild(o)});
 var pl=el("label","","");pl.style.cssText="flex-direction:row;align-items:center;gap:8px";var cb=document.createElement("input");cb.type="checkbox";cb.checked=!!r.premium;cb.style.minHeight="auto";pl.appendChild(cb);pl.appendChild(document.createTextNode("Premium"));
 var m=el("div","","");m.style.fontSize="14px";var sv=el("button","btn","Save"),cn=el("button","chip","Cancel");
-sv.onclick=async function(){var nt=t.value.trim();if(!nt){m.textContent="Title cannot be empty.";return}try{await db.collection("resources").doc(r.id).update({title:nt,subject:s.value,category:cs.value,premium:cb.checked});r.title=nt;r.subject=s.value;r.category=cs.value;r.premium=cb.checked;render()}catch(e){m.textContent="Could not save. Try again."}};
-cn.onclick=function(){render()};[t,s,cs,pl,sv,cn,m].forEach(function(x){c.appendChild(x)})}
+sv.onclick=async function(){var nt=t.value.trim();if(!nt){m.textContent="Title cannot be empty.";return}try{await db.collection("resources").doc(r.id).update({title:nt,subject:s.value,category:cs.value,description:ds.value.trim(),premium:cb.checked});r.title=nt;r.subject=s.value;r.category=cs.value;r.description=ds.value.trim();r.premium=cb.checked;render()}catch(e){m.textContent="Could not save. Try again."}};
+cn.onclick=function(){render()};[t,s,cs,ds,pl,sv,cn,m].forEach(function(x){c.appendChild(x)})}
 
 var SR={q:"",sig:""};
 var PN={home:"Home",about:"About",services:"Services",faqpage:"FAQ",team:"Team",contact:"Contact",privacy:"Privacy Policy",terms:"Terms",cookies:"Cookie Policy"};
@@ -1366,7 +1371,7 @@ var lim=all?res.length:10;
 res.slice(0,lim).forEach(function(r){var it=r.it,a=el("a","sr");a.href=it.href;
 a.appendChild(el("span","srt",it.type));var tt=el("span","srn");hl(tt,it.title,re);a.appendChild(tt);
 var sn=el("span","srs");hl(sn,snip(it.text,toks),re);a.appendChild(sn);
-a.onclick=function(e){if(it.res){e.preventDefault();openRes(it.res)}else if(it.subject){e.preventDefault();q=it.subject.toLowerCase();location.hash="resources";render()}else if(it.faq){e.preventDefault();location.hash="faq";setTimeout(function(){it.faq.open=true;it.faq.scrollIntoView({block:"center"})},90)}};
+a.onclick=function(e){if(it.res){e.preventDefault();location.hash="res-"+it.res.id}else if(it.subject){e.preventDefault();q=it.subject.toLowerCase();location.hash="resources";render()}else if(it.faq){e.preventDefault();location.hash="faq";setTimeout(function(){it.faq.open=true;it.faq.scrollIntoView({block:"center"})},90)}};
 L.appendChild(a)});
 if(res.length>lim){var mb=el("button","chip more","Show all "+res.length+" results");mb.type="button";mb.onclick=function(){showSR(SR.q,false,true)};L.appendChild(mb)}
 box.hidden=false;
@@ -1412,17 +1417,32 @@ addEventListener("hashchange",function(){nv.classList.remove("open");mtb.setAttr
 function payPal(r){var f=document.createElement("form");f.method="post";f.action="https://www.paypal.com/cgi-bin/webscr";f.target="_blank";f.style.display="none";var F={cmd:"_s-xclick",hosted_button_id:"PKQP4Q6EZ8NDU",currency_code:"USD",custom:r.id+"|"+meEmail};Object.keys(F).forEach(function(k){var i=document.createElement("input");i.type="hidden";i.name=k;i.value=F[k];f.appendChild(i)});document.body.appendChild(f);f.submit();f.remove()}
 async function buyItem(r){var m=document.getElementById("msg");m.textContent="";if(!memb){document.getElementById("signin").click();return}
 try{if(ords[r.id]!=="pending"){await db.collection("orders").add({resourceId:r.id,title:r.title,email:meEmail,userId:meId,status:"pending",createdAt:Date.now()});ords[r.id]="pending";render()}
-payPal(r);m.appendChild(el("div","msg","PayPal has opened in a new tab. After you pay, we unlock this guide for your account, usually within a day. Please pay with the same email as your account, or tell us on the Contact page."))}catch(e){m.appendChild(el("div","msg","Sorry, we could not start the order. Please try again."))}}
+payPal(r);toast("PayPal has opened in a new tab. After you pay, we unlock this guide for your account, usually within a day.");m.appendChild(el("div","msg","PayPal has opened in a new tab. After you pay, we unlock this guide for your account, usually within a day. Please pay with the same email as your account, or tell us on the Contact page."))}catch(e){m.appendChild(el("div","msg","Sorry, we could not start the order. Please try again."));toast("Sorry, we could not start the order. Please try again.")}}
 function renderOrders(){var O=document.getElementById("orders");if(!O)return;O.textContent="";var pl=orders.filter(function(o){return o.status==="pending"});if(!pl.length){O.appendChild(el("p","","No pending premium orders."));return}
 pl.forEach(function(o){var c=el("div","card");c.style.marginTop="10px";c.appendChild(el("h3","",o.title));c.appendChild(el("p","",o.email+" \u00b7 "+new Date(o.createdAt||0).toLocaleString()));var row=el("div","row"),ok=el("button","btn","Unlock"),no=el("button","chip","Dismiss");
 ok.onclick=async function(){try{await db.collection("entitlements").doc("e_"+o.userId+"_"+o.resourceId).set({userId:o.userId,resourceId:o.resourceId,title:o.title,email:o.email,createdAt:Date.now()});await db.collection("orders").doc(o.id).update({status:"approved"});o.status="approved";renderOrders()}catch(e){ok.textContent="Could not unlock"}};
 no.onclick=async function(){if(!no.dataset.sure){no.dataset.sure="1";no.textContent="Click again to confirm";setTimeout(function(){no.dataset.sure="";no.textContent="Dismiss"},4000);return}try{await db.collection("orders").doc(o.id).delete();o.status="dismissed";renderOrders()}catch(e){no.textContent="Could not dismiss"}};
 row.appendChild(ok);row.appendChild(no);c.appendChild(row);O.appendChild(c)})}
 function toast(t){var d=document.getElementById("toast");if(!d){d=document.createElement("div");d.id="toast";d.setAttribute("role","status");d.style.cssText="position:fixed;left:50%;transform:translateX(-50%);bottom:24px;background:var(--ink);color:var(--bg);padding:12px 18px;border-radius:10px;z-index:200;font-size:14px;max-width:90vw;box-shadow:0 8px 24px rgba(0,0,0,.25)";document.body.appendChild(d)}d.textContent=t;d.hidden=false;clearTimeout(d._t);d._t=setTimeout(function(){d.hidden=true},4500)}
-function openRes(r){if(r.premium&&!canPrem&&!ents[r.id]){location.hash="premium";return}toast("Opening your file in a new tab\u2026");dl(r,true)}
+function openRes(r){location.hash="res-"+r.id}
 function tocGo(art,a){var id=(a.getAttribute("href")||"").slice(1),t=document.getElementById("art-"+id);
 if(!t){var tx=cl(a.textContent).toLowerCase().replace(/[\s.\u2026]*\d+\s*$/,"").replace(/^[\d.)\s]+/,"");if(tx){art.querySelectorAll("h1,h2,h3,h4,h5").forEach(function(h){if(t)return;var ht=cl(h.textContent).toLowerCase().replace(/^[\d.)\s]+/,"");if(ht&&(ht===tx||(ht.length>3&&(ht.indexOf(tx)===0||tx.indexOf(ht)===0))))t=h})}}
 if(t){t=t.closest("h1,h2,h3,h4,h5")||t;t.scrollIntoView({behavior:"smooth",block:"start"})}}
+function renderRes(id){var V=document.getElementById("resView");if(!V)return;V.textContent="";var r=null;items.forEach(function(x){if(x.id===id)r=x});
+var back=el("a","btn alt","\u2190 Back to resources");back.href="#resources";
+if(!r){V.appendChild(el("h1","",loaded&&items.length?"File not found":"Loading\u2026"));V.appendChild(back);return}
+document.title=r.title+" | Academicstrata";var lk=r.premium&&!canPrem&&!ents[r.id];
+V.appendChild(el("span",r.premium?"prem":"free",r.premium?"Premium \u00b7 $1":"Free"));
+var h=el("h1","",r.title);h.style.marginTop="12px";V.appendChild(h);
+if(r.description)V.appendChild(el("p","",r.description));
+var T=document.createElement("table");T.className="rtab";
+[["Subject",r.subject||"\u2014"],["Type",r.category||"Not set"],["Format",((r.assetId||"").split(".").pop()||"file").toUpperCase()],["Size",r.size?fsz(r.size):"Not available"],["Added",r.createdAt?new Date(r.createdAt).toLocaleDateString():"\u2014"],["Access",r.premium?"Premium, $1 (paid with PayPal)":"Free"],["Downloads",String(dcounts[r.id]||0)]].forEach(function(x){var tr=T.insertRow(),th=document.createElement("th");th.textContent=x[0];th.scope="row";tr.appendChild(th);tr.insertCell().textContent=x[1]});
+V.appendChild(T);var row=el("div","row");row.style.margin="20px 0 12px";
+if(lk){var b=el("button","btn",memb?"Pay $1 with PayPal":"Sign in to buy ($1)");b.onclick=function(){buyItem(r)};row.appendChild(b)}
+else{var d1=el("button","btn","Download");d1.onclick=function(){dl(r,false)};row.appendChild(d1);if(!isEditor){var d2=el("button","btn alt","Open in new tab");d2.onclick=function(){dl(r,true)};row.appendChild(d2)}}
+var cp=el("button","chip","Copy link");cp.onclick=function(){var u=location.href;if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(u).then(function(){toast("Link copied")}).catch(function(){toast(u)})}else toast(u)};row.appendChild(cp);V.appendChild(row);
+if(lk&&ords[r.id]==="pending"){var pn=el("p","","Payment pending. We unlock this guide once PayPal confirms your payment.");pn.style.fontSize="14px";V.appendChild(pn)}
+var bk=el("div","");bk.style.marginTop="16px";bk.appendChild(back);V.appendChild(bk)}
 var q="";
 
 var dlg=document.getElementById("dlg");
@@ -1441,7 +1461,7 @@ if(!/\.(pdf|docx)$/i.test(f.name)){m.textContent="Only PDF and Word (.docx) file
 if(f.size>20971520){m.textContent="File is too large (20 MB maximum).";return}
 m.textContent="Uploading…";
 try{var a=await assets.upload(f);
-var rec={title:t,subject:document.getElementById("s").value,category:document.getElementById("rc").value,premium:isEditor&&document.getElementById("p").checked,assetId:a.id,url:a.url,size:a.sizeBytes,createdAt:Date.now(),verified:isEditor};
+var rec={title:t,subject:document.getElementById("s").value,category:document.getElementById("rc").value,description:document.getElementById("rdsc").value.trim(),premium:isEditor&&document.getElementById("p").checked,assetId:a.id,url:a.url,size:a.sizeBytes,createdAt:Date.now(),verified:isEditor};
 if(isEditor){await db.collection("resources").add(rec);m.textContent="Published."}else{await db.collection("submissions").add(rec);m.textContent="Thank you. Your file was sent for review and will appear once an admin approves it."}document.getElementById("t").value="";document.getElementById("f").value="";
 }catch(e){m.textContent="Upload failed. Try again."}};
 </script>
