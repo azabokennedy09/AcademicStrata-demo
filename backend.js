@@ -4,7 +4,7 @@
   if (!ok) {
     window.claude = { use: async function () { return null; } };
     var fail = async function () { throw new Error("The site is not connected to its database yet. Add your Supabase URL and key to config.js (see README, step 1)."); };
-    window.SS = { signIn: fail, signUp: fail, signOut: fail, url: fail, grant: fail };
+    window.SS = { signIn: fail, signUp: fail, signOut: fail, url: fail, grant: fail, reset: fail, setPassword: fail, google: fail };
     window.addEventListener("DOMContentLoaded", function () {
       var b = document.createElement("div");
       b.setAttribute("role", "alert");
@@ -15,6 +15,7 @@
     return;
   }
   var sb = supabase.createClient(window.SUPABASE_URL, window.SUPABASE_ANON_KEY);
+  sb.auth.onAuthStateChange(function (ev) { if (ev === "PASSWORD_RECOVERY") { window.__pwrec = true; window.dispatchEvent(new Event("pwrecovery")); } });
   var session = null, profile = null;
   var ready = (async function () {
     try {
@@ -85,12 +86,17 @@
 
   window.SS = {
     signIn: async function (email, password) { var r = await sb.auth.signInWithPassword({ email: email, password: password }); if (r.error) throw r.error; return {}; },
-    signUp: async function (email, password) { var r = await sb.auth.signUp({ email: email, password: password }); if (r.error) throw r.error; return { confirm: !r.data.session }; },
+    signUp: async function (email, password) { var r = await sb.auth.signUp({ email: email, password: password, options: { emailRedirectTo: location.origin + location.pathname } }); if (r.error) throw r.error; return { confirm: !r.data.session }; },
+    google: async function () { var r = await sb.auth.signInWithOAuth({ provider: "google", options: { redirectTo: location.origin + location.pathname } }); if (r.error) throw r.error; return {}; },
+    reset: async function (email) { var r = await sb.auth.resetPasswordForEmail(email, { redirectTo: location.origin + location.pathname }); if (r.error) throw r.error; return {}; },
+    setPassword: async function (password) { var r = await sb.auth.updateUser({ password: password }); if (r.error) throw r.error; return {}; },
     signOut: async function () { await sb.auth.signOut(); location.reload(); },
     url: async function (path, download) {
       var r = await sb.storage.from("files").createSignedUrl(path, 120, download ? { download: true } : undefined);
       if (r.error) throw r.error; return r.data.signedUrl;
     },
+    counts: async function () { var r = await sb.from("download_counts").select("resource_id,n"); if (r.error) throw r.error; var m = {}; r.data.forEach(function (x) { m[x.resource_id] = Number(x.n); }); return m; },
+    bump: async function (id) { var r = await sb.rpc("bump_download", { rid: id }); if (r.error) throw r.error; return Number(r.data); },
     grant: async function (email, flag) {
       var r = await sb.from("profiles").update({ premium: flag }).eq("email", email).select("id");
       if (r.error) throw r.error; return r.data.length;
