@@ -1,5 +1,8 @@
 // Connects the site to Supabase (login, database, file storage).
 (function () {
+  function bar(t) { var x = document.getElementById("secbar"); if (!x) { x = document.createElement("div"); x.id = "secbar"; x.setAttribute("role", "alert"); x.style.cssText = "position:fixed;left:0;right:0;bottom:0;z-index:99;background:#8a1c1c;color:#fff;padding:8px 14px;font:600 13px sans-serif;text-align:center"; (document.body || document.documentElement).appendChild(x); } x.textContent = t; }
+  document.addEventListener("securitypolicyviolation", function (e) { if (console && console.warn) console.warn("Blocked by security policy:", e.violatedDirective, e.blockedURI); bar("Part of the site was blocked by the security policy (" + e.violatedDirective + ": " + (e.blockedURI || "inline") + "). Please tell the site owner."); });
+  window.addEventListener("DOMContentLoaded", function () { if (window.SUPABASE_URL && /^https:\/\//.test(window.SUPABASE_URL) && !window.supabase) bar("The database library did not load, so posts, resources and sign-in are off. Open the browser console (F12) and tell the site owner what it says."); });
   var ok = window.SUPABASE_URL && /^https:\/\//.test(window.SUPABASE_URL) && window.SUPABASE_ANON_KEY && window.SUPABASE_ANON_KEY.indexOf("PASTE") < 0;
   if (!ok) {
     window.claude = { use: async function () { return null; } };
