@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://academicstrata.com/sitemap.xml
