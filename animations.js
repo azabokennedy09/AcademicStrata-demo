@@ -58,3 +58,53 @@
     }, 2600);
   }
 })();
+
+// Browse by subject: the row of cards drifts slowly sideways, pauses when you hover or touch it,
+// can be dragged with the mouse, and stays still for visitors who ask to reduce motion.
+(function () {
+  var sl = document.querySelector(".sl");
+  if (!sl) return;
+  var rm = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var pos = 0, last = 0, hold = 0, wait = 0, dir = 1, pause = false, dragging = false, moved = 0, sx = 0, s0 = 0;
+  function holdFor(ms) { hold = performance.now() + ms; }
+  sl.addEventListener("pointerenter", function (e) { if (e.pointerType === "mouse") pause = true; });
+  sl.addEventListener("pointerleave", function () { pause = false; holdFor(800); });
+  sl.addEventListener("focusin", function () { pause = true; });
+  sl.addEventListener("focusout", function () { pause = false; });
+  sl.addEventListener("touchstart", function () { holdFor(4000); }, { passive: true });
+  sl.addEventListener("wheel", function () { holdFor(2500); }, { passive: true });
+  sl.addEventListener("dragstart", function (e) { e.preventDefault(); });
+  sl.addEventListener("pointerdown", function (e) {
+    if (e.pointerType !== "mouse" || e.button) return;
+    dragging = true; moved = 0; sx = e.clientX; s0 = sl.scrollLeft; sl.classList.add("drag");
+  });
+  addEventListener("pointermove", function (e) {
+    if (!dragging) return;
+    var d = e.clientX - sx;
+    moved = Math.max(moved, Math.abs(d));
+    sl.scrollLeft = s0 - d; pos = sl.scrollLeft;
+  });
+  addEventListener("pointerup", function () {
+    if (!dragging) return;
+    dragging = false; sl.classList.remove("drag"); holdFor(2500);
+  });
+  sl.addEventListener("click", function (e) {
+    if (moved > 6) { e.preventDefault(); e.stopPropagation(); moved = 0; }
+  }, true);
+  if (rm) return;
+  function tick(t) {
+    var dt = Math.min(64, t - last); last = t;
+    if (!pause && !dragging && t > hold && sl.offsetParent && !document.hidden) {
+      if (Math.abs(sl.scrollLeft - pos) > 2) pos = sl.scrollLeft;
+      var m = sl.scrollWidth - sl.clientWidth;
+      if (m > 4 && t >= wait) {
+        pos += dt * 0.03 * dir;
+        if (pos >= m) { pos = m; dir = -1; wait = t + 1500; }
+        else if (pos <= 0) { pos = 0; dir = 1; wait = t + 1500; }
+        sl.scrollLeft = pos;
+      }
+    }
+    requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+})();

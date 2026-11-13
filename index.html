@@ -504,7 +504,7 @@ h2{font-size:24px}
 .pv-h{scroll-margin-top:24px}
 .pv-author{display:flex;gap:16px;align-items:center;margin:28px 0 8px}
 .pv-author p{margin:4px 0 6px;font-size:15px;color:var(--muted)}.pv-author a{font-weight:700;color:var(--accent)}
-.pv-nm{font:400 22px/1.2 'Newsreader',Georgia,serif}
+.pv-nm{font:400 24px/1.2 'Newsreader',Georgia,serif}
 .pv-av{flex:none;width:56px;height:56px;border-radius:50%;background:var(--accent);color:var(--onaccent);display:flex;align-items:center;justify-content:center;font-weight:800}
 @media (max-width:980px){.pv{grid-template-columns:1fr;gap:20px}.pv-side{display:contents}.pv-toc{order:1}.pv-main{order:2}.pv-more{order:3}.pv-author{align-items:flex-start}}
 
@@ -524,7 +524,7 @@ h2{font-size:24px}
 @media (hover:hover){.card:hover,.fx:hover{transform:translateY(-4px);box-shadow:0 10px 24px color-mix(in srgb,var(--ink) 14%,transparent)}}
 
 #team .kt-hero{display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:center;padding:8px 0}
-#team .kt-h1{font-size:clamp(36px,5.6vw,64px);font-weight:400;line-height:1.05;margin:6px 0 10px}
+#team .kt-h1{font-size:clamp(34px,6vw,56px);font-weight:400;line-height:1.05;margin:6px 0 10px}
 .kt-chips{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 16px}
 .kt-chips span{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:6px 14px;font-size:14px;font-weight:600}
 .kt-chips span:first-child{background:var(--accent);border-color:var(--accent);color:var(--onaccent)}
@@ -558,6 +558,89 @@ h2{font-size:24px}
 .ab-av,.pv-av{overflow:hidden}
 .ab-av img,.pv-av img{width:100%;height:100%;object-fit:cover;object-position:50% 38%;display:block}
 @media (max-width:860px){.kt-frame{max-width:310px}}
+
+/* Wide dropdown menus (desktop). On phones the menus stay as the simple list. */
+.menu.mega .mh,.menu.mega a span{display:none}
+.menu.mega a b{display:block;font-weight:inherit}
+@keyframes mega{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+@media (min-width:981px){
+.mainbar{position:relative}
+.dd{position:static}
+.menu.mega{left:0;right:0;top:100%;min-width:0;max-width:none;transform:none;border:0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);border-radius:0;padding:30px 3vw 38px;grid-template-columns:repeat(3,minmax(0,1fr));gap:0 44px;align-items:start;box-shadow:0 18px 30px color-mix(in srgb,var(--ink) 10%,transparent);animation:mega .2s ease}
+.dd.open .menu.mega,.dd:hover .menu.mega,.dd:focus-within .menu.mega{display:grid}
+.menu.mega::before{content:"";position:absolute;left:0;right:0;top:-18px;height:18px}
+.menu.mega .mc{display:block}
+.menu.mega .mh{display:block;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);padding-bottom:12px;margin-bottom:24px;border-bottom:1px solid var(--line)}
+.menu.mega a{display:block;white-space:normal;padding:0;min-height:0;margin:0 0 26px;border-radius:0;font-weight:400;background:none}
+.menu.mega a b{font-size:16px;font-weight:700;color:var(--ink);line-height:1.3}
+.menu.mega a span{display:block;margin-top:6px;font-size:15px;line-height:1.5;color:var(--muted);max-width:30ch}
+.menu.mega a:hover,.menu.mega a:focus-visible,nav .menu.mega a:hover,nav .menu.mega a:focus-visible{background:none;padding:0}
+.menu.mega a:hover b,.menu.mega a:focus-visible b{color:var(--accent)}
+.menu.mega a:hover b::after,.menu.mega a:focus-visible b::after{content:" \2192"}
+.dd>a{position:relative}
+.dd:hover:not(.on)>a::after,.dd.open:not(.on)>a::after{content:"";position:absolute;left:8px;right:8px;bottom:2px;height:3px;border-radius:2px;background:var(--accent)}
+}
+
+/* What sets us apart: one open row at a time, with a picture that changes (no JavaScript needed) */
+.sa-wrap{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:56px;align-items:start}
+.sa-r{position:absolute;opacity:0;pointer-events:none}
+.sa-vis{position:relative;aspect-ratio:1/1;width:100%;max-width:460px;border-radius:24px;overflow:hidden;background:linear-gradient(145deg,color-mix(in srgb,var(--accent) 24%,var(--surface)),color-mix(in srgb,var(--accent) 8%,var(--surface)))}
+.sa-s{position:absolute;inset:0;display:grid;place-items:center;opacity:0;transform:scale(.96);transition:opacity .4s ease,transform .4s ease}
+.sa-vis .ill{width:70%;max-width:none;height:auto}
+.sa-vis .ill *{stroke:var(--accent)!important}
+.sa-vis .ill circle:first-child{stroke:color-mix(in srgb,var(--accent) 45%,transparent)!important}
+.sa-row{border-top:1px solid var(--line)}.sa-row:last-child{border-bottom:1px solid var(--line)}
+.sa-h{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 0;cursor:pointer;font:400 28px/1.2 'Newsreader',Georgia,serif;color:color-mix(in srgb,var(--ink) 30%,var(--bg));transition:color .25s ease}
+@media (max-width:560px){.sa-h{font-size:24px}}
+.sa-h:hover{color:var(--ink)}
+.sa-h svg{flex:none;width:24px;height:24px;opacity:0;transition:opacity .25s ease}
+.sa-b{display:grid;grid-template-rows:0fr;visibility:hidden;transition:grid-template-rows .35s ease,visibility 0s .35s}
+.sa-in{min-height:0;overflow:hidden}
+.sa-in h3{font-size:26px;line-height:1.2;margin:0 0 10px}
+.sa-in p{margin:0 0 16px;max-width:44ch;color:var(--muted)}
+.sa-l{display:inline-block;font-size:17px;color:var(--ink);text-decoration:underline;text-underline-offset:5px;font-weight:600;margin-bottom:26px}
+.sa-l::after{content:" \2192"}.sa-l:hover{color:var(--accent)}
+#sa1:checked~.sa-vis .s2{opacity:1;transform:none}
+#sa1:checked~.sa-list .r1{border-top-color:var(--ink)}
+#sa1:checked~.sa-list .r1 .sa-h{color:var(--ink)}
+#sa1:checked~.sa-list .r1 .sa-h svg{opacity:1}
+#sa1:checked~.sa-list .r1 .sa-b{grid-template-rows:1fr;visibility:visible;transition-delay:0s}
+#sa1:focus-visible~.sa-list .r1 .sa-h{outline:3px solid var(--accent);outline-offset:2px}
+#sa2:checked~.sa-vis .s3{opacity:1;transform:none}
+#sa2:checked~.sa-list .r2{border-top-color:var(--ink)}
+#sa2:checked~.sa-list .r2 .sa-h{color:var(--ink)}
+#sa2:checked~.sa-list .r2 .sa-h svg{opacity:1}
+#sa2:checked~.sa-list .r2 .sa-b{grid-template-rows:1fr;visibility:visible;transition-delay:0s}
+#sa2:focus-visible~.sa-list .r2 .sa-h{outline:3px solid var(--accent);outline-offset:2px}
+#sa3:checked~.sa-vis .s4{opacity:1;transform:none}
+#sa3:checked~.sa-list .r3{border-top-color:var(--ink)}
+#sa3:checked~.sa-list .r3 .sa-h{color:var(--ink)}
+#sa3:checked~.sa-list .r3 .sa-h svg{opacity:1}
+#sa3:checked~.sa-list .r3 .sa-b{grid-template-rows:1fr;visibility:visible;transition-delay:0s}
+#sa3:focus-visible~.sa-list .r3 .sa-h{outline:3px solid var(--accent);outline-offset:2px}
+@media (max-width:800px){.sa-wrap{grid-template-columns:1fr;gap:28px}.sa-vis{aspect-ratio:16/10;max-width:none}.sa-vis .ill{width:auto;height:84%}}
+
+/* Browse by subject: a heading row, then a row of cards that drifts sideways */
+.sj-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.8fr);gap:20px 48px;align-items:end;margin-bottom:28px}
+.sj-head h2{margin:0}
+.sj-side p{margin:0 0 16px;max-width:46ch}
+.sj-side p a{color:var(--ink);text-decoration:underline;text-underline-offset:4px}
+.sl{display:flex;grid-template-columns:none;column-gap:0;gap:24px;overflow-x:auto;overflow-y:hidden;scrollbar-width:none;cursor:grab;-webkit-mask-image:linear-gradient(to right,#000 90%,transparent);mask-image:linear-gradient(to right,#000 90%,transparent)}
+.sl::-webkit-scrollbar{display:none}
+.sl.drag{cursor:grabbing;user-select:none}
+.sl a.cat{display:block;position:relative;flex:0 0 min(320px,78vw);height:400px;padding:0;border:0;border-radius:12px;overflow:hidden;-webkit-user-drag:none;
+background:linear-gradient(to bottom,transparent 0,transparent 42%,var(--bg) 80%),linear-gradient(160deg,color-mix(in srgb,var(--accent) 30%,var(--surface)),color-mix(in srgb,var(--accent) 9%,var(--surface)));transition:transform .25s ease}
+.sl a.cat:nth-child(4n+2){background:linear-gradient(to bottom,transparent 0,transparent 42%,var(--bg) 80%),linear-gradient(200deg,color-mix(in srgb,var(--accent) 16%,var(--surface)),color-mix(in srgb,var(--accent) 34%,var(--surface)))}
+.sl a.cat:nth-child(4n+3){background:linear-gradient(to bottom,transparent 0,transparent 42%,var(--bg) 80%),linear-gradient(120deg,color-mix(in srgb,var(--accent) 22%,var(--surface)),color-mix(in srgb,var(--accent) 6%,var(--surface)))}
+.sl a.cat:nth-child(4n){background:linear-gradient(to bottom,transparent 0,transparent 42%,var(--bg) 80%),linear-gradient(180deg,color-mix(in srgb,var(--accent) 12%,var(--surface)),color-mix(in srgb,var(--accent) 28%,var(--surface)))}
+.sl a.cat:hover{transform:translateY(-4px)}
+.sl a.cat::after{content:none}
+.sl .si{position:absolute;left:50%;top:6px;translate:-50% 0;flex:none;display:block;width:176px;height:auto;border:0;border-radius:0}
+.sl .si img{display:block;width:100%;height:auto;pointer-events:none}
+.sl a.cat>div{position:absolute;left:20px;right:20px;bottom:18px}
+.sl a.cat h3{margin:0 0 6px}
+.sl a.cat p{margin:0}
+@media (max-width:800px){.sj-head{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -579,10 +662,10 @@ h2{font-size:24px}
 <div class="mainbar">
 <a href="#home" class="logo" aria-label="Academicstrata home"><svg width="38" height="38" viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="10" fill="var(--accent)"/><g transform="translate(20 20) scale(1.14) translate(-20.5 -21.6)"><path d="M7 31.4h26" stroke="var(--onaccent)" stroke-width="2.2" stroke-linecap="round"/><path d="M12 34.6h16" stroke="var(--onaccent)" stroke-width="1.6" stroke-linecap="round" opacity=".55"/><rect x="8" y="14.5" width="6.4" height="15.5" rx="1.2" fill="var(--onaccent)"/><rect x="15.9" y="9" width="6.4" height="21" rx="1.2" fill="var(--onaccent)"/><g transform="rotate(13 23.8 30)"><rect x="23.8" y="12.5" width="6.4" height="17.5" rx="1.2" fill="var(--onaccent)"/></g><path d="M8 18.2h6.4M8 26.2h6.4M15.9 13h6.4M15.9 26.2h6.4" stroke="var(--accent)" stroke-width="1.1"/><path d="M23.8 16.6h6.4M23.8 26.2h6.4" stroke="var(--accent)" stroke-width="1.1" transform="rotate(13 23.8 30)"/></g></svg></a>
 <nav aria-label="Main" id="nav"><a href="#home" data-p="home">Home</a>
-<div class="dd" data-p="about"><a href="#about">About</a><button class="tg" aria-label="About submenu" aria-expanded="false"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button><div class="menu"><a href="#about">Our Story</a><a href="#team">Our Team</a></div></div>
-<div class="dd" data-p="services"><a href="#services">Services</a><button class="tg" aria-label="Services submenu" aria-expanded="false"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button><div class="menu"><a href="#guides">Study Guides</a><a href="#exam-prep">Exam Prep Packs</a><a href="#tutoring">Tutoring Support</a></div></div>
-<div class="dd" data-p="resources"><a href="#resources">Resources</a><button class="tg" aria-label="Resources submenu" aria-expanded="false"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button><div class="menu menu2"><a href="#resources">All Resources</a><a href="#free">Free Guides</a><a href="#premium">Premium Guides</a><a href="#lesson-notes">Lesson Notes</a><a href="#guide-books">Guide Books</a><a href="#lesson-plans">Lesson Plans</a><a href="#schemes-of-work">Schemes of Work</a><a href="#exam-papers">Examination Papers</a><a href="#activities-of-integration">Activities of Integration</a></div></div>
-<div class="dd" data-p="blog"><a href="#blog">Blog</a><button class="tg" aria-label="Blog submenu" aria-expanded="false"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button><div class="menu"><a href="#blog">All Posts</a><a href="#blog-lesson-notes">Lesson Notes</a><a href="#blog-articles">Articles</a><a href="#blog-news">News and Updates</a><a href="#blog-global-news">Global News</a></div></div>
+<div class="dd" data-p="about"><a href="#about">About</a><button class="tg" aria-label="About submenu" aria-expanded="false"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button><div class="menu mega"><div class="mc"><div class="mh">Explore</div><a href="#about"><b>Our Story</b><span>Why we started and what we believe.</span></a><a href="#team"><b>Our Team</b><span>Meet the founder.</span></a></div><div class="mc"><div class="mh">Support</div><a href="#faq"><b>FAQ</b><span>Answers to common questions.</span></a><a href="#contact"><b>Contact</b><span>Send us a message.</span></a></div></div></div>
+<div class="dd" data-p="services"><a href="#services">Services</a><button class="tg" aria-label="Services submenu" aria-expanded="false"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button><div class="menu mega"><div class="mc"><div class="mh">Study support</div><a href="#guides"><b>Study Guides</b><span>Topic-by-topic guides with worked examples.</span></a><a href="#exam-prep"><b>Exam Prep Packs</b><span>Practice material for exam season.</span></a></div><div class="mc"><div class="mh">Extra help</div><a href="#tutoring"><b>Tutoring Support</b><span>Get help with your subjects.</span></a></div></div></div>
+<div class="dd" data-p="resources"><a href="#resources">Resources</a><button class="tg" aria-label="Resources submenu" aria-expanded="false"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button><div class="menu mega"><div class="mc"><div class="mh">Explore</div><a href="#resources"><b>All Resources</b><span>Browse every file in the library.</span></a><a href="#free"><b>Free Guides</b><span>Open to everyone.</span></a><a href="#premium"><b>Premium Guides</b><span>Unlocked by arrangement.</span></a></div><div class="mc"><div class="mh">Teaching materials</div><a href="#lesson-notes"><b>Lesson Notes</b><span>Notes for the classroom.</span></a><a href="#guide-books"><b>Guide Books</b><span>Longer guides by subject.</span></a><a href="#lesson-plans"><b>Lesson Plans</b><span>Plans for your lessons.</span></a><a href="#schemes-of-work"><b>Schemes of Work</b><span>Term and year planning.</span></a></div><div class="mc"><div class="mh">Exams</div><a href="#exam-papers"><b>Examination Papers</b><span>Past papers to practise with.</span></a><a href="#activities-of-integration"><b>Activities of Integration</b><span>Tasks that bring topics together.</span></a></div></div></div>
+<div class="dd" data-p="blog"><a href="#blog">Blog</a><button class="tg" aria-label="Blog submenu" aria-expanded="false"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button><div class="menu mega"><div class="mc"><div class="mh">Posts</div><a href="#blog"><b>All Posts</b><span>Everything we have published.</span></a><a href="#blog-lesson-notes"><b>Lesson Notes</b><span>Notes shared as posts.</span></a><a href="#blog-articles"><b>Articles</b><span>Study tips and longer reads.</span></a></div><div class="mc"><div class="mh">News</div><a href="#blog-news"><b>News and Updates</b><span>What is new at Academicstrata.</span></a><a href="#blog-global-news"><b>Global News</b><span>Education news from around the world.</span></a></div></div></div>
 <a href="#faq" data-p="faqpage">FAQ</a><a href="#contact" data-p="contact">Contact</a>
 <div class="mauth"><button class="btn alt" id="msi">Sign In</button><button class="btn" id="msu">Sign Up</button><a class="btn" id="mad" href="#dashboard" hidden>Admin</a></div></nav>
 <div class="auth"><button class="btn alt" id="signin">Sign In</button><button class="btn" id="signup">Sign Up</button></div>
@@ -607,26 +690,31 @@ h2{font-size:24px}
 <div class="fx"><a class="fimg" href="#premium" tabindex="-1" aria-hidden="true"><svg viewBox="0 0 300 300" role="img" aria-label="Premium guide book with a gold medal"><rect width="300" height="300" fill="#F4E8CC"/><rect x="215" y="28" width="56" height="90" fill="#FBF4E2"/><rect y="228" width="300" height="72" fill="#E8DCCB"/><rect x="88" y="52" width="124" height="172" rx="6" fill="#0A5446"/><rect x="96" y="52" width="116" height="172" rx="6" fill="#0F6E5C"/><path d="M114 92H196M114 110H184M114 128H190" stroke="#fff" stroke-width="6" stroke-linecap="round" opacity=".9"/><path d="M114 160H160" stroke="#E9B949" stroke-width="6" stroke-linecap="round"/><path d="M172 224V258L184 248 196 258V224Z" fill="#C4673F"/><path d="M196 188 214 232 234 220 214 180Z" fill="#B3772F"/><path d="M146 188 126 232 106 220 126 180Z" fill="#B3772F"/><circle cx="170" cy="186" r="34" fill="#C9901E"/><circle cx="170" cy="186" r="26" fill="#E9B949"/><path d="M170 168l5.6 11.4 12.6 1.8-9.1 8.9 2.1 12.5-11.2-5.9-11.2 5.9 2.1-12.5-9.1-8.9 12.6-1.8Z" fill="#fff"/></svg></a><h3><a href="#premium">Go deeper</a></h3><p>Premium guides with worked answers.</p></div>
 <div class="fx"><a class="fimg" href="#services" tabindex="-1" aria-hidden="true"><svg viewBox="0 0 300 300" role="img" aria-label="A teacher and a student talking over an open book"><rect width="300" height="300" fill="#D9E6F2"/><rect x="118" y="20" width="64" height="100" fill="#EEF4FA"/><path d="M40 300C40 220 80 188 124 188S196 220 196 300Z" fill="#C4673F"/><path d="M124 188l-18 26 18 22 18-22z" fill="#F3E9DA"/><rect x="112" y="150" width="24" height="42" rx="10" fill="#8A5636"/><ellipse cx="124" cy="128" rx="34" ry="40" fill="#9A6140"/><path d="M88 128C82 80 112 70 124 70S168 80 160 128C156 108 148 98 124 98S92 108 88 128Z" fill="#1B1B1B"/><circle cx="112" cy="128" r="3.5" fill="#1B1B1B"/><circle cx="136" cy="128" r="3.5" fill="#1B1B1B"/><path d="M110 146q14 12 28 0" stroke="#fff" stroke-width="4" stroke-linecap="round" fill="none"/><path d="M170 300C170 224 206 196 244 196S296 224 296 300Z" fill="#2F4E73"/><path d="M244 196l-14 20 14 18 14-18z" fill="#EEF3F8"/><path d="M244 214l-5 10 5 40 5-40z" fill="#9C2F2F"/><rect x="232" y="162" width="24" height="38" rx="10" fill="#B87A57"/><ellipse cx="244" cy="142" rx="30" ry="36" fill="#C58B66"/><path d="M214 140C210 106 232 98 244 98S278 106 274 140C270 122 262 116 244 116S218 122 214 140Z" fill="#9A9A9A"/><circle cx="234" cy="142" r="3.2" fill="#1B1B1B"/><circle cx="254" cy="142" r="3.2" fill="#1B1B1B"/><path d="M234 158q10 8 20 0" stroke="#fff" stroke-width="3.5" stroke-linecap="round" fill="none"/><rect y="236" width="300" height="64" fill="#E8DCCB"/><path d="M150 226Q168 218 186 226V250Q168 244 150 250ZM150 226Q132 218 114 226V250Q132 244 150 250Z" fill="#fff"/><path d="M150 226V250" stroke="#CFC3AE" stroke-width="2"/><rect x="76" y="30" width="62" height="44" rx="14" fill="#fff"/><path d="M96 74l-8 14 24-14Z" fill="#fff"/><path d="M99 46q0-7 8-7t8 7q0 5-6 8" stroke="#0F6E5C" stroke-width="4" fill="none" stroke-linecap="round"/><circle cx="109" cy="63" r="2.6" fill="#0F6E5C"/></svg></a><h3><a href="#services">Get extra help</a></h3><p>Exam prep and tutoring support.</p></div>
 </div></section>
-<section class="subjects" aria-labelledby="subj-h"><h2 id="subj-h">Browse by subject</h2>
+<section class="subjects" aria-labelledby="subj-h">
+<div class="sj-head"><h2 id="subj-h">Browse by subject</h2><div class="sj-side"><p>Find study guides, notes and practice questions for every subject in the library. Start with the <a href="#free">free guides</a>.</p><a class="btn" href="#resources">Browse all resources</a></div></div>
 <div class="sl">
-<a class="cat" data-c="Mathematics" href="#resources"><span class="si" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M8 6h8M8 10h.01M12 10h.01M16 10h.01M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h4"/></svg></span><div><h3>Mathematics</h3><p>Number, algebra, geometry and statistics, with worked examples and practice questions to build speed and accuracy.</p></div></a>
-<a class="cat" data-c="History" href="#resources"><span class="si" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 21h18M5 21V10M9 21V10M15 21V10M19 21V10M3 10l9-6 9 6"/></svg></span><div><h3>History and Political Education</h3><p>Uganda, Africa and the world: key events, important people, how governments work and the duties of a good citizen.</p></div></a>
-<a class="cat" data-c="Geography" href="#resources"><span class="si" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"/></svg></span><div><h3>Geography</h3><p>Physical and human geography, from maps, weather and landforms to population, farming and industry.</p></div></a>
-<a class="cat" data-c="Physics" href="#resources"><span class="si" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="1.5"/><ellipse cx="12" cy="12" rx="10" ry="4"/><ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(60 12 12)"/><ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(120 12 12)"/></svg></span><div><h3>Physics</h3><p>Forces, energy, electricity, light and waves explained step by step. General Science is available for learners with special needs.</p></div></a>
-<a class="cat" data-c="Chemistry" href="#resources"><span class="si" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 2h6M10 2v6L4.5 19a2 2 0 0 0 1.8 3h11.4a2 2 0 0 0 1.8-3L14 8V2M7.5 15h9"/></svg></span><div><h3>Chemistry</h3><p>Atoms, the periodic table, reactions, acids and bases and organic chemistry, with help on calculations and practicals.</p></div></a>
-<a class="cat" data-c="Biology" href="#resources"><span class="si" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.5 19 2c1 2 2 4.2 2 8 0 5.5-4.8 10-10 10z"/><path d="M2 21c0-3 1.9-5.5 6-7"/></svg></span><div><h3>Biology</h3><p>Cells, plants, animals, the human body, health and the environment, explained in plain language.</p></div></a>
-<a class="cat" data-c="Entrepreneurship" href="#resources"><span class="si" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 8-8M15 7h6v6"/></svg></span><div><h3>Entrepreneurship Education</h3><p>Finding business ideas, planning, marketing, record keeping and starting a small enterprise.</p></div></a>
-<a class="cat" data-c="Kiswahili" href="#resources"><span class="si" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H8l-5 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M8 9h8M8 13h5"/></svg></span><div><h3>Kiswahili</h3><p>Grammar, comprehension, composition and literature, to help learners speak and write Kiswahili with confidence.</p></div></a>
-<a class="cat" data-c="Lugbara" href="#resources"><span class="si" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m5 8 6 6M4 14l6-6 2-3M2 5h12M7 2h1M22 22l-5-10-5 10M14 18h6"/></svg></span><div><h3>Lugbara Ti</h3><p>Reading, writing, grammar and speaking in the Lugbara language, along with its culture and oral traditions.</p></div></a>
-<a class="cat" data-c="English" href="#resources"><span class="si" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 19L10 4l7 15M5.8 13h8.4M3 22h18"/></svg></span><div><h3>English Language</h3><p>Grammar, vocabulary, comprehension, composition and oral skills for clear speaking and writing.</p></div></a>
-<a class="cat" data-c="Physical Education" href="#resources"><span class="si" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6.5 6.5v11M17.5 6.5v11M3 9v6M21 9v6M6.5 12h11"/></svg></span><div><h3>Physical Education</h3><p>Fitness, sports skills, rules, health and safety, covering both theory and practical work.</p></div></a>
-<a class="cat" data-c="Religious Education" href="#resources"><span class="si" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M2 4h6a4 4 0 0 1 4 4v13a3 3 0 0 0-3-3H2zM22 4h-6a4 4 0 0 0-4 4v13a3 3 0 0 1 3-3h7z"/></svg></span><div><h3>Religious Education</h3><p>Teachings, values and moral life in Christian Religious Education (CRE) and Islamic Religious Education (IRE).</p></div></a>
+<a class="cat" data-c="Mathematics" href="#resources"><span class="si" aria-hidden="true"><img src="covers/mathematics.webp" alt="" width="360" height="460" loading="lazy" decoding="async"></span><div><h3>Mathematics</h3><p>Number, algebra, geometry and statistics, with worked examples and practice questions to build speed and accuracy.</p></div></a>
+<a class="cat" data-c="History" href="#resources"><span class="si" aria-hidden="true"><img src="covers/history.webp" alt="" width="360" height="460" loading="lazy" decoding="async"></span><div><h3>History and Political Education</h3><p>Uganda, Africa and the world: key events, important people, how governments work and the duties of a good citizen.</p></div></a>
+<a class="cat" data-c="Geography" href="#resources"><span class="si" aria-hidden="true"><img src="covers/geography.webp" alt="" width="360" height="460" loading="lazy" decoding="async"></span><div><h3>Geography</h3><p>Physical and human geography, from maps, weather and landforms to population, farming and industry.</p></div></a>
+<a class="cat" data-c="Physics" href="#resources"><span class="si" aria-hidden="true"><img src="covers/physics.webp" alt="" width="360" height="460" loading="lazy" decoding="async"></span><div><h3>Physics</h3><p>Forces, energy, electricity, light and waves explained step by step. General Science is available for learners with special needs.</p></div></a>
+<a class="cat" data-c="Chemistry" href="#resources"><span class="si" aria-hidden="true"><img src="covers/chemistry.webp" alt="" width="360" height="460" loading="lazy" decoding="async"></span><div><h3>Chemistry</h3><p>Atoms, the periodic table, reactions, acids and bases and organic chemistry, with help on calculations and practicals.</p></div></a>
+<a class="cat" data-c="Biology" href="#resources"><span class="si" aria-hidden="true"><img src="covers/biology.webp" alt="" width="360" height="460" loading="lazy" decoding="async"></span><div><h3>Biology</h3><p>Cells, plants, animals, the human body, health and the environment, explained in plain language.</p></div></a>
+<a class="cat" data-c="Entrepreneurship" href="#resources"><span class="si" aria-hidden="true"><img src="covers/entrepreneurship.webp" alt="" width="360" height="460" loading="lazy" decoding="async"></span><div><h3>Entrepreneurship Education</h3><p>Finding business ideas, planning, marketing, record keeping and starting a small enterprise.</p></div></a>
+<a class="cat" data-c="Kiswahili" href="#resources"><span class="si" aria-hidden="true"><img src="covers/kiswahili.webp" alt="" width="360" height="460" loading="lazy" decoding="async"></span><div><h3>Kiswahili</h3><p>Grammar, comprehension, composition and literature, to help learners speak and write Kiswahili with confidence.</p></div></a>
+<a class="cat" data-c="Lugbara" href="#resources"><span class="si" aria-hidden="true"><img src="covers/lugbara-ti.webp" alt="" width="360" height="460" loading="lazy" decoding="async"></span><div><h3>Lugbara Ti</h3><p>Reading, writing, grammar and speaking in the Lugbara language, along with its culture and oral traditions.</p></div></a>
+<a class="cat" data-c="English" href="#resources"><span class="si" aria-hidden="true"><img src="covers/english.webp" alt="" width="360" height="460" loading="lazy" decoding="async"></span><div><h3>English Language</h3><p>Grammar, vocabulary, comprehension, composition and oral skills for clear speaking and writing.</p></div></a>
+<a class="cat" data-c="Physical Education" href="#resources"><span class="si" aria-hidden="true"><img src="covers/physical-education.webp" alt="" width="360" height="460" loading="lazy" decoding="async"></span><div><h3>Physical Education</h3><p>Fitness, sports skills, rules, health and safety, covering both theory and practical work.</p></div></a>
+<a class="cat" data-c="Religious Education" href="#resources"><span class="si" aria-hidden="true"><img src="covers/religious-education.webp" alt="" width="360" height="460" loading="lazy" decoding="async"></span><div><h3>Religious Education</h3><p>Teachings, values and moral life in Christian Religious Education (CRE) and Islamic Religious Education (IRE).</p></div></a>
 </div></section>
-<section class="apart" aria-labelledby="ap-h"><div class="aprule" aria-hidden="true"></div><h2 id="ap-h">What sets us apart</h2>
-<div class="ap">
-<div><div class="lab"><div class="tag">Our vision</div><svg class="ill ai" viewBox="0 0 160 120" role="img" aria-label="Illustration of an eye looking ahead"><circle cx="80" cy="60" r="52"/><path d="M30 60q50-40 100 0q-50 40-100 0z"/><circle cx="80" cy="60" r="14"/><circle cx="80" cy="60" r="4"/><path d="M80 14v-8M44 24l-5-6M116 24l5-6"/></svg></div><div><h3>Every student, well prepared.</h3><p>A future where every high school student has clear, dependable study material within reach, wherever they learn.</p></div></div>
-<div><div class="lab"><div class="tag">Our motto</div><svg class="ill ai" viewBox="0 0 160 120" role="img" aria-label="Illustration of an open book with a sparkle"><circle cx="80" cy="60" r="52"/><path d="M80 42v52M80 42q-18-10-42-6v52q24-4 42 6M80 42q18-10 42-6v52q-24-4-42 6"/><path d="M124 22v12M118 28h12"/></svg></div><div><h3>“Learn clearly. Revise confidently.”</h3><p>Everything we publish is built to make studying simpler and results stronger.</p></div></div>
-<div><div class="lab"><div class="tag">Our values</div><svg class="ill ai" viewBox="0 0 160 120" role="img" aria-label="Illustration of a gem"><circle cx="80" cy="60" r="52"/><path d="M52 44h56l16 18-44 40L36 62z"/><path d="M36 62h88M64 44l16 18 16-18M80 62v40"/></svg></div><div><h3>Clarity, Originality, Access.</h3><p>Clear explanations, original guides and free access for every learner.</p></div></div>
+<section class="apart sa" aria-labelledby="ap-h"><div class="aprule" aria-hidden="true"></div><h2 id="ap-h">What sets us apart</h2>
+<div class="sa-wrap">
+<input class="sa-r" type="radio" name="sa" id="sa1" checked aria-label="Our vision"><input class="sa-r" type="radio" name="sa" id="sa2" aria-label="Our motto"><input class="sa-r" type="radio" name="sa" id="sa3" aria-label="Our values">
+<div class="sa-vis" aria-hidden="true"><div class="sa-s s1"><svg class="ill ai" viewBox="0 0 160 120" role="img" aria-label="Illustration of an eye looking ahead"><circle cx="80" cy="60" r="52"/><path d="M30 60q50-40 100 0q-50 40-100 0z"/><circle cx="80" cy="60" r="14"/><circle cx="80" cy="60" r="4"/><path d="M80 14v-8M44 24l-5-6M116 24l5-6"/></svg></div><div class="sa-s s2"><svg class="ill ai" viewBox="0 0 160 120" role="img" aria-label="Illustration of an open book with a sparkle"><circle cx="80" cy="60" r="52"/><path d="M80 42v52M80 42q-18-10-42-6v52q24-4 42 6M80 42q18-10 42-6v52q-24-4-42 6"/><path d="M124 22v12M118 28h12"/></svg></div><div class="sa-s s3"><svg class="ill ai" viewBox="0 0 160 120" role="img" aria-label="Illustration of a gem"><circle cx="80" cy="60" r="52"/><path d="M52 44h56l16 18-44 40L36 62z"/><path d="M36 62h88M64 44l16 18 16-18M80 62v40"/></svg></div></div>
+<div class="sa-list">
+<div class="sa-row r1"><label class="sa-h" for="sa1"><span>Our vision</span><svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg></label><div class="sa-b"><div class="sa-in"><h3>Every student, well prepared.</h3><p>We want every high school student to have clear, reliable study notes, wherever they learn.</p><a class="sa-l" href="#about">Read our story</a></div></div></div>
+<div class="sa-row r2"><label class="sa-h" for="sa2"><span>Our motto</span><svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg></label><div class="sa-b"><div class="sa-in"><h3>“Learn clearly. Revise confidently.”</h3><p>We write every guide to make studying easier.</p><a class="sa-l" href="#resources">Browse the library</a></div></div></div>
+<div class="sa-row r3"><label class="sa-h" for="sa3"><span>Our values</span><svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg></label><div class="sa-b"><div class="sa-in"><h3>Clear, original, open to all.</h3><p>Plain explanations, our own guides, and free access for every learner.</p><a class="sa-l" href="#team">Meet the team</a></div></div></div>
+</div>
 </div></section>
 <section class="feats" aria-labelledby="hiw-h"><h2 id="hiw-h">How it works</h2><div class="fgrid">
 <div class="fx"><div class="fw"><a class="fimg" href="#resources" tabindex="-1" aria-hidden="true"><svg viewBox="0 0 300 300" role="img" aria-label="Subject tiles with one selected"><rect width="300" height="300" fill="#E3EFE9"/><rect x="48" y="52" width="82" height="82" rx="14" fill="#fff"/><path d="M89 76v34M72 93h34" stroke="#0F6E5C" stroke-width="7" stroke-linecap="round"/><rect x="170" y="52" width="82" height="82" rx="14" fill="#fff"/><path d="M200 70h22M205 70v20l-14 26a5 5 0 0 0 4.5 7.500h31a5 5 0 0 0 4.500-7.500L217 90V70" fill="none" stroke="#C4673F" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/><rect x="109" y="158" width="82" height="82" rx="14" fill="#0F6E5C"/><path d="M132 199l13 14 24-28" fill="none" stroke="#fff" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/><path d="M186 204l8 46 11-14 18 8z" fill="#1B1B1B" stroke="#fff" stroke-width="3" stroke-linejoin="round" transform="translate(6 -6)"/></svg></a><span class="fnum" aria-hidden="true">1</span></div><h3><a href="#resources">Pick your subject</a></h3><p>Browse by subject or search for a topic.</p></div>
