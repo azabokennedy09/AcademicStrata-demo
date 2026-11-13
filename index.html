@@ -21,6 +21,7 @@
 <script src="config.js"></script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-X349QW37F9"></script>
 <script src="analytics.js"></script>
+<script src="animations.js" defer></script>
 <script src="backend.js"></script>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;700&family=Newsreader:wght@400;500&display=swap">
 <style>
@@ -480,6 +481,47 @@ h2{font-size:24px}
 @keyframes pop2{from{opacity:0;transform:translate(-50%,-6px)}to{opacity:1;transform:translate(-50%,0)}}
 .rtab{border-collapse:collapse;width:100%;max-width:560px;margin-top:16px}.rtab th,.rtab td{text-align:left;padding:11px 12px;border-bottom:1px solid var(--line);font-size:15px}.rtab th{width:140px;color:var(--muted);font-weight:600}#list .card h3 a:hover{text-decoration:underline}
 .gbtn{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;min-height:46px;border:1px solid #c9c9c9;border-radius:10px;background:#fff;color:#1f1f1f;font:600 15px inherit;cursor:pointer}.gbtn:hover,.gbtn:focus-visible{background:#f3f3f3}.dor{display:flex;align-items:center;gap:10px;margin:16px 0 6px;color:var(--muted);font-size:13px}.dor::before,.dor::after{content:"";flex:1;height:1px;background:var(--line)}
+
+#post.legal{max-width:1140px}
+.pv{display:grid;grid-template-columns:290px minmax(0,1fr);gap:40px;align-items:start}
+.pv-main{min-width:0;max-width:780px}.pv-solo{display:block}
+.pv-side{position:sticky;top:24px;display:grid;gap:20px;max-height:calc(100vh - 48px);overflow:auto}
+.pv-toc,.pv-more,.pv-author{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px}
+.pv-toc summary,.pv-t{font-weight:800;font-size:15px}.pv-toc summary{cursor:pointer}
+.pv-toc ol{list-style:none;counter-reset:pv;margin:12px 0 0;padding:0;display:grid;gap:4px}
+.pv-toc li{counter-increment:pv;margin:0}
+.pv-toc a{display:flex;gap:10px;padding:8px 10px;border-radius:10px;color:var(--ink);text-decoration:none;font-weight:600;font-size:14px;line-height:1.35}
+.pv-toc a::before{content:counter(pv,decimal-leading-zero);color:var(--accent);font-weight:800}
+.pv-toc a:hover,.pv-toc li.on a{background:color-mix(in srgb,var(--accent) 12%,transparent);color:var(--accent)}
+.pv-more{display:grid;gap:12px}
+.pv-pc{display:flex;gap:10px;align-items:center;color:var(--ink);text-decoration:none}
+.pv-pc img{width:64px;height:48px;object-fit:cover;border-radius:8px;flex:none}
+.pv-pc b{display:block;font-size:14px;line-height:1.3}.pv-pc small{color:var(--muted)}.pv-pc:hover b{color:var(--accent)}
+.pv-share{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:14px 0 8px}
+.pv-sl{font-weight:700;font-size:14px;color:var(--muted);margin-right:4px}
+.pv-ico{width:40px;height:40px;padding:0;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer}
+.pv-ico:hover,.pv-ico.ok{background:var(--accent);border-color:var(--accent);color:#fff}
+.pv-h{scroll-margin-top:24px}
+.pv-author{display:flex;gap:16px;align-items:center;margin:28px 0 8px}
+.pv-author p{margin:4px 0 6px;font-size:15px;color:var(--muted)}.pv-author a{font-weight:700;color:var(--accent)}
+.pv-nm{font-weight:800;font-size:18px}
+.pv-av{flex:none;width:56px;height:56px;border-radius:50%;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800}
+@media (max-width:980px){.pv{grid-template-columns:1fr;gap:20px}.pv-side{display:contents}.pv-toc{order:1}.pv-main{order:2}.pv-more{order:3}.pv-author{align-items:flex-start}}
+
+.rw{display:inline-block;color:var(--accent);transition:opacity .28s ease,translate .28s ease}
+.rw.out{opacity:0;translate:0 .35em}
+@keyframes hin{from{opacity:0;translate:0 16px}}
+.lp>div>*{animation:hin .7s ease both}
+.lp>div>:nth-child(2){animation-delay:.08s}.lp>div>:nth-child(3){animation-delay:.16s}.lp>div>:nth-child(4){animation-delay:.24s}
+.mq{overflow:hidden;margin:28px 0;padding:14px 0;border-block:1px solid var(--line)}
+.mq-t{display:flex;width:max-content;animation:mq 32s linear infinite}
+.mq:hover .mq-t{animation-play-state:paused}
+.mq-t span{margin-right:40px;white-space:nowrap;font-weight:700;color:var(--muted)}
+.mq-t span::after{content:"\2022";margin-left:40px;color:var(--accent)}
+@keyframes mq{to{transform:translateX(-50%)}}
+.rv{opacity:0;translate:0 22px}
+.rv.rv-in{opacity:1;translate:0 0;transition:opacity .6s ease,translate .6s ease,transform .2s ease,box-shadow .2s ease}
+@media (hover:hover){.card:hover,.fx:hover{transform:translateY(-4px);box-shadow:0 10px 24px rgba(0,0,0,.12)}}
 </style>
 </head>
 <body>
@@ -513,7 +555,7 @@ h2{font-size:24px}
 </header>
 <main id="main">
 <section id="home" data-page>
-<div class="lp"><div><h1>Revise with confidence.</h1>
+<div class="lp"><div><h1>Revise with <span class="rw" data-w="confidence|clarity|focus|ease">confidence</span>.</h1>
 <p class="lede">Free and premium study guides for high school students.</p>
 <a class="btn big" href="#resources">Browse resources <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
 <form id="hs" class="hsearch" role="search"><label for="hq" style="position:absolute;left:-9999px">Search the whole site</label><input id="hq" type="search" placeholder="Search the whole site, e.g. Chemistry"><button class="btn" type="submit">Search</button></form></div>
@@ -522,6 +564,7 @@ h2{font-size:24px}
 <rect x="190" y="80" width="230" height="260" fill="var(--accent)"/><path d="M305 190Q270 175 235 185V265Q270 255 305 270ZM305 190Q340 175 375 185V265Q340 255 305 270Z" fill="var(--onaccent)"/><path d="M248 205Q270 200 292 207M248 222Q270 217 292 224M248 239Q270 234 292 241M318 207Q340 200 362 205M318 224Q340 217 362 222M318 241Q340 234 362 239" fill="none" stroke="var(--accent)" stroke-width="3" stroke-linecap="round"/><path d="M280 140v20q25 14 50 0v-20Z" fill="var(--gold)"/><path d="M305 108 358 132 305 156 252 132Z" fill="var(--goldbg)"/><path d="M350 136v24" stroke="var(--goldbg)" stroke-width="3" stroke-linecap="round"/><circle cx="350" cy="164" r="4" fill="var(--goldbg)"/>
 <rect x="400" y="130" width="110" height="80" fill="var(--surface)" stroke="var(--ink)" stroke-width="2"/><rect x="415" y="170" width="16" height="28" fill="var(--accent)"/><rect x="441" y="155" width="16" height="43" fill="var(--goldbg)"/><rect x="467" y="140" width="16" height="58" fill="var(--accent)"/><path d="M410 198H500" stroke="var(--ink)" stroke-width="2"/>
 <rect x="30" y="250" width="100" height="80" fill="var(--gold)"/><g fill="none" stroke="var(--goldbg)" stroke-width="2"><ellipse cx="80" cy="290" rx="34" ry="12"/><ellipse cx="80" cy="290" rx="34" ry="12" transform="rotate(60 80 290)"/><ellipse cx="80" cy="290" rx="34" ry="12" transform="rotate(120 80 290)"/></g><circle cx="80" cy="290" r="5" fill="var(--goldbg)"/></svg></div>
+<div class="mq" aria-hidden="true"><div class="mq-t"><span>Free guides</span><span>Premium guides</span><span>A Level</span><span>O Level</span><span>Study guides</span><span>Exam prep packs</span><span>Tutoring support</span><span>Free guides</span><span>Premium guides</span><span>A Level</span><span>O Level</span><span>Study guides</span><span>Exam prep packs</span><span>Tutoring support</span></div></div>
 <section id="hsr" class="hsr" aria-live="polite" hidden><div class="hsr-h"><h2 id="hsr-t">Search results</h2><button type="button" class="chip" id="hsr-x">Clear results</button></div><div id="hsr-l"></div></section>
 <section class="feats" aria-labelledby="feat-h"><h2 id="feat-h">Everything you need to revise</h2><div class="fgrid">
 <div class="fx"><a class="fimg" href="#resources" tabindex="-1" aria-hidden="true"><svg viewBox="0 0 300 300" role="img" aria-label="Open book with a magnifying glass and a stack of books"><rect width="300" height="300" fill="#DDEBE6"/><rect x="190" y="30" width="80" height="110" fill="#F2F7F5"/><rect x="30" y="50" width="60" height="80" fill="#F2F7F5"/><rect y="215" width="300" height="85" fill="#E8DCCB"/><rect y="215" width="300" height="10" fill="#CFC3AE"/><rect x="205" y="168" width="64" height="22" rx="3" fill="#0F6E5C"/><rect x="211" y="190" width="58" height="22" rx="3" fill="#C9901E"/><rect x="203" y="212" width="66" height="4" fill="#B3772F" opacity=".0"/><path d="M150 190Q112 176 66 188V238Q112 228 150 242ZM150 190Q188 176 234 188V238Q188 228 150 242Z" fill="#fff"/><path d="M150 190V242" stroke="#CFC3AE" stroke-width="3"/><path d="M80 204Q112 198 138 206M80 218Q112 212 138 220M162 206Q188 198 220 204M162 220Q188 212 220 218" stroke="#9DBBB2" stroke-width="3" fill="none" stroke-linecap="round"/><circle cx="118" cy="112" r="42" fill="#fff" fill-opacity=".55" stroke="#1B1B1B" stroke-width="8"/><path d="M148 142 190 184" stroke="#4A2E22" stroke-width="14" stroke-linecap="round"/><path d="M96 100H140M96 114H132M96 128H122" stroke="#0F6E5C" stroke-width="5" stroke-linecap="round"/></svg></a><h3><a href="#resources">Find your guide</a></h3><p>Notes and past papers for every subject.</p></div>
