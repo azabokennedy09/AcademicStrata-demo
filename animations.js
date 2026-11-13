@@ -21,7 +21,7 @@
       var n = en.target;
       io.unobserve(n);
       n.classList.add("rv-in");
-      var s = n.matches(".ab-stats>div") ? n.querySelector("strong") : null;
+      var s = n.matches(".ab-stats>div,.kt-stats>div") ? n.querySelector("strong") : null;
       if (s) count(s);
       setTimeout(function () { n.style.transitionDelay = ""; }, 1200);
     });
@@ -29,7 +29,7 @@
 
   function scan() {
     if (!io) return;
-    document.querySelectorAll("#main .fx,#main .card,#main .ab-stats>div,#main .feats>h2").forEach(function (n) {
+    document.querySelectorAll("#main .fx,#main .card,#main .ab-stats>div,#main .kt-stats>div,#main .kt-tl>li,#main .kt-q,#main .feats>h2").forEach(function (n) {
       if (n.__rv) return;
       n.__rv = 1;
       n.classList.add("rv");

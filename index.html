@@ -500,12 +500,12 @@ h2{font-size:24px}
 .pv-share{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:14px 0 8px}
 .pv-sl{font-weight:700;font-size:14px;color:var(--muted);margin-right:4px}
 .pv-ico{width:40px;height:40px;padding:0;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer}
-.pv-ico:hover,.pv-ico.ok{background:var(--accent);border-color:var(--accent);color:#fff}
+.pv-ico:hover,.pv-ico.ok{background:var(--accent);border-color:var(--accent);color:var(--onaccent)}
 .pv-h{scroll-margin-top:24px}
 .pv-author{display:flex;gap:16px;align-items:center;margin:28px 0 8px}
 .pv-author p{margin:4px 0 6px;font-size:15px;color:var(--muted)}.pv-author a{font-weight:700;color:var(--accent)}
-.pv-nm{font-weight:800;font-size:18px}
-.pv-av{flex:none;width:56px;height:56px;border-radius:50%;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800}
+.pv-nm{font:400 22px/1.2 'Newsreader',Georgia,serif}
+.pv-av{flex:none;width:56px;height:56px;border-radius:50%;background:var(--accent);color:var(--onaccent);display:flex;align-items:center;justify-content:center;font-weight:800}
 @media (max-width:980px){.pv{grid-template-columns:1fr;gap:20px}.pv-side{display:contents}.pv-toc{order:1}.pv-main{order:2}.pv-more{order:3}.pv-author{align-items:flex-start}}
 
 .rw{display:inline-block;color:var(--accent);transition:opacity .28s ease,translate .28s ease}
@@ -521,7 +521,43 @@ h2{font-size:24px}
 @keyframes mq{to{transform:translateX(-50%)}}
 .rv{opacity:0;translate:0 22px}
 .rv.rv-in{opacity:1;translate:0 0;transition:opacity .6s ease,translate .6s ease,transform .2s ease,box-shadow .2s ease}
-@media (hover:hover){.card:hover,.fx:hover{transform:translateY(-4px);box-shadow:0 10px 24px rgba(0,0,0,.12)}}
+@media (hover:hover){.card:hover,.fx:hover{transform:translateY(-4px);box-shadow:0 10px 24px color-mix(in srgb,var(--ink) 14%,transparent)}}
+
+#team .kt-hero{display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:center;padding:8px 0}
+#team .kt-h1{font-size:clamp(36px,5.6vw,64px);font-weight:400;line-height:1.05;margin:6px 0 10px}
+.kt-chips{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 16px}
+.kt-chips span{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:6px 14px;font-size:14px;font-weight:600}
+.kt-chips span:first-child{background:var(--accent);border-color:var(--accent);color:var(--onaccent)}
+#team .tsoc{margin-top:18px}
+.kt-photo{position:relative;width:100%;max-width:380px;aspect-ratio:4/5;margin-inline:auto;border-radius:28px;overflow:hidden;display:flex;align-items:center;justify-content:center;background:linear-gradient(160deg,color-mix(in srgb,var(--onaccent) 14%,transparent),transparent),var(--accent);color:var(--onaccent)}
+.kt-photo b{font:400 96px/1 'Newsreader',Georgia,serif;letter-spacing:2px}
+.kt-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.kt-badge{position:absolute;left:14px;bottom:14px;z-index:1;background:var(--surface);color:var(--ink);border-radius:14px;padding:10px 14px;font-weight:800;display:grid;line-height:1.2}
+.kt-badge small{font-weight:500;color:var(--muted)}
+.kt-sec{margin-top:56px}
+.kt-three{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:16px}
+.kt-n{display:inline-block;color:var(--accent);font-weight:800;margin-bottom:6px}
+.kt-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:16px}
+.kt-stats>div{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:22px;display:grid;gap:4px}
+.kt-stats strong{font:400 clamp(30px,4vw,42px)/1.1 'Newsreader',Georgia,serif;color:var(--accent)}
+.kt-stats span{color:var(--muted);font-size:15px}
+.kt-tl{list-style:none;margin:20px 0 0;padding:0 0 0 28px;border-left:2px solid var(--line);display:grid;gap:26px}
+.kt-tl li{position:relative}
+.kt-tl li::before{content:"";position:absolute;left:-37px;top:4px;width:14px;height:14px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px var(--bg)}
+.kt-when{font-size:13px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--accent)}
+.kt-tl h3{margin:2px 0 4px}.kt-tl p{margin:0;color:var(--muted);max-width:560px}
+.kt-q{margin-top:56px;padding:36px 6%;border-radius:24px;background:var(--surface);border:1px solid var(--line);text-align:center}
+.kt-q p{font:400 clamp(28px,4.2vw,46px)/1.15 'Newsreader',Georgia,serif;color:var(--ink);margin:8px 0 6px}.kt-q small{color:var(--muted);font-size:16px}
+#team .band{margin-top:56px}
+@media (max-width:860px){#team .kt-hero{grid-template-columns:1fr;gap:28px}.kt-three{grid-template-columns:1fr}.kt-stats{grid-template-columns:repeat(2,1fr)}.kt-photo{max-width:300px}}
+.kt-end{margin:20px 0 0;max-width:720px;font-size:18px;color:var(--muted)}
+.kt-frame{position:relative;width:100%;max-width:380px;margin-inline:auto;padding:0 18px 18px 0}
+.kt-frame::before{content:"";position:absolute;inset:18px 0 0 18px;border-radius:28px;background:var(--accent)}
+.kt-frame .kt-photo{max-width:none;margin:0;box-shadow:0 14px 34px color-mix(in srgb,var(--ink) 18%,transparent)}
+.kt-photo img{object-position:50% 30%}
+.ab-av,.pv-av{overflow:hidden}
+.ab-av img,.pv-av img{width:100%;height:100%;object-fit:cover;object-position:50% 38%;display:block}
+@media (max-width:860px){.kt-frame{max-width:310px}}
 </style>
 </head>
 <body>
@@ -706,7 +742,7 @@ h2{font-size:24px}
 <li><h3>Improve</h3><p>We update guides when students and teachers send us feedback.</p></li>
 </ol></div>
 
-<div class="ab-founder"><span class="ab-av" aria-hidden="true">AK</span><div><span class="kicker">The person behind it</span><h3>Led by Mr. Azabo Kennedy, Founder</h3><p>Leads the vision of the library and makes sure every guide is clear, accurate and original.</p></div><a class="btn alt" href="#team">Meet the team</a></div>
+<div class="ab-founder"><span class="ab-av" aria-hidden="true"><img src="azabo-kennedy.jpg" alt="" loading="lazy"></span><div><span class="kicker">The person behind it</span><h3>Led by Mr. Azabo Kennedy, Founder</h3><p>Leads the vision of the library and makes sure every guide is clear, accurate and original.</p></div><a class="btn alt" href="#team">Meet the team</a></div>
 
 <div class="band"><div class="bt"><h2>Questions, feedback or a guide you need?</h2><p style="color:var(--onaccent);margin:8px 0 0">Tell us what would help you revise. We read every message.</p></div><div class="ab-cta"><a class="btn" href="#contact">Get in touch</a><a class="btn" href="#resources">Browse resources</a></div></div>
 </section>
@@ -745,12 +781,46 @@ h2{font-size:24px}
 <div class="pband one"><div class="pt"><h2>Still have a question?</h2><p>Call (+256) 786 535 915, email azabokennedy09@gmail.com or use the form on the Contact page.</p><a class="btn big" href="#contact">Contact us <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div></div>
 </section>
 <section id="team" data-page hidden>
-<h1>Our Team</h1><p>The people behind the guides.</p>
-<div class="grid">
-<div class="card"><div class="ph">PHOTO</div><h3 data-k="team1_name" data-l="Team member 1: name">Mr. Azabo Kennedy</h3><div class="tag" data-k="team1_role" data-l="Team member 1: role">Founder</div><p data-k="team1_bio" data-l="Team member 1: short bio">Leads the vision of the library and makes sure every guide is clear, accurate and original.</p><div class="tsoc"><a href="https://www.facebook.com/azabokennedy.1" target="_blank" rel="noopener" aria-label="Facebook, Mr. Azabo Kennedy"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a><a href="https://x.com/" target="_blank" rel="noopener" aria-label="X (Twitter), Mr. Azabo Kennedy"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817-5.97 6.817H1.675l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a><a href="https://www.linkedin.com/" target="_blank" rel="noopener" aria-label="LinkedIn, Mr. Azabo Kennedy"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a></div></div>
+<div class="kt-hero"><div>
+<span class="kicker">The founder</span>
+<h1 class="kt-h1" data-k="team1_name" data-l="Team member 1: name">Mr. Azabo Kennedy</h1>
+<div class="kt-chips"><span data-k="team1_role" data-l="Team member 1: role">Founder</span><span>Educator</span><span>O &amp; A Level Chemistry</span><span>Muni Labs</span></div>
+<p class="lead" data-k="team1_bio" data-l="Team member 1: short bio">An educator with a strong interest in technology and practical problem-solving. He leads the vision of the library and makes sure every guide is clear, accurate and original.</p>
+<div class="ab-cta"><a class="btn big" href="#resources">Browse resources</a><a class="btn big alt" href="#blog">Read the blog</a></div>
+<div class="tsoc"><a href="https://www.facebook.com/azabokennedy.1" target="_blank" rel="noopener" aria-label="Facebook, Mr. Azabo Kennedy"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a><a href="https://x.com/" target="_blank" rel="noopener" aria-label="X (Twitter), Mr. Azabo Kennedy"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817-5.97 6.817H1.675l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a><a href="https://www.linkedin.com/" target="_blank" rel="noopener" aria-label="LinkedIn, Mr. Azabo Kennedy"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a></div>
 </div>
+<div class="kt-frame"><div class="kt-photo"><b aria-hidden="true">AK</b><img src="azabo-kennedy.jpg" alt="Mr. Azabo Kennedy, founder of Academicstrata" width="616" height="770" fetchpriority="high"><span class="kt-badge">Founder<small>Academicstrata</small></span></div></div></div>
+<div class="mq" aria-hidden="true"><div class="mq-t"><span>Free guides</span><span>Premium guides</span><span>A Level</span><span>O Level</span><span>Study guides</span><span>Past papers</span><span>Practice questions</span><span>Free guides</span><span>Premium guides</span><span>A Level</span><span>O Level</span><span>Study guides</span><span>Past papers</span><span>Practice questions</span></div></div>
+<div class="kt-sec"><span class="kicker">Who he is</span><h2>His background</h2>
+<div class="kt-three">
+<div class="card"><span class="kt-n">01</span><h3>Education</h3><p>A graduate of Muni University with a Bachelor of Science in Education.</p></div>
+<div class="card"><span class="kt-n">02</span><h3>Teaching</h3><p>Four years of experience teaching O-Level and A-Level Chemistry at Arua Secondary School.</p></div>
+<div class="card"><span class="kt-n">03</span><h3>Work at Muni Labs</h3><p>Applies his analytical background in science to marketing and digital projects at Muni Labs.</p></div>
+</div>
+<p class="kt-end">Whether working in the classroom, the lab, or on digital projects, Kennedy enjoys using technology to support learning and help people solve everyday challenges.</p></div>
+<div class="kt-sec"><span class="kicker">The guides</span><h2>What the guides stand for</h2>
+<div class="kt-three">
+<div class="card"><span class="kt-n">01</span><h3>Clear</h3><p>Short, plain explanations, with a worked example.</p></div>
+<div class="card"><span class="kt-n">02</span><h3>Original</h3><p>Our own guides are written for students, not copied. Past papers and seminar papers are shared with permission and credited to their source.</p></div>
+<div class="card"><span class="kt-n">03</span><h3>Open to all</h3><p>Free guides are open to every learner.</p></div>
+</div></div>
+<div class="kt-sec"><span class="kicker">The library</span><h2>At a glance</h2>
+<div class="kt-stats" role="list">
+<div role="listitem"><strong>12</strong><span>Subjects covered</span></div>
+<div role="listitem"><strong>A &amp; O</strong><span>Level material</span></div>
+<div role="listitem"><strong>Free</strong><span>Guides open to everyone</span></div>
+<div role="listitem"><strong>$1</strong><span>Per premium guide</span></div>
+</div></div>
+<div class="kt-sec"><span class="kicker">Process</span><h2>How a guide gets published</h2>
+<ol class="kt-tl">
+<li><span class="kt-when">Step 1</span><h3>Write</h3><p>Each guide is written with plain explanations and worked examples.</p></li>
+<li><span class="kt-when">Step 2</span><h3>Check</h3><p>An admin reviews every file before it goes on the site.</p></li>
+<li><span class="kt-when">Step 3</span><h3>Publish</h3><p>Free guides are open to everyone. Premium guides are unlocked by arrangement.</p></li>
+<li><span class="kt-when">Step 4</span><h3>Improve</h3><p>We update guides when students and teachers send feedback.</p></li>
+</ol></div>
+<div class="kt-q"><span class="kicker">Our motto</span><p>&ldquo;Learn clearly. Revise confidently.&rdquo;</p><small>Every student, well prepared.</small></div>
+<div class="band"><div class="bt"><h2>Questions or feedback?</h2><p style="color:var(--onaccent);margin:8px 0 0">Tell us which guide you need. We read every message.</p></div><div class="ab-cta"><a class="btn" href="#resources">Browse resources</a><a class="btn" href="#contact">Get in touch</a></div></div>
 <p style="margin-top:20px;color:var(--muted)">More team members will be introduced soon.</p>
-
 </section>
 
 <section id="dashboard" data-page hidden><h1>Admin</h1><div id="dashgate" class="msg">Admins only. Please sign in with an admin account.</div><div id="dashbody" hidden>
