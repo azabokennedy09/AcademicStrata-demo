@@ -91,6 +91,19 @@
   sl.addEventListener("click", function (e) {
     if (moved > 6) { e.preventDefault(); e.stopPropagation(); moved = 0; }
   }, true);
+  var wrap = sl.parentNode, prev = wrap.querySelector(".sl-btn.prev"), next = wrap.querySelector(".sl-btn.next");
+  function upd() {
+    var m = sl.scrollWidth - sl.clientWidth;
+    wrap.classList.toggle("fits", m <= 4);
+    if (prev) prev.disabled = sl.scrollLeft <= 2;
+    if (next) next.disabled = sl.scrollLeft >= m - 2;
+  }
+  function go(d) { holdFor(5000); sl.scrollBy({ left: d * Math.max(260, sl.clientWidth * 0.8), behavior: rm ? "auto" : "smooth" }); }
+  if (prev) prev.addEventListener("click", function () { go(-1); });
+  if (next) next.addEventListener("click", function () { go(1); });
+  sl.addEventListener("scroll", upd, { passive: true });
+  addEventListener("resize", upd);
+  upd(); setTimeout(upd, 400);
   if (rm) return;
   function tick(t) {
     var dt = Math.min(64, t - last); last = t;
@@ -107,4 +120,16 @@
     requestAnimationFrame(tick);
   }
   requestAnimationFrame(tick);
+})();
+
+// Subject pictures: if a file named covers/<subject>.jpg exists (for example covers/mathematics.jpg),
+// it is shown on that card instead of the drawn cover.
+(function () {
+  document.querySelectorAll(".sl .si img").forEach(function (img) {
+    var m = (img.getAttribute("src") || "").match(/^covers\/([a-z-]+)\.webp$/);
+    if (!m) return;
+    var t = new Image();
+    t.onload = function () { img.src = t.src; img.classList.add("up"); img.removeAttribute("width"); img.removeAttribute("height"); };
+    t.src = "covers/" + m[1] + ".jpg";
+  });
 })();

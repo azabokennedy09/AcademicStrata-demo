@@ -628,7 +628,7 @@ h2{font-size:24px}
 .sl{display:flex;grid-template-columns:none;column-gap:0;gap:24px;overflow-x:auto;overflow-y:hidden;scrollbar-width:none;cursor:grab;-webkit-mask-image:linear-gradient(to right,#000 90%,transparent);mask-image:linear-gradient(to right,#000 90%,transparent)}
 .sl::-webkit-scrollbar{display:none}
 .sl.drag{cursor:grabbing;user-select:none}
-.sl a.cat{display:block;position:relative;flex:0 0 min(320px,78vw);height:400px;padding:0;border:0;border-radius:12px;overflow:hidden;-webkit-user-drag:none;
+.sl a.cat{display:block;position:relative;flex:0 0 min(320px,78vw);height:420px;padding:0;border:0;border-radius:12px;overflow:hidden;-webkit-user-drag:none;
 background:linear-gradient(to bottom,transparent 0,transparent 42%,var(--bg) 80%),linear-gradient(160deg,color-mix(in srgb,var(--accent) 30%,var(--surface)),color-mix(in srgb,var(--accent) 9%,var(--surface)));transition:transform .25s ease}
 .sl a.cat:nth-child(4n+2){background:linear-gradient(to bottom,transparent 0,transparent 42%,var(--bg) 80%),linear-gradient(200deg,color-mix(in srgb,var(--accent) 16%,var(--surface)),color-mix(in srgb,var(--accent) 34%,var(--surface)))}
 .sl a.cat:nth-child(4n+3){background:linear-gradient(to bottom,transparent 0,transparent 42%,var(--bg) 80%),linear-gradient(120deg,color-mix(in srgb,var(--accent) 22%,var(--surface)),color-mix(in srgb,var(--accent) 6%,var(--surface)))}
@@ -637,10 +637,23 @@ background:linear-gradient(to bottom,transparent 0,transparent 42%,var(--bg) 80%
 .sl a.cat::after{content:none}
 .sl .si{position:absolute;left:50%;top:6px;translate:-50% 0;flex:none;display:block;width:176px;height:auto;border:0;border-radius:0}
 .sl .si img{display:block;width:100%;height:auto;pointer-events:none}
-.sl a.cat>div{position:absolute;left:20px;right:20px;bottom:18px}
+.sl a.cat>div{position:absolute;left:20px;right:20px;top:230px}
 .sl a.cat h3{margin:0 0 6px}
 .sl a.cat p{margin:0}
 @media (max-width:800px){.sj-head{grid-template-columns:1fr}}
+
+.sl-wrap{position:relative}
+.sl{overscroll-behavior-x:contain}
+.sl-btn{position:absolute;top:50%;translate:0 -50%;z-index:2;width:46px;height:46px;border-radius:50%;border:1px solid var(--line);background:var(--surface);color:var(--ink);display:grid;place-items:center;padding:0;cursor:pointer;box-shadow:0 6px 16px color-mix(in srgb,var(--ink) 16%,transparent);transition:opacity .2s ease,background .2s ease,color .2s ease}
+.sl-btn svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.sl-btn.prev{left:6px}.sl-btn.next{right:6px}
+.sl-btn:hover:not(:disabled){background:var(--accent);border-color:var(--accent);color:var(--onaccent)}
+.sl-btn:disabled{opacity:0;pointer-events:none}
+.sl-wrap.fits .sl-btn{display:none}
+.sl-hint{margin:14px 0 0;max-width:none;font-size:15px;color:var(--muted);text-align:right}
+.sl-wrap.fits+.sl-hint{display:none}
+/* Pictures you add as .jpg replace the drawn covers */
+.sl .si img.up{width:148px;height:198px;object-fit:cover;margin:16px auto 0;border-radius:3px 9px 9px 3px;box-shadow:0 18px 26px color-mix(in srgb,var(--ink) 26%,transparent)}
 </style>
 </head>
 <body>
@@ -692,6 +705,7 @@ background:linear-gradient(to bottom,transparent 0,transparent 42%,var(--bg) 80%
 </div></section>
 <section class="subjects" aria-labelledby="subj-h">
 <div class="sj-head"><h2 id="subj-h">Browse by subject</h2><div class="sj-side"><p>Find study guides, notes and practice questions for every subject in the library. Start with the <a href="#free">free guides</a>.</p><a class="btn" href="#resources">Browse all resources</a></div></div>
+<div class="sl-wrap">
 <div class="sl">
 <a class="cat" data-c="Mathematics" href="#resources"><span class="si" aria-hidden="true"><img src="covers/mathematics.webp" alt="" width="360" height="460" loading="lazy" decoding="async"></span><div><h3>Mathematics</h3><p>Number, algebra, geometry and statistics, with worked examples and practice questions to build speed and accuracy.</p></div></a>
 <a class="cat" data-c="History" href="#resources"><span class="si" aria-hidden="true"><img src="covers/history.webp" alt="" width="360" height="460" loading="lazy" decoding="async"></span><div><h3>History and Political Education</h3><p>Uganda, Africa and the world: key events, important people, how governments work and the duties of a good citizen.</p></div></a>
@@ -705,7 +719,10 @@ background:linear-gradient(to bottom,transparent 0,transparent 42%,var(--bg) 80%
 <a class="cat" data-c="English" href="#resources"><span class="si" aria-hidden="true"><img src="covers/english.webp" alt="" width="360" height="460" loading="lazy" decoding="async"></span><div><h3>English Language</h3><p>Grammar, vocabulary, comprehension, composition and oral skills for clear speaking and writing.</p></div></a>
 <a class="cat" data-c="Physical Education" href="#resources"><span class="si" aria-hidden="true"><img src="covers/physical-education.webp" alt="" width="360" height="460" loading="lazy" decoding="async"></span><div><h3>Physical Education</h3><p>Fitness, sports skills, rules, health and safety, covering both theory and practical work.</p></div></a>
 <a class="cat" data-c="Religious Education" href="#resources"><span class="si" aria-hidden="true"><img src="covers/religious-education.webp" alt="" width="360" height="460" loading="lazy" decoding="async"></span><div><h3>Religious Education</h3><p>Teachings, values and moral life in Christian Religious Education (CRE) and Islamic Religious Education (IRE).</p></div></a>
-</div></section>
+</div>
+<button class="sl-btn prev" type="button" aria-label="Previous subjects" disabled><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button><button class="sl-btn next" type="button" aria-label="Next subjects"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+</div>
+<p class="sl-hint">Swipe or tap the arrows to see more subjects.</p></section>
 <section class="apart sa" aria-labelledby="ap-h"><div class="aprule" aria-hidden="true"></div><h2 id="ap-h">What sets us apart</h2>
 <div class="sa-wrap">
 <input class="sa-r" type="radio" name="sa" id="sa1" checked aria-label="Our vision"><input class="sa-r" type="radio" name="sa" id="sa2" aria-label="Our motto"><input class="sa-r" type="radio" name="sa" id="sa3" aria-label="Our values">
