@@ -1,6 +1,6 @@
 // Connects the site to Supabase (login, database, file storage).
 (function () {
-  function bar(t) { var x = document.getElementById("secbar"); if (!x) { x = document.createElement("div"); x.id = "secbar"; x.setAttribute("role", "alert"); x.style.cssText = "position:fixed;left:0;right:0;bottom:0;z-index:99;background:#8a1c1c;color:#fff;padding:8px 14px;font:600 13px sans-serif;text-align:center"; (document.body || document.documentElement).appendChild(x); } x.textContent = t; }
+  function bar(t) { var x = document.getElementById("secbar"); if (!x) { x = document.createElement("div"); x.id = "secbar"; x.setAttribute("role", "alert"); x.style.cssText = "position:fixed;left:0;right:0;bottom:0;z-index:99;background:#8a1c1c;color:#fff;padding:8px 14px;font:600 13px sans-serif;text-align:center"; (document.body || document.documentElement).appendChild(x); } var L = (x._l = x._l || []); if (L.indexOf(t) < 0) L.push(t); x.style.whiteSpace = "pre-line"; x.textContent = L.join("\n"); }
   document.addEventListener("securitypolicyviolation", function (e) { if (console && console.warn) console.warn("Blocked by security policy:", e.violatedDirective, e.blockedURI); bar("Part of the site was blocked by the security policy (" + e.violatedDirective + ": " + (e.blockedURI || "inline") + "). Please tell the site owner."); });
   window.addEventListener("DOMContentLoaded", function () { if (window.SUPABASE_URL && /^https:\/\//.test(window.SUPABASE_URL) && !window.supabase) bar("The database library did not load, so posts, resources and sign-in are off. Open the browser console (F12) and tell the site owner what it says."); });
   var ok = window.SUPABASE_URL && /^https:\/\//.test(window.SUPABASE_URL) && window.SUPABASE_ANON_KEY && window.SUPABASE_ANON_KEY.indexOf("PASTE") < 0;
@@ -38,10 +38,10 @@
             var alive = true;
             var load = async function () {
               var r = await sb.from("docs").select("id,data,created_at").eq("collection", c).order("created_at", { ascending: false });
-              if (r.error) { if (err) err(r.error); return; }
+              if (r.error) { bar("Could not read \"" + c + "\" from the database: " + (r.error.code ? r.error.code + " - " : "") + (r.error.message || "unknown error")); if (err) err(r.error); return; }
               if (alive) next({ docs: r.data.map(function (x) { return { id: x.id, data: function () { return x.data; } }; }) });
             };
-            load();
+            load().catch(function (e) { bar("Could not reach the database: " + (e && e.message ? e.message : e)); });
             var timer = setInterval(load, 30000);
             var ch = sb.channel("docs-" + c + "-" + Math.random()).on("postgres_changes", { event: "*", schema: "public", table: "docs", filter: "collection=eq." + c }, load).subscribe();
             return function () { alive = false; clearInterval(timer); sb.removeChannel(ch); };
