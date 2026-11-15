@@ -89,9 +89,9 @@
 
   window.SS = {
     signIn: async function (email, password) { var r = await sb.auth.signInWithPassword({ email: email, password: password }); if (r.error) throw r.error; return {}; },
-    signUp: async function (email, password) { var r = await sb.auth.signUp({ email: email, password: password, options: { emailRedirectTo: location.origin + location.pathname } }); if (r.error) throw r.error; return { confirm: !r.data.session }; },
-    google: async function () { var r = await sb.auth.signInWithOAuth({ provider: "google", options: { redirectTo: location.origin + location.pathname } }); if (r.error) throw r.error; return {}; },
-    reset: async function (email) { var r = await sb.auth.resetPasswordForEmail(email, { redirectTo: location.origin + location.pathname }); if (r.error) throw r.error; return {}; },
+    signUp: async function (email, password) { var r = await sb.auth.signUp({ email: email, password: password, options: { emailRedirectTo: location.origin + "/" } }); if (r.error) throw r.error; return { confirm: !r.data.session }; },
+    google: async function () { var r = await sb.auth.signInWithOAuth({ provider: "google", options: { redirectTo: location.origin + "/" } }); if (r.error) throw r.error; return {}; },
+    reset: async function (email) { var r = await sb.auth.resetPasswordForEmail(email, { redirectTo: location.origin + "/" }); if (r.error) throw r.error; return {}; },
     setPassword: async function (password) { var r = await sb.auth.updateUser({ password: password }); if (r.error) throw r.error; return {}; },
     signOut: async function () { await sb.auth.signOut(); location.reload(); },
     url: async function (path, download) {
