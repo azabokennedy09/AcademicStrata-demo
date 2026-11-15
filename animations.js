@@ -29,7 +29,7 @@
 
   function scan() {
     if (!io) return;
-    document.querySelectorAll("#main .fx,#main .card,#main .ab-stats>div,#main .kt-stats>div,#main .kt-tl>li,#main .kt-q,#main .feats>h2").forEach(function (n) {
+    document.querySelectorAll("#main .fx,#main .card:not(.pl-row),#main .ab-stats>div,#main .kt-stats>div,#main .kt-tl>li,#main .kt-q,#main .feats>h2").forEach(function (n) {
       if (n.__rv) return;
       n.__rv = 1;
       n.classList.add("rv");

@@ -691,6 +691,44 @@ background:linear-gradient(to bottom,transparent 0,transparent 42%,var(--bg) 80%
 .article img{display:block;max-width:100%;height:auto;border-radius:12px}
 .article figcaption{margin-top:8px;font-size:14px;color:var(--muted);text-align:center}
 @media (max-width:980px){.be-grid{grid-template-columns:1fr}.be-seo{position:static;max-height:none}}
+
+/* WordPress-style editor screen */
+.be-title input{font:400 28px/1.2 'Newsreader',Georgia,serif;padding:12px 14px}
+.be-sep{width:1px;align-self:stretch;background:var(--line);margin:0 2px}
+.upl summary{cursor:pointer;font-weight:600}
+.be-save{align-items:center}
+.be-side{position:sticky;top:24px;max-height:calc(100vh - 48px);overflow:auto;padding:14px;border:1px solid var(--line);border-radius:16px;background:var(--bg)}
+.be-stabs{display:flex;gap:8px;align-items:center;margin-bottom:12px}
+.be-pill{margin-left:auto;padding:4px 10px;border-radius:999px;font-size:13px;font-weight:700;color:var(--onaccent);background:var(--muted)}
+.be-pane{display:grid;gap:12px}.be-pane[hidden]{display:none}
+.be-box{display:grid;gap:10px;padding:14px;border:1px solid var(--line);border-radius:12px;background:var(--surface)}
+.be-box h4{margin:0;font-size:15px}
+.be-state{margin:0;font-size:14px;font-weight:600}.be-help{margin:0;font-size:13px;color:var(--muted)}
+#be-fi{width:100%;max-height:180px;object-fit:cover;border-radius:10px}
+.be-dev{display:flex;gap:8px;align-items:center;margin-top:6px}.be-dev strong{margin-right:auto}
+.be-serp.mobile{max-width:330px}
+.be-stt{margin:4px 0;font-size:18px;line-height:1.3;color:var(--accent)}
+.be-chk{display:flex;gap:8px;align-items:center;font-size:14px}.be-chk input{width:auto}
+.be-grp{border:1px solid var(--line);border-radius:12px;background:var(--surface);margin-top:10px;padding:0 12px}
+.be-grp summary{display:flex;justify-content:space-between;gap:10px;padding:12px 0;cursor:pointer;font-weight:700;font-size:15px}
+.be-grp summary em{font-style:normal;font-weight:500;font-size:13px;color:var(--muted)}
+.be-grp .be-list{margin:0 0 12px}
+.pl-bar{display:flex;gap:12px;flex-wrap:wrap;align-items:center;justify-content:space-between}.pl-bar input{max-width:260px}
+.pl-f{display:flex;gap:8px;flex-wrap:wrap}.pl-f .chip.on{background:var(--accent);border-color:var(--accent);color:var(--onaccent)}
+.pl-meta{margin:2px 0 8px;font-size:14px;color:var(--muted)}
+.pl-badge,.pl-seo{display:inline-block;padding:2px 9px;border-radius:999px;font-size:12px;font-weight:700;color:var(--onaccent)}
+.pl-badge.published{background:var(--accent)}.pl-badge.draft{background:var(--muted)}.pl-badge.scheduled{background:#C98516}
+.pl-seo.g{background:var(--accent)}.pl-seo.o{background:#C98516}.pl-seo.r{background:#D64545}
+.article [data-al="center"]{text-align:center}.article [data-al="right"]{text-align:right}.article [data-al="justify"]{text-align:justify}
+.article table{border-collapse:collapse;width:100%;margin:20px 0}.article th,.article td{border:1px solid var(--line);padding:8px 10px;text-align:left}.article th{background:var(--surface)}
+.article pre{overflow:auto;padding:14px;border-radius:10px;background:var(--surface);border:1px solid var(--line);font-size:14px}
+.article s{opacity:.8}
+.be-side,.be-pane,.be-box{min-width:0;box-sizing:border-box}
+.be-pane,.be-box{grid-template-columns:minmax(0,1fr)}
+.be-side input,.be-side textarea,.be-side select{min-width:0;max-width:100%;box-sizing:border-box}
+.be-save{margin-top:14px}
+.be-pane .be-chk{display:flex;flex-direction:row;align-items:center;gap:8px}
+.be-pane .be-chk input{width:auto;flex:none}
 </style>
 </head>
 <body>
@@ -785,21 +823,27 @@ background:linear-gradient(to bottom,transparent 0,transparent 42%,var(--bg) 80%
 <div id="blogadmin" hidden>
 <div class="admin be"><h2 id="bh">Write a post</h2>
 <div class="be-grid"><div class="be-main">
-<div class="row"><label><span>Title <small id="be-tc"></small></span><input id="bt"></label><label>Category<select id="bc"><option>Lesson Notes</option><option>Articles</option><option>News and Updates</option><option>Global News</option></select></label></div>
-<label style="margin-top:12px"><span>Summary (shown on cards and in Google) <small id="be-dc"></small></span><input id="bs" maxlength="160"></label>
-<div class="row" style="margin-top:12px"><label>Focus keyword (what people would search for)<input id="bk" placeholder="e.g. UACE chemistry notes"></label><label>Thumbnail image (optional)<input id="bi" type="file" accept="image/*"></label></div>
-<div class="upl"><label>Import an article (optional): Word (.docx) or web page (.html). It opens in the editor so you can change it.<input id="bf" type="file" accept=".docx,.html,.htm,application/vnd.openxmlformats-officedocument.wordprocessingml.document,text/html"></label>
-<div id="bfn" role="status" hidden></div><div id="bpv" class="article" hidden></div><button type="button" class="chip" id="bfc" hidden>Remove file and write instead</button></div>
+<label class="be-title"><span>Title <small id="be-tc"></small></span><input id="bt" placeholder="Add a title"></label>
 <div class="be-tabs"><button type="button" class="chip on" id="be-tw">Write</button><button type="button" class="chip" id="be-tp">Preview</button></div>
 <div id="be-bar" class="be-bar" role="toolbar" aria-label="Formatting"></div>
 <div id="be-pop" class="be-pop" hidden></div>
 <div id="be-area" class="article be-area" contenteditable="true" role="textbox" aria-multiline="true" aria-label="Article text"></div>
 <div id="be-prev" class="article be-prev" hidden></div>
 <p id="be-stat" class="be-stat"></p>
+<details class="upl"><summary>Import a Word or web page file (optional)</summary>
+<label>Word (.docx) or web page (.html). It opens in the editor so you can change it.<input id="bf" type="file" accept=".docx,.html,.htm,application/vnd.openxmlformats-officedocument.wordprocessingml.document,text/html"></label>
+<div id="bfn" role="status" hidden></div><div id="bpv" class="article" hidden></div><button type="button" class="chip" id="bfc" hidden>Remove file and write instead</button></details>
 <textarea id="bb" hidden></textarea>
-<div class="row" style="margin-top:12px"><button class="btn" id="bp">Publish post</button><button class="chip" id="bx" hidden>Cancel edit</button></div>
+<div class="row be-save"><button class="chip" id="be-sd" type="button">Save draft</button><button class="btn" id="be-pub" type="button">Publish</button><button class="chip" id="bx" type="button" hidden>Cancel edit</button><button id="bp" type="button" hidden>Publish post</button></div>
 <div id="bm" role="status" style="margin-top:10px;font-size:14px"></div></div>
-<aside class="be-seo" id="be-seo" aria-label="SEO check"></aside></div></div>
+<aside class="be-side" id="be-side" aria-label="Post settings"><div class="be-stabs"><button type="button" class="chip on" id="be-t1">Post</button><button type="button" class="chip" id="be-t2">SEO</button><span class="be-pill" id="be-pill">SEO 0</span></div>
+<div id="be-p1" class="be-pane">
+<div class="be-box"><h4>Publish</h4><p id="be-state" class="be-state"></p><label>Schedule for later (optional)<input id="be-when" type="datetime-local"></label><p class="be-help">Leave empty to publish right away. Drafts and scheduled posts are hidden from visitors.</p></div>
+<div class="be-box"><h4>Category and tags</h4><label>Category<select id="bc"><option>Lesson Notes</option><option>Articles</option><option>News and Updates</option><option>Global News</option></select></label><label>Tags (separate with commas)<input id="be-tags" placeholder="chemistry, revision, UACE"></label></div>
+<div class="be-box"><h4>Excerpt</h4><label><span>Short summary shown on cards <small id="be-dc"></small></span><textarea id="bs" rows="3" maxlength="160"></textarea></label></div>
+<div class="be-box"><h4>Featured image</h4><img id="be-fi" alt="" hidden><input id="bi" type="file" accept="image/*"><button type="button" class="chip" id="be-fr" hidden>Remove image</button></div>
+<div class="be-box"><h4>Author</h4><label>Name shown to search engines<input id="be-au" placeholder="Academicstrata"></label></div>
+</div><div id="be-p2" class="be-pane" hidden></div></aside></div></div>
 <div class="admin"><h2>Your posts</h2><div id="plist"></div></div>
 </div>
 <div class="filters" id="blogcats" role="group" aria-label="Blog categories" hidden></div>
