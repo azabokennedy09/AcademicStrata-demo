@@ -83,14 +83,14 @@
   function closePop() { pop.hidden = true; pop.textContent = ""; }
   function openLink() {
     var n = rng && rng.startContainer, el0 = n && (n.nodeType === 1 ? n : n.parentNode), a = el0 && el0.closest ? el0.closest("a") : null, collapsed = !rng || rng.collapsed;
-    var u = field("Web address", "text", a ? a.getAttribute("href") : "", "https://example.com or /resources"), t = field("Link text", "text", "", "What the reader sees"), sel = mk("select"), msg = mk("p", "be-err");
-    [["", "Or choose a page on this site\u2026"], ["/resources", "Resources"], ["/free", "Free Guides"], ["/premium", "Premium Guides"], ["/blog", "Blog"], ["/about", "About"], ["/team", "Our Team"], ["/faq", "FAQ"], ["/contact", "Contact"]].forEach(function (p) { var o = mk("option", "", p[1]); o.value = p[0]; sel.appendChild(o); });
+    var u = field("Web address", "text", a ? a.getAttribute("href") : "", "https://example.com or #resources"), t = field("Link text", "text", "", "What the reader sees"), sel = mk("select"), msg = mk("p", "be-err");
+    [["", "Or choose a page on this site\u2026"], ["#resources", "Resources"], ["#free", "Free Guides"], ["#premium", "Premium Guides"], ["#blog", "Blog"], ["#about", "About"], ["#team", "Our Team"], ["#faq", "FAQ"], ["#contact", "Contact"]].forEach(function (p) { var o = mk("option", "", p[1]); o.value = p[0]; sel.appendChild(o); });
     sel.onchange = function () { if (sel.value) u.input.value = sel.value; };
     var rows = [u, sel]; if (collapsed && !a) rows.push(t); rows.push(msg);
     showPop("Link", rows, [["Apply", function () {
       var v = u.input.value.trim();
       if (/^[\w-]+(\.[\w-]+)+(\/\S*)?$/.test(v)) v = "https://" + v;
-      if (!/^(https?:\/\/\S+|mailto:\S+|#[A-Za-z0-9_~.-]+|\/[A-Za-z0-9_~.-]+)$/.test(v)) { msg.textContent = "Enter a web address such as https://example.com, or choose a page."; return; }
+      if (!/^(https?:\/\/\S+|mailto:\S+|#[A-Za-z0-9_~.-]+)$/.test(v)) { msg.textContent = "Enter a web address such as https://example.com, or choose a page."; return; }
       restore();
       if (a) a.setAttribute("href", v);
       else if (collapsed) document.execCommand("insertHTML", false, '<a href="' + esc(v) + '">' + esc(t.input.value.trim() || v) + "</a>");
@@ -183,7 +183,7 @@
   function analyze() {
     var K = kws(), kw = K[0] || "", title = val("bt"), st = seoTitle(), md = val("be-md") || val("bs"), html = getHtml(), box = cleanHtml(html), text = tx(box), words = text ? text.split(/\s+/) : [], wc = words.length, low = text.toLowerCase();
     var h2 = box.querySelectorAll("h2").length, subs = [].slice.call(box.querySelectorAll("h2,h3")).map(function (h) { return h.textContent.toLowerCase(); }), imgs = [].slice.call(box.querySelectorAll("img"));
-    var links = [].slice.call(box.querySelectorAll("a[href]")), internal = links.filter(function (a) { var h = a.getAttribute("href"); return h.charAt(0) === "#" || h.charAt(0) === "/" || /academicstrata\.com/i.test(h); }).length, external = links.length - internal;
+    var links = [].slice.call(box.querySelectorAll("a[href]")), internal = links.filter(function (a) { var h = a.getAttribute("href"); return h.charAt(0) === "#" || /academicstrata\.com/i.test(h); }).length, external = links.length - internal;
     var sent = text.split(/[.!?]+\s/).filter(function (s) { return s.trim().split(/\s+/).length > 2; }), long = sent.filter(function (s) { return s.split(/\s+/).length > 25; }).length;
     var syl = words.reduce(function (n, w) { return n + syll(w); }, 0), fre = wc && sent.length ? 206.835 - 1.015 * (wc / sent.length) - 84.6 * (syl / wc) : 0;
     var kwN = kw ? low.split(kw).length - 1 : 0, dens = kw && wc ? kwN * kw.split(/\s+/).length / wc * 100 : 0, first = words.slice(0, Math.max(30, Math.ceil(wc * 0.1))).join(" ").toLowerCase();
@@ -333,7 +333,7 @@
       var act = mk("div", "row");
       function btn(txt, fn) { var b = mk("button", "chip", txt); b.type = "button"; b.onclick = fn; act.appendChild(b); return b; }
       btn("Edit", function () { editPost(p); });
-      if (st === "published") btn("View", function () { go("post-" + p.id); });
+      if (st === "published") btn("View", function () { location.hash = "#post-" + p.id; });
       btn("Duplicate", async function () { var c = Object.assign({}, p); delete c.id; c.title = p.title + " (copy)"; c.status = "draft"; c.createdAt = Date.now(); c.publishAt = 0; try { await db.collection("posts").add(c); } catch (e) {} });
       btn(st === "draft" ? "Publish" : "Move to drafts", async function () { try { await db.collection("posts").doc(p.id).update(st === "draft" ? { status: "published", publishAt: 0, createdAt: Date.now() } : { status: "draft" }); } catch (e) {} });
       var dx = btn("Delete", async function () {
@@ -364,7 +364,7 @@
       bn.appendChild(rs); bn.appendChild(ds); area.parentNode.insertBefore(bn, $("be-tw").parentNode);
     }
   } catch (e) {}
-  addEventListener("spa:route", function () { if (location.pathname.indexOf("/post-") !== 0) { var r = document.querySelector('meta[name="robots"]'); if (r) r.remove(); } });
+  addEventListener("hashchange", function () { if ((location.hash || "").indexOf("#post-") !== 0) { var r = document.querySelector('meta[name="robots"]'); if (r) r.remove(); } });
   setHtml("");
   window.BlogEditor = {
     getHtml: getHtml, setHtml: setHtml, keyword: function () { return val("bk"); }, score: function () { render(); return last.score; },

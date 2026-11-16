@@ -126,10 +126,10 @@
 // it is shown on that card instead of the drawn cover.
 (function () {
   document.querySelectorAll(".sl .si img").forEach(function (img) {
-    var m = (img.getAttribute("src") || "").match(/^\/?covers\/([a-z-]+)\.webp$/);
+    var m = (img.getAttribute("src") || "").match(/^covers\/([a-z-]+)\.webp$/);
     if (!m) return;
     var t = new Image();
     t.onload = function () { img.src = t.src; img.classList.add("up"); img.removeAttribute("width"); img.removeAttribute("height"); };
-    t.src = "/covers/" + m[1] + ".jpg";
+    t.src = "covers/" + m[1] + ".jpg";
   });
 })();
