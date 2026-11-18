@@ -1,0 +1,2 @@
+Academicstrata build 2026-11-16 (new dropdown menus).
+If you can read this at academicstrata.com/version.txt, your latest upload is live.
