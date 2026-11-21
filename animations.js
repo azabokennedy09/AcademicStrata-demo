@@ -1,4 +1,4 @@
-// Gentle motion for Academicstrata: fade-up on scroll, counting numbers, rotating headline word.
+// Gentle motion for Academic Strata: fade-up on scroll, counting numbers, rotating headline word.
 // Skipped completely for visitors who ask their device to reduce motion. The header is not touched.
 (function () {
   if (window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches) return;

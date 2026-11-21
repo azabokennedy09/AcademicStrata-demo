@@ -1,4 +1,4 @@
-// Blog editor for Academicstrata: WordPress-style writing, publishing and a Rank Math-style SEO panel.
+// Blog editor for Academic Strata: WordPress-style writing, publishing and a Rank Math-style SEO panel.
 // It relies on cleanHtml(), tx(), db, posts helpers and thumbData() from app.js. Everything is cleaned before it is saved or shown.
 (function () {
   var $ = function (i) { return document.getElementById(i); };
@@ -24,7 +24,7 @@
   function localInput(ts) { if (!ts) return ""; var d = new Date(ts), z = function (n) { return (n < 10 ? "0" : "") + n; }; return d.getFullYear() + "-" + z(d.getMonth() + 1) + "-" + z(d.getDate()) + "T" + z(d.getHours()) + ":" + z(d.getMinutes()); }
   function kws() { return val("bk").split(",").map(function (s) { return s.trim().toLowerCase(); }).filter(Boolean).slice(0, 5); }
   function tagList() { return val("be-tags").split(",").map(function (s) { return s.trim(); }).filter(Boolean).slice(0, 12); }
-  function seoTitle() { var t = val("be-st") || "%title% | Academicstrata"; return t.replace(/%title%/g, val("bt")).replace(/%sitename%/g, "Academicstrata"); }
+  function seoTitle() { var t = val("be-st") || "%title% | Academic Strata"; return t.replace(/%title%/g, val("bt")).replace(/%sitename%/g, "Academic Strata"); }
 
   // ---------- toolbar
   document.addEventListener("selectionchange", function () {
@@ -172,7 +172,7 @@
   b1.onclick = function () { dev = "desktop"; b1.classList.add("on"); b2.classList.remove("on"); render(); }; b2.onclick = function () { dev = "mobile"; b2.classList.add("on"); b1.classList.remove("on"); render(); };
   dv.appendChild(mk("strong", "", "Search preview")); dv.appendChild(b1); dv.appendChild(b2); p2.appendChild(dv);
   var serp = mk("div", "be-serp"); serp.id = "be-serp"; p2.appendChild(serp);
-  var stIn = mk("input"); stIn.id = "be-st"; stIn.placeholder = "%title% | Academicstrata"; p2.appendChild(lab("SEO title", stIn, "be-sc"));
+  var stIn = mk("input"); stIn.id = "be-st"; stIn.placeholder = "%title% | Academic Strata"; p2.appendChild(lab("SEO title", stIn, "be-sc"));
   var mdIn = mk("textarea"); mdIn.id = "be-md"; mdIn.rows = 3; mdIn.placeholder = "Leave empty to use the excerpt"; p2.appendChild(lab("Meta description", mdIn, "be-mc"));
   var niIn = mk("input"); niIn.type = "checkbox"; niIn.id = "be-ni"; var niL = mk("label", "be-chk"); niL.appendChild(niIn); niL.appendChild(document.createTextNode(" Hide this post from search engines (noindex)")); p2.appendChild(niL);
   var tests = mk("div", "be-tests"); tests.id = "be-tests"; p2.appendChild(tests);

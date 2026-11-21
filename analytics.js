@@ -1,4 +1,4 @@
-// Google Analytics (GA4) for Academicstrata.
+// Google Analytics (GA4) for Academic Strata.
 // The page switches views with #home, #blog, #resources and so on, so each view change is sent as a page view.
 window.dataLayer = window.dataLayer || [];
 function gtag() { dataLayer.push(arguments); }
