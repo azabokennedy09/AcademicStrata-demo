@@ -1,2 +1,2 @@
-Academic Strata build 2026-11-19 (new logo, social banner and company name).
+Academic Strata build 2026-11-21 (clean page addresses and larger favicon).
 If you can read this at academicstrata.com/version.txt, your latest upload is live.

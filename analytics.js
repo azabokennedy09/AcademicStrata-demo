@@ -1,23 +1,15 @@
 // Google Analytics (GA4) for Academic Strata.
-// The page switches views with #home, #blog, #resources and so on, so each view change is sent as a page view.
+// Every page now has its own address, so each page change is sent as a page view (addresses only, nothing private).
 window.dataLayer = window.dataLayer || [];
 function gtag() { dataLayer.push(arguments); }
 gtag("js", new Date());
 gtag("config", "G-X349QW37F9", { send_page_view: false });
-
-// Only plain view names like #blog or #res-123 are sent. Sign-in and password-reset links put private
-// codes after the # sign, and those must never reach Google.
-function safeHash() {
-  var h = location.hash || "";
-  return /^#[A-Za-z0-9_-]{1,80}$/.test(h) ? h : "";
-}
+var lastPath = null;
 function sendView() {
-  var h = safeHash();
-  gtag("event", "page_view", {
-    page_title: document.title,
-    page_location: location.origin + location.pathname + h,
-    page_path: location.pathname + h
-  });
+  var p = location.pathname;
+  if (p === lastPath) return;
+  lastPath = p;
+  gtag("event", "page_view", { page_title: document.title, page_location: location.origin + p, page_path: p });
 }
 sendView();
-window.addEventListener("hashchange", sendView);
+window.addEventListener("routechange", sendView);
