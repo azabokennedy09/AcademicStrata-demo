@@ -63,9 +63,11 @@ On the **Admin** page you can write, edit and delete blog posts (with a thumbnai
 4. When the payment shows in your PayPal account, open the **Admin** page, find the order under **Premium orders**, and press **Unlock**. The guide then shows a Download button for that member only.
 5. **Dismiss** removes an order that was never paid.
 
-Important about the PayPal button (hosted_button_id PKQP4Q6EZ8NDU):
-- The button image in your code says **Subscribe**. If it is a subscription button, buyers are charged again and again. For one-time $1 payments, create a **Buy Now** button in PayPal (Pay & Get Paid > Payment links and buttons), set the price to 1.00 USD, and replace `hosted_button_id` in `index.html` (search for PKQP4Q6EZ8NDU).
+Important about the PayPal button (hosted button ID 3QWVK4RSGYDE6, set in `app.js` as `PAYPAL_BUTTON_ID`):
+- The site opens PayPal's own payment page for this button: `https://www.paypal.com/ncp/payment/<button ID>`. No PayPal script is loaded on the site, so the security policy needed no changes.
+- In PayPal the button must be a **one-time** payment (Buy now / Pay now) for 1.00 USD, not a subscription.
 - One button has one fixed price, so every premium guide costs $1.
+- This kind of button does not carry the guide name or the member's email into PayPal. When a payment arrives, match it to the order by the payer's email or name and the time, then press Unlock.
 - The site cannot check PayPal itself. That is why you press Unlock. Automatic unlocking needs a PayPal webhook and a server function, which can be added later.
 - In PayPal you can set a **return URL** (your site address) so buyers come back to the site after paying.
 
