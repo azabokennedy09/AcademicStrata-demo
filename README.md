@@ -68,3 +68,6 @@ Important about the PayPal button (hosted_button_id PKQP4Q6EZ8NDU):
 - One button has one fixed price, so every premium guide costs $1.
 - The site cannot check PayPal itself. That is why you press Unlock. Automatic unlocking needs a PayPal webhook and a server function, which can be added later.
 - In PayPal you can set a **return URL** (your site address) so buyers come back to the site after paying.
+
+## Security hardening (update 3)
+Run `update-3-security.sql` once in the Supabase SQL Editor (after `setup.sql`). It limits form spam, locks uploads to each member's own folder, and stops approved files from being swapped. See `SECURITY.md` for the full list and the dashboard steps you must do yourself.

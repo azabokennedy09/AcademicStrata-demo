@@ -1,3 +1,18 @@
+# Files listed here are NOT served publicly by Cloudflare.
 wrangler.jsonc
 .assetsignore
 worker.js
+README.md
+SECURITY.md
+setup.sql
+update-1.sql
+update-2.sql
+update-3-security.sql
+check.html
+check.js
+version.txt
+.github
+.gitignore
+node_modules
+*.jpg.jpg
+covers/*.jpg

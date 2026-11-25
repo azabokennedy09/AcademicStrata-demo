@@ -1491,9 +1491,9 @@ You agree that the original English text shall prevail in the case of a dispute.
 <div class="cgrid">
 <form id="cf" class="card" style="gap:14px" novalidate>
 <h2 style="margin:0">Send us a message</h2>
-<label>Your name<input id="cn" autocomplete="name" required></label>
-<label>Your email<input id="ce" type="email" autocomplete="email" required></label>
-<label>Message<textarea id="cm" rows="6" required></textarea></label>
+<label>Your name<input id="cn" autocomplete="name" maxlength="120" required></label>
+<label>Your email<input id="ce" type="email" autocomplete="email" maxlength="254" required></label>
+<label>Message<textarea id="cm" rows="6" maxlength="4000" required></textarea></label>
 <button class="btn" type="submit" style="align-self:flex-start">Send message</button>
 <div id="cs" role="status" style="font-size:14px;color:var(--muted)"></div>
 </form>
@@ -1527,7 +1527,7 @@ You agree that the original English text shall prevail in the case of a dispute.
 <div><h4>Quick Links</h4><ul class="cats"><li><a href="/">Home</a></li><li><a href="/about">About Us</a></li><li><a href="/team">Our Team</a></li><li><a href="/services">Services</a></li><li><a href="/resources">Resources</a></li><li><a href="/blog">Blog</a></li><li><a href="/faq">FAQ</a></li><li><a href="/contact">Contact</a></li></ul></div>
 <div><h4>Study support</h4><ul class="cats"><li><a href="/free">Free Guides</a></li><li><a href="/premium">Premium Guides</a></li><li><a href="/a-level">A Level</a></li><li><a href="/o-level">O Level</a></li><li><a href="/guides">Study Guides</a></li><li><a href="/exam-prep">Exam Prep Packs</a></li><li><a href="/tutoring">Tutoring Support</a></li></ul></div>
 <div><h4>Subscribe</h4><p>Get new study guides, exam tips and updates sent to you. No spam, and you can opt out any time.</p>
-<form id="sub" style="display:flex;flex-direction:column;gap:10px" novalidate><label for="sn" style="position:absolute;left:-9999px">Your name</label><input id="sn" placeholder="Your Name" autocomplete="name"><label for="se" style="position:absolute;left:-9999px">Your email</label><input id="se" type="email" placeholder="Your Email" autocomplete="email"><button class="btn subbtn" type="submit">Subscribe Now</button><div id="ss" role="status" style="font-size:13px"></div></form></div>
+<form id="sub" style="display:flex;flex-direction:column;gap:10px" novalidate><label for="sn" style="position:absolute;left:-9999px">Your name</label><input id="sn" placeholder="Your Name" autocomplete="name" maxlength="120"><label for="se" style="position:absolute;left:-9999px">Your email</label><input id="se" type="email" placeholder="Your Email" autocomplete="email" maxlength="254"><button class="btn subbtn" type="submit">Subscribe Now</button><div id="ss" role="status" style="font-size:13px"></div></form></div>
 </div>
 <div class="fb"><div><a href="/terms">© 2026 Academic Strata. All rights reserved</a><span class="fl"><a href="/privacy">Privacy Policy</a><a href="/terms">Terms &amp; Conditions</a><a href="/cookies">Cookie Policy</a><button type="button" id="cks">Cookie Settings</button></span></div></div>
 </footer>

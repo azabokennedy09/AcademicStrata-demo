@@ -37,9 +37,9 @@
           onSnapshot: function (next, err) {
             var alive = true;
             var load = async function () {
-              var r = await sb.from("docs").select("id,data,created_at").eq("collection", c).order("created_at", { ascending: false });
+              var r = await sb.from("docs").select("id,data,created_at,uid").eq("collection", c).order("created_at", { ascending: false });
               if (r.error) { bar("Could not read \"" + c + "\" from the database: " + (r.error.code ? r.error.code + " - " : "") + (r.error.message || "unknown error")); if (err) err(r.error); return; }
-              if (alive) next({ docs: r.data.map(function (x) { return { id: x.id, data: function () { return x.data; } }; }) });
+              if (alive) next({ docs: r.data.map(function (x) { return { id: x.id, uid: x.uid, data: function () { return x.data; } }; }) });
             };
             load().catch(function (e) { bar("Could not reach the database: " + (e && e.message ? e.message : e)); });
             var timer = setInterval(load, 30000);
