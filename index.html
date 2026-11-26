@@ -549,6 +549,20 @@ h2{font-size:24px}
 .kt-avatar{position:relative;overflow:hidden;width:112px;height:112px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--accent);color:var(--onaccent);font:400 40px/1 'Newsreader',Georgia,serif;letter-spacing:1px}
 .kt-avatar img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .kt-sec .kt-hero{margin-top:36px}
+.tm-head{text-align:center;max-width:720px;margin:8px auto 40px}
+.tm-title{font:400 clamp(34px,5vw,48px)/1.1 'Newsreader',Georgia,serif;color:var(--accent);margin:0 0 10px}
+.tm-sub{margin:0;color:var(--muted);font-style:italic}
+.tm-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;align-items:start}
+.tm-card{text-align:center;padding:8px 12px}
+.tm-photo{position:relative;overflow:hidden;width:160px;height:160px;border-radius:50%;margin:0 auto 18px;display:flex;align-items:center;justify-content:center;background:var(--accent);color:var(--onaccent);font:400 48px/1 'Newsreader',Georgia,serif}
+.tm-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.tm-1 img{object-position:50% 45%}.tm-2 img{object-position:50% 30%}.tm-3 img{object-position:50% 45%}
+.tm-name{margin:0;font-size:18px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;line-height:1.3}
+.tm-role{margin:6px 0 14px;color:var(--accent);font-weight:700;font-size:15px}
+.tm-bio{margin:0 auto;color:var(--muted);font-size:15px;line-height:1.6;max-width:320px}
+.tm-soc{display:flex;justify-content:center;gap:16px;margin-top:16px}
+.tm-soc a{color:var(--muted);display:inline-flex}.tm-soc a:hover{color:var(--accent)}
+@media (max-width:860px){.tm-grid{grid-template-columns:1fr;gap:44px}}
 .kt-member h3{margin:0 0 4px}.kt-member .kt-chips{margin:10px 0}.kt-member p{margin:0;color:var(--muted)}
 @media (max-width:560px){.kt-member{grid-template-columns:1fr;justify-items:start}}
 .kt-sec{margin-top:56px}
@@ -1026,41 +1040,37 @@ nav .menu.mega.cc a.cc-btn:hover,nav .menu.mega.cc a.cc-btn:focus-visible{paddin
 <div class="pband one"><div class="pt"><h2>Still have a question?</h2><p>Call (+256) 786 535 915, email azabokennedy09@gmail.com or use the form on the Contact page.</p><a class="btn big" href="/contact">Contact us <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div></div>
 </section>
 <section id="team" data-page hidden>
-<div class="kt-hero"><div>
-<span class="kicker">The founder</span>
-<h1 class="kt-h1" data-k="team1_name" data-l="Team member 1: name">Mr. Azabo Kennedy</h1>
-<div class="kt-chips"><span data-k="team1_role" data-l="Team member 1: role">Founder</span><span>Educator</span><span>O &amp; A Level Chemistry</span><span>Muni Labs</span></div>
-<p class="lead" data-k="team1_bio" data-l="Team member 1: short bio">An educator with a strong interest in technology and practical problem-solving. He leads the vision of the library and makes sure every guide is clear, accurate and original.</p>
-<div class="ab-cta"><a class="btn big" href="/resources">Browse resources</a><a class="btn big alt" href="/blog">Read the blog</a></div>
-<div class="tsoc"><a href="https://www.facebook.com/azabokennedy.1" target="_blank" rel="noopener" aria-label="Facebook, Mr. Azabo Kennedy"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a><a href="https://x.com/" target="_blank" rel="noopener" aria-label="X (Twitter), Mr. Azabo Kennedy"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817-5.97 6.817H1.675l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a><a href="https://www.linkedin.com/" target="_blank" rel="noopener" aria-label="LinkedIn, Mr. Azabo Kennedy"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a></div>
+<div class="tm-head"><h1 class="tm-title">Our Team</h1><p class="tm-sub">Meet the people behind Academic Strata&rsquo;s study guides.</p></div>
+<div class="tm-grid">
+<article class="tm-card tm-1">
+<div class="tm-photo"><span aria-hidden="true">AK</span><img src="/azabo-kennedy.jpg" alt="" width="616" height="770" decoding="async"></div>
+<h2 class="tm-name" data-k="team1_name" data-l="Team member 1: name">Mr. Azabo Kennedy</h2>
+<p class="tm-role" data-k="team1_role" data-l="Team member 1: role">Founder</p>
+<p class="tm-bio" data-k="team1_bio" data-l="Team member 1: short bio">An educator with a strong interest in technology and practical problem-solving. He leads the vision of the library and makes sure every guide is clear, accurate and original.</p>
+<div class="tm-soc"><a href="https://www.facebook.com/azabokennedy.1" target="_blank" rel="noopener" aria-label="Facebook, Mr. Azabo Kennedy"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a><a href="https://www.instagram.com/azabokennedy" target="_blank" rel="noopener" aria-label="Instagram, Mr. Azabo Kennedy"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><path d="M17.5 6.5h.01"/></svg></a><a href="https://www.tiktok.com/@ken02026" target="_blank" rel="noopener" aria-label="TikTok, Mr. Azabo Kennedy"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 12a4 4 0 1 0 4 4V3a5 5 0 0 0 5 5"/></svg></a><a href="https://www.youtube.com/@kenstrata" target="_blank" rel="noopener" aria-label="YouTube, Mr. Azabo Kennedy"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/><path d="m9.75 15.02 5.75-3.27-5.75-3.27z"/></svg></a></div>
+</article>
+<article class="tm-card tm-2">
+<div class="tm-photo"><span aria-hidden="true">HP</span><img src="/holy-pius.jpg" alt="" width="576" height="720" loading="lazy" decoding="async"></div>
+<h2 class="tm-name" data-k="team2_name" data-l="Team member 2: name">Mr. Holy Pius</h2>
+<p class="tm-role" data-k="team2_role" data-l="Team member 2: role">Director of Writing Department</p>
+<p class="tm-bio" data-k="team2_bio" data-l="Team member 2: short bio">He graduated in 2026 with a Bachelor of Science with Education and teaches Biology and Chemistry at Ushindi Secondary School.</p>
+<div class="tm-soc"><a href="https://www.facebook.com/azabokennedy.1" target="_blank" rel="noopener" aria-label="Academic Strata on Facebook"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a><a href="https://www.instagram.com/azabokennedy" target="_blank" rel="noopener" aria-label="Academic Strata on Instagram"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><path d="M17.5 6.5h.01"/></svg></a><a href="https://www.tiktok.com/@ken02026" target="_blank" rel="noopener" aria-label="Academic Strata on TikTok"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 12a4 4 0 1 0 4 4V3a5 5 0 0 0 5 5"/></svg></a><a href="https://www.youtube.com/@kenstrata" target="_blank" rel="noopener" aria-label="Academic Strata on YouTube"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/><path d="m9.75 15.02 5.75-3.27-5.75-3.27z"/></svg></a></div>
+</article>
+<article class="tm-card tm-3">
+<div class="tm-photo"><span aria-hidden="true">NA</span><img src="/nancy-amviko.jpg" alt="" width="576" height="720" loading="lazy" decoding="async"></div>
+<h2 class="tm-name" data-k="team3_name" data-l="Team member 3: name">Ms. Nancy Amviko</h2>
+<p class="tm-role" data-k="team3_role" data-l="Team member 3: role">Marketing Manager</p>
+<p class="tm-bio" data-k="team3_bio" data-l="Team member 3: short bio">She holds a Bachelor of Science with Education and teaches Chemistry and Mathematics at Excel Secondary School.</p>
+<div class="tm-soc"><a href="https://www.facebook.com/azabokennedy.1" target="_blank" rel="noopener" aria-label="Academic Strata on Facebook"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a><a href="https://www.instagram.com/azabokennedy" target="_blank" rel="noopener" aria-label="Academic Strata on Instagram"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><path d="M17.5 6.5h.01"/></svg></a><a href="https://www.tiktok.com/@ken02026" target="_blank" rel="noopener" aria-label="Academic Strata on TikTok"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 12a4 4 0 1 0 4 4V3a5 5 0 0 0 5 5"/></svg></a><a href="https://www.youtube.com/@kenstrata" target="_blank" rel="noopener" aria-label="Academic Strata on YouTube"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/><path d="m9.75 15.02 5.75-3.27-5.75-3.27z"/></svg></a></div>
+</article>
 </div>
-<div class="kt-frame"><div class="kt-photo"><b aria-hidden="true">AK</b><img src="/azabo-kennedy.jpg" alt="Mr. Azabo Kennedy, founder of Academic Strata" width="616" height="770" fetchpriority="high"><span class="kt-badge">Founder<small>Academic Strata</small></span></div></div></div>
-<div class="mq" aria-hidden="true"><div class="mq-t"><span>Free guides</span><span>Premium guides</span><span>A Level</span><span>O Level</span><span>Study guides</span><span>Past papers</span><span>Practice questions</span><span>Free guides</span><span>Premium guides</span><span>A Level</span><span>O Level</span><span>Study guides</span><span>Past papers</span><span>Practice questions</span></div></div>
-<div class="kt-sec"><span class="kicker">Who he is</span><h2>His background</h2>
+<div class="kt-sec"><span class="kicker">The founder</span><h2>The founder&rsquo;s background</h2>
 <div class="kt-three">
 <div class="card"><span class="kt-n">01</span><h3>Education</h3><p>A graduate of Muni University with a Bachelor of Science in Education.</p></div>
 <div class="card"><span class="kt-n">02</span><h3>Teaching</h3><p>Four years of experience teaching O-Level and A-Level Chemistry at Arua Secondary School.</p></div>
 <div class="card"><span class="kt-n">03</span><h3>Work at Muni Labs</h3><p>Applies his analytical background in science to marketing and digital projects at Muni Labs.</p></div>
 </div>
 <p class="kt-end">Whether working in the classroom, the lab, or on digital projects, Kennedy enjoys using technology to support learning and help people solve everyday challenges.</p></div>
-<div class="kt-sec"><span class="kicker">The team</span><h2>Meet the team</h2>
-<div class="kt-hero"><div>
-<span class="kicker">Writing department</span>
-<h2 class="kt-h1" data-k="team2_name" data-l="Team member 2: name">Mr. Holy Pius</h2>
-<div class="kt-chips"><span data-k="team2_role" data-l="Team member 2: role">Director of Writing Department</span><span>B.Sc. with Education, 2026</span><span>Biology &amp; Chemistry</span><span>Ushindi Secondary School</span></div>
-<p class="lead" data-k="team2_bio" data-l="Team member 2: short bio">Mr. Holy Pius is the Director of the Writing Department. He graduated in 2026 with a Bachelor of Science with Education, and he teaches Biology and Chemistry at Ushindi Secondary School.</p>
-<div class="ab-cta"><a class="btn big alt" href="/contact">Get in touch</a></div>
-</div>
-<div class="kt-frame"><div class="kt-photo"><b aria-hidden="true">HP</b><img src="/holy-pius.jpg" alt="Mr. Holy Pius, Director of the Writing Department" width="576" height="720" loading="lazy" decoding="async"><span class="kt-badge">Director<small>Writing Department</small></span></div></div></div>
-<div class="kt-hero"><div>
-<span class="kicker">Team member</span>
-<h2 class="kt-h1" data-k="team3_name" data-l="Team member 3: name">Ms. Nancy Amviko</h2>
-<div class="kt-chips"><span data-k="team3_role" data-l="Team member 3: role">Team member</span><span>B.Sc. with Education</span><span>Chemistry &amp; Mathematics</span><span>Excel Secondary School</span></div>
-<p class="lead" data-k="team3_bio" data-l="Team member 3: short bio">Ms. Nancy Amviko holds a Bachelor of Science with Education. She teaches Chemistry and Mathematics at Excel Secondary School.</p>
-<div class="ab-cta"><a class="btn big alt" href="/contact">Get in touch</a></div>
-</div>
-<div class="kt-frame"><div class="kt-photo"><b aria-hidden="true">NA</b><img src="/nancy-amviko.jpg" alt="Ms. Nancy Amviko, teacher at Excel Secondary School" width="576" height="720" loading="lazy" decoding="async"><span class="kt-badge">Teacher<small>Excel Secondary School</small></span></div></div></div>
-</div>
 <div class="kt-sec"><span class="kicker">The guides</span><h2>What the guides stand for</h2>
 <div class="kt-three">
 <div class="card"><span class="kt-n">01</span><h3>Clear</h3><p>Short, plain explanations, with a worked example.</p></div>
